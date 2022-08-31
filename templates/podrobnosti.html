@@ -62,9 +62,9 @@
                 month = date.toLocaleString().split("/")[0]
                 BODY.innerHTML += "<tr>"+
                                    "<th>" + x.trida + "</th>"+
-                                   "<th>" +  day + ". " + month + "</th>"+
+                                   "<th>" + date.getDate() + ". " + (Number(date.getMonth()) + 1) + ".</th>"+
                                    "<th>" + x.pocetBodu + "</th>"+
-                                   "<th>" + x.aktivita + "</th>"+
+                                   "<th style=\"max-width=50%\">" + x.aktivita + "</th>"+
                                   "</tr>"
             }
         }
