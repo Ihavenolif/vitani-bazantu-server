@@ -23,23 +23,95 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>1.A</td>
-                    <td>210</td>
+                    <td id="prvniTrida"></td>
+                    <td id="prvniTridaBody"></td>
                 </tr>
 
                 <tr>
                     <td>2</td>
-                    <td>1.B</td>
-                    <td>185</td>
+                    <td id="druhaTrida"></td>
+                    <td id="druhaTridaBody"></td>
                 </tr>
 
                 <tr>
                     <td>3</td>
-                    <td>1.C</td>
-                    <td>165</td>
+                    <td id="tretiTrida"></td>
+                    <td id="tretiTridaBody"></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <script>
+        a = {{ sum1a }}
+        b = {{ sum1b }}
+        c = {{ sum1c }}
+
+        PRVNITRIDA = document.getElementById("prvniTrida")
+        PRVNITRIDABODY = document.getElementById("prvniTridaBody")
+
+        DRUHATRIDA = document.getElementById("druhaTrida")
+        DRUHATRIDABODY = document.getElementById("druhaTridaBody")
+
+        TRETITRIDA = document.getElementById("tretiTrida")
+        TRETITRIDABODY = document.getElementById("tretiTridaBody")
+
+        function updateTable(){
+            if(a == Math.max(a,b,c)){
+                PRVNITRIDA.innerHTML = "1.A"
+                PRVNITRIDABODY.innerHTML = a
+            
+                if(b >= c){
+                    DRUHATRIDA.innerHTML = "1.B"
+                    DRUHATRIDABODY.innerHTML = b
+
+                    TRETITRIDA.innerHTML = "1.C"
+                    TRETITRIDABODY.innerHTML = c
+                }else{
+                    DRUHATRIDA.innerHTML = "1.C"
+                    DRUHATRIDABODY.innerHTML = c
+
+                    TRETITRIDA.innerHTML = "1.B"
+                    TRETITRIDABODY.innerHTML = b
+                }
+            }else if(b == Math.max(a,b,c)){
+                PRVNITRIDA.innerHTML = "1.B"
+                PRVNITRIDABODY.innerHTML = b
+
+                if(a >= c){
+                    DRUHATRIDA.innerHTML = "1.A"
+                    DRUHATRIDABODY.innerHTML = a
+
+                    TRETITRIDA.innerHTML = "1.C"
+                    TRETITRIDABODY.innerHTML = c
+                }else{
+                    DRUHATRIDA.innerHTML = "1.C"
+                    DRUHATRIDABODY.innerHTML = c
+
+                    TRETITRIDA.innerHTML = "1.A"
+                    TRETITRIDABODY.innerHTML = a
+                }
+            }else{
+                PRVNITRIDA.innerHTML = "1.C"
+                PRVNITRIDABODY.innerHTML = c
+
+                if(a >= b){
+                    DRUHATRIDA.innerHTML = "1.A"
+                    DRUHATRIDABODY.innerHTML = a
+
+                    TRETITRIDA.innerHTML = "1.B"
+                    TRETITRIDABODY.innerHTML = b
+                }else{
+                    DRUHATRIDA.innerHTML = "1.B"
+                    DRUHATRIDABODY.innerHTML = b
+
+                    TRETITRIDA.innerHTML = "1.A"
+                    TRETITRIDABODY.innerHTML = a
+                }
+            }
+        }
+
+        updateTable()
+    </script>
 </body>
 </html>
