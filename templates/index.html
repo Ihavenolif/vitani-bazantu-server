@@ -12,17 +12,34 @@
 </head>
 <body>
     <div class="container-sm border border-primary rounded" style="width: 30%; margin-top: 10%; min-width: fit-content;">
-        <form method="post" action="/login">
-            <div class="mb-3 mt-3">
-                <label for="username" class="form-label">Username:</label>
-                <input type="text" name="username" id="username-input" class="form-control">
-            </div>
-            <div class="mb-3 mt-3">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" name="password" id="password-input" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary" style="margin-bottom: 2.2%;">Login</button>
-        </form>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Umístění</th>
+                    <th>Třída</th>
+                    <th>Počet Bodů</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1.A</td>
+                    <td>210</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>1.B</td>
+                    <td>185</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>1.C</td>
+                    <td>165</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
