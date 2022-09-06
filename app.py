@@ -1,4 +1,3 @@
-from socketserver import ThreadingUnixDatagramServer
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -21,6 +20,10 @@ class Entry(db.Model):
 
 @app.route("/")
 def index():
+    return render_template("index.html")
+
+@app.route("/body")
+def body():
     entries = Entry.query.all()
 
     list = []
@@ -45,7 +48,7 @@ def index():
         else:
             sum1c += x["pocetBodu"]
 
-    return render_template("index.html", sum1a=sum1a, sum1b=sum1b, sum1c=sum1c)
+    return render_template("body.html", sum1a=sum1a, sum1b=sum1b, sum1c=sum1c)
 
 @app.route("/podrobnosti")
 def podrobnosti():
