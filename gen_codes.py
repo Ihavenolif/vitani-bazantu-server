@@ -39,29 +39,47 @@ def generate_random_password(length):
 	## printing the list
     return "".join(password)
 
+f = open("qrcode_url_list.txt", "a")
+f.write("1.A\n\n")
+
 for i in range(36):
     hlas = Hlasy()
     hlas.trida = "1.A"
-    hlas.kod = generate_random_password(16)
+    kod = generate_random_password(16)
+    hlas.kod = kod
     hlas.voted = 0
+
+    f.write("www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
 
     db.session.add(hlas)
     db.session.commit()
+
+f.write("\n 1.B\n\n")
 
 for i in range(36):
     hlas = Hlasy()
     hlas.trida = "1.B"
-    hlas.kod = generate_random_password(16)
+    kod = generate_random_password(16)
+    hlas.kod = kod
     hlas.voted = 0
+
+    f.write("www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
 
     db.session.add(hlas)
     db.session.commit()
+
+f.write("\n 1.C\n\n")
 
 for i in range(36):
     hlas = Hlasy()
     hlas.trida = "1.C"
-    hlas.kod = generate_random_password(16)
+    kod = generate_random_password(16)
+    hlas.kod = kod
     hlas.voted = 0
+
+    f.write("www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
 
     db.session.add(hlas)
     db.session.commit()
+
+f.close()
