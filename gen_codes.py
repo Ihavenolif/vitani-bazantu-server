@@ -49,7 +49,7 @@ for i in range(36):
     hlas.kod = kod
     hlas.voted = 0
 
-    f.write("www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
+    f.write("http://www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
 
     db.session.add(hlas)
     db.session.commit()
@@ -63,7 +63,7 @@ for i in range(36):
     hlas.kod = kod
     hlas.voted = 0
 
-    f.write("www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
+    f.write("http://www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
 
     db.session.add(hlas)
     db.session.commit()
@@ -77,7 +77,7 @@ for i in range(36):
     hlas.kod = kod
     hlas.voted = 0
 
-    f.write("www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
+    f.write("http://www.gvnqrkod.cz/kviz?kod=" + kod + "\n")
 
     db.session.add(hlas)
     db.session.commit()
