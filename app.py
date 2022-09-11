@@ -32,6 +32,7 @@ class Odpovedi(db.Model):
     odpoved = db.Column(db.String(256))
     jmeno = db.Column(db.String(256))
     kod = db.Column(db.String(256))
+    body_zapsany = db.Column(db.Integer)
 
 @app.route("/")
 def index():
@@ -105,12 +106,15 @@ def kviz():
             return render_template("cas_vyprsel.html")
 
         if request.form["request_type"] == "post_kviz":
+            if Odpovedi.query.filter_by(kod=request.form["kod"]).first().body_zapsany == 1:
+                return render_template("hlasy_zapsany.html")
             name = request.form["name"]
             if name == "":
                 name = "(Anonymní)"
             entry = Entry(timestamp=math.floor(datetime.timestamp(datetime.now())*1000), trida=request.form["trida"], pocetBodu=1, aktivita="Bod za správnou odpověď v kvízu od soutěžícího " + name + "!")
             odpoved = Odpovedi.query.filter_by(kod=request.form["kod"]).first()
             odpoved.jmeno = name
+            odpoved.body_zapsany = 1
             db.session.add(entry)
             db.session.commit()
             return render_template("post_post_kviz_spravne.html")
@@ -126,7 +130,7 @@ def kviz():
 
         hlas = Hlasy.query.filter_by(kod=kod).first()
         hlas.voted = 1
-        odpovedEntry = Odpovedi(odpoved=QUESTION_DATA["odpoved" + str(odpoved)], otazka=QUESTION_DATA["otazka"], trida=request.form["trida"], jmeno="Anonymní", kod=kod)
+        odpovedEntry = Odpovedi(odpoved=QUESTION_DATA["odpoved" + str(odpoved)], otazka=QUESTION_DATA["otazka"], trida=request.form["trida"], jmeno="Anonymní", kod=kod, body_zapsany=0)
         db.session.add(odpovedEntry)
         db.session.commit()
 
