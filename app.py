@@ -135,7 +135,10 @@ def kviz():
         else:
             return render_template("post_kviz_spatne.html", spravnaOdpoved=QUESTION_DATA["odpoved" + str(QUESTION_DATA["spravnaOdpoved"])])
 
-    kod = request.args["kod"]
+    try:
+        kod = request.args["kod"]
+    except:
+        return render_template("kod_nenalezen.html")
 
     hlas = Hlasy.query.filter_by(kod=kod).first()
 
