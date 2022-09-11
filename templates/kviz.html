@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style> 
+ .mt-100 {
+     margin-top: 100px
+ }
+
+ .card {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     min-width: 0;
+     word-wrap: break-word;
+     background-color: #fff;
+     background-clip: border-box;
+     border: 1px solid #d2d2dc;
+     border-radius: 0
+ }
+
+ .card .card-body {
+     padding: 1.25rem 1.75rem
+ }
+
+ .card-body {
+     flex: 1 1 auto;
+     padding: 1.25rem
+ }
+
+ .card .card-title {
+     color: #000000;
+     margin-bottom: 0.625rem;
+     text-transform: capitalize;
+     font-size: 0.875rem;
+     font-weight: 500
+ }
+
+ .card .card-description {
+     margin-bottom: .875rem;
+     font-weight: 400;
+     color: #76838f
+ }
+
+ p {
+     font-size: 0.875rem;
+     margin-bottom: .5rem;
+     line-height: 1.5rem
+ }
+
+
+
+
+
+
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.15;
+    position: relative;
+  }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input:hover {
+  background: #9faab7;
+}
+.option-input:checked {
+  background: #007bff;
+}
+.option-input:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  content: "\f111";
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.25s;
+  -moz-animation: click-wave 0.25s;
+  animation: click-wave 0.25s;
+  background: #007bff;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+.option-input.radio {
+  border-radius: 50%;
+}
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container-sm border border-primary rounded" style="width: 30%; margin-top: 10%; min-width: fit-content; display: none;" id="kviz-box">
+        <form method="post" action="/kviz" id="form">
+            <input type="hidden" name="kod" id="kod" value="{{ kod }}">
+            <input type="hidden" name="trida" id="trida" value="{{ trida }}">
+            <input type="hidden" name="request_type" id="request_type" value="kviz_result">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ otazka }}</h4>
+            
+                            <div>
+                              <label>
+                                <input type="radio" class="option-input radio" name="odpoved" value="1" required="required"/>
+                                {{ odpoved1 }}
+                              </label>
+                              <label>
+                                <input type="radio" class="option-input radio" name="odpoved" value="2" required="required"/>
+                                {{ odpoved2 }}
+                              </label>
+                              <label>
+                                <input type="radio" class="option-input radio" name="odpoved" value="3" required="required"/>
+                                {{ odpoved3 }}
+                              </label>
+                              <label>
+                                <input type="radio" class="option-input radio" name="odpoved" value="4" required="required"/>
+                                {{ odpoved4 }}
+                              </label>
+                            </div>
+
+                            <br>
+
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="background-color: #00FF00" aria-valuenow="600" aria-valuemin="0" aria-valuemax="600" style="width:100%" id="progress-bar">
+                                <span class="sr-only">70% Complete</span>
+                              </div>
+                            </div>
+
+                            <br>
+
+                            <button type="submit" class="btn btn-primary" style="margin-bottom: 2.2%;">Odeslat</button>
+                        </div>
+        </form>
+    </div>
+
+    <div class="container-sm border border-primary rounded" id="start-game-box" style="width: 30%; margin-top: 10%; min-width: fit-content;">
+      <h3 style="margin-top: 10px;">GVN Kvíz <i>(PLACEHOLDER)</i></h3>
+      <p>Vítej u&nbspkvízu. Než začneš, měl/a bys vědět pár věcí. <br> <br>
+        Jakmile klikneš na&nbsptlačítko Začít kvíz, zobrazí&nbspse ti otázka a začne ti ubíhat čas. Na&nbspzodpovězení otázky máš 60 sekund, viditelné na&nbsp<i>PROGRESS BARU (jak se&nbspto řekne česky?)</i>. <br>
+        Na&nbspkvíz máš jeden pokus, ten se&nbspvyužije až když klikneš na&nbsptlačítko Začít kvíz, takže teď máš ještě možnost nechat&nbspsi ho na&nbspjindy. Pokud nestihneš na&nbspotázku odpovědět v&nbspčasovém limitu, tvůj pokus <strong>se&nbspvyužije a&nbspkód nebude fungovat podruhé!</strong><br>
+        Pokud se ti povede na&nbspotázku odpovědět správně, objeví&nbspse ti <i>(?)stránka se&nbspzápisem bodů(?)</i>. Tady se&nbsppřipíšou body tvojí třídě (<strong>{{trida}}</strong>, pokud tohle není tvoje třída, najdi Mazáka a řekni mu o tom). <br>
+        Je důležité z&nbsptéto stránky <strong>neodcházet, dokud neklikneš na&nbspZapsat body</strong>. Pokud tak neuděláš, tvůj pokus bude <strong>neplatný, body se ti nezapíšou a znovu fungovat nebude!</strong> <br> <br>
+        To je všechno, přejeme ti hodně štěstí s&nbspotázkou!
+      </p>
+      <button class="btn btn-primary" style="margin-bottom: 2.2%;" onclick="startGame()">Začít kvíz</button>
+    </div>
+
+    <div class="container-sm border border-primary rounded" id="time-up-box" style="width: 30%; margin-top: 10%; min-width: fit-content; display: none;">
+      <h3 style="margin-top: 10px;">Čas vypršel!</h3>
+      <p>Nepodařilo se ti odpovědět na otážku včas.</p>
+      <a href="/"><button class="btn btn-primary" style="margin-bottom: 2.2%;">Hlavní stránka</button></a>
+    </div>
+
+    <script>
+      const PROGRESSBAR = document.getElementById("progress-bar")
+
+      red = 0
+      green = 255
+
+      function startGame(){
+        document.getElementById("kviz-box").style.display = "block"
+        document.getElementById("start-game-box").style.display = "none"
+
+        window.timeRemaining = 600
+        window.endGameTimer = setInterval(() => {
+          PROGRESSBAR.ariaValueNow = window.timeRemaining -6
+          PROGRESSBAR.style.width = ((window.timeRemaining)/6)-1 + "%"
+
+          if(timeRemaining > 300){
+            red += (1/300)*255
+          }else{
+            green -= (1/300)*255
+          }
+
+          PROGRESSBAR.style.backgroundColor = "rgb(" + red + "," + green + ",0)"
+
+          if(timeRemaining <= 0){
+            clearInterval(window.endGameTimer)
+            endGame()
+          }else{
+            timeRemaining -= 1
+          }
+        }, 100);
+      }
+
+      function endGame(){
+        document.getElementById("request_type").value = "time_up"
+        document.getElementById("form").submit()
+      }
+    </script>
+</body>
+</html>

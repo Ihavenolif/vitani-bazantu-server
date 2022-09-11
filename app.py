@@ -1,3 +1,4 @@
+import json
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -17,6 +18,20 @@ class Entry(db.Model):
     trida = db.Column(db.String(256))
     pocetBodu = db.Column(db.Integer)
     aktivita = db.Column(db.String(1024))
+
+class Hlasy(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    trida = db.Column(db.String(256))
+    kod = db.Column(db.String(256))
+    voted = db.Column(db.Integer)
+
+class Odpovedi(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    trida = db.Column(db.String(256))
+    otazka = db.Column(db.String(256))
+    odpoved = db.Column(db.String(256))
+    jmeno = db.Column(db.String(256))
+    kod = db.Column(db.String(256))
 
 @app.route("/")
 def index():
@@ -78,5 +93,72 @@ def pridat_body():
         return "body pridany"
     
     return render_template("pridat_body.html")
+
+@app.route("/kviz", methods=["GET", "POST"])
+def kviz():
+    if request.method == "POST":
+        if request.form["request_type"] == "time_up":
+            kod = request.form["kod"]
+            hlas = Hlasy.query.filter_by(kod=kod).first()
+            hlas.voted = 1
+            db.session.commit()
+            return render_template("cas_vyprsel.html")
+
+        if request.form["request_type"] == "post_kviz":
+            name = request.form["name"]
+            if name == "":
+                name = "(Anonymní)"
+            entry = Entry(timestamp=math.floor(datetime.timestamp(datetime.now())*1000), trida=request.form["trida"], pocetBodu=1, aktivita="Bod za správnou odpověď v kvízu od soutěžícího " + name + "!")
+            odpoved = Odpovedi.query.filter_by(kod=request.form["kod"]).first()
+            odpoved.jmeno = name
+            db.session.add(entry)
+            db.session.commit()
+            return render_template("post_post_kviz_spravne.html")
+
+
+        odpoved = request.form["odpoved"]
+        kod = request.form["kod"]
+
+        with open("question_data.json") as json_file:
+            KVIZ_DATA = json.load(json_file)
+
+        QUESTION_DATA = KVIZ_DATA[kod]
+
+        hlas = Hlasy.query.filter_by(kod=kod).first()
+        hlas.voted = 1
+        odpovedEntry = Odpovedi(odpoved=QUESTION_DATA["odpoved" + str(odpoved)], otazka=QUESTION_DATA["otazka"], trida=request.form["trida"], jmeno="Anonymní", kod=kod)
+        db.session.add(odpovedEntry)
+        db.session.commit()
+
+        if str(QUESTION_DATA["spravnaOdpoved"]) == odpoved:
+            return render_template("post_kviz_spravne.html", trida=request.form["trida"], spravnaOdpoved=QUESTION_DATA["odpoved" + str(QUESTION_DATA["spravnaOdpoved"])], kod=kod)
+        else:
+            return render_template("post_kviz_spatne.html", spravnaOdpoved=QUESTION_DATA["odpoved" + str(QUESTION_DATA["spravnaOdpoved"])])
+
+    kod = request.args["kod"]
+
+    hlas = Hlasy.query.filter_by(kod=kod).first()
+
+    if not hlas:
+        return render_template("kod_nenalezen.html")
+
+    with open("question_data.json") as json_file:
+        KVIZ_DATA = json.load(json_file)
+
+    QUESTION_DATA = KVIZ_DATA[kod]
+
+    if hlas.voted == 1:
+        return render_template("kod_vyuzit.html")
+
+    return render_template("kviz.html", 
+        otazka=QUESTION_DATA["otazka"], 
+        odpoved1=QUESTION_DATA["odpoved1"], 
+        odpoved2=QUESTION_DATA["odpoved2"],
+        odpoved3=QUESTION_DATA["odpoved3"],
+        odpoved4=QUESTION_DATA["odpoved4"],
+        kod=kod,
+        trida=hlas.trida
+    )
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
