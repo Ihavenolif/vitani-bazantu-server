@@ -26,3 +26,5 @@ class Odpovedi(db.Model):
     odpoved = db.Column(db.String(256))
     jmeno = db.Column(db.String(256))
     kod = db.Column(db.String(256))
+
+db.create_all()
