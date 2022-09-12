@@ -1,4 +1,5 @@
 import json
+from re import U
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -33,10 +34,79 @@ class Odpovedi(db.Model):
     jmeno = db.Column(db.String(256))
     kod = db.Column(db.String(256))
     body_zapsany = db.Column(db.Integer)
+    spravne = db.Column(db.Integer)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    odpovedi = Odpovedi.query.all()
+
+    spravne1a = 0
+    spravne1b = 0
+    spravne1c = 0
+    spatne1a = 0
+    spatne1b = 0
+    spatne1c = 0
+
+    for odpoved in odpovedi:
+        if odpoved.spravne == 1:
+            if odpoved.trida == "1.A":
+                spravne1a += 1
+            elif odpoved.trida == "1.B":
+                spravne1b += 1
+            else:
+                spravne1c += 1  
+        else:
+            if odpoved.trida == "1.A":
+                spatne1a += 1
+            elif odpoved.trida == "1.B":
+                spatne1b += 1
+            else:
+                spatne1c += 1 
+          
+
+    percentage_spravne1a = round((spravne1a/36)*100)
+    percentage_spravne1b = round((spravne1b/36)*100)
+    percentage_spravne1c = round((spravne1c/36)*100)
+
+    if spravne1a+spatne1a == 0:
+        uspesnost_a = 0
+    else:
+        uspesnost_a = round((spravne1a/spravne1a+spatne1a)*100)
+
+    if spravne1b+spatne1b == 0:
+        uspesnost_b = 0
+    else:
+        uspesnost_b = round((spravne1b/spravne1b+spatne1b)*100)
+
+    if spravne1c+spatne1c == 0:
+        uspesnost_c = 0
+    else:
+        uspesnost_c = round((spravne1c/spravne1c+spatne1c)*100)
+
+    
+    
+    
+
+    percentage_spatne1a = round((spatne1a/36)*100)
+    percentage_spatne1b = round((spatne1b/36)*100)
+    percentage_spatne1c = round((spatne1c/36)*100)
+
+    return render_template("index.html", 
+        spravne1a=spravne1a,
+        spravne1b=spravne1b, 
+        spravne1c=spravne1c, 
+        spatne1a=spatne1a,
+        spatne1b=spatne1b,
+        spatne1c=spatne1c,
+        percentage_spravne1a=percentage_spravne1a, 
+        percentage_spravne1b=percentage_spravne1b, 
+        percentage_spravne1c=percentage_spravne1c,
+        percentage_spatne1a=percentage_spatne1a,
+        percentage_spatne1b=percentage_spatne1b,
+        percentage_spatne1c=percentage_spatne1c,
+        uspesnost_a=uspesnost_a,
+        uspesnost_b=uspesnost_b,
+        uspesnost_c=uspesnost_c)
 
 @app.route("/body")
 def body():
@@ -130,13 +200,19 @@ def kviz():
 
         hlas = Hlasy.query.filter_by(kod=kod).first()
         hlas.voted = 1
-        odpovedEntry = Odpovedi(odpoved=QUESTION_DATA["odpoved" + str(odpoved)], otazka=QUESTION_DATA["otazka"], trida=request.form["trida"], jmeno="Anonymní", kod=kod, body_zapsany=0)
-        db.session.add(odpovedEntry)
-        db.session.commit()
+        
 
         if str(QUESTION_DATA["spravnaOdpoved"]) == odpoved:
+            odpovedEntry = Odpovedi(odpoved=QUESTION_DATA["odpoved" + str(odpoved)], otazka=QUESTION_DATA["otazka"], trida=request.form["trida"], jmeno="Anonymní", kod=kod, body_zapsany=0, spravne=1)
+
+            db.session.add(odpovedEntry)
+            db.session.commit()
             return render_template("post_kviz_spravne.html", trida=request.form["trida"], spravnaOdpoved=QUESTION_DATA["odpoved" + str(QUESTION_DATA["spravnaOdpoved"])], kod=kod)
         else:
+            odpovedEntry = Odpovedi(odpoved=QUESTION_DATA["odpoved" + str(odpoved)], otazka=QUESTION_DATA["otazka"], trida=request.form["trida"], jmeno="Anonymní", kod=kod, body_zapsany=0, spravne=0)
+            
+            db.session.add(odpovedEntry)
+            db.session.commit()
             return render_template("post_kviz_spatne.html", spravnaOdpoved=QUESTION_DATA["odpoved" + str(QUESTION_DATA["spravnaOdpoved"])])
 
     try:
