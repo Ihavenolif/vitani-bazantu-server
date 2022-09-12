@@ -199,6 +199,10 @@ def kviz():
         QUESTION_DATA = KVIZ_DATA[kod]
 
         hlas = Hlasy.query.filter_by(kod=kod).first()
+
+        if hlas.voted == 1:
+            return render_template("kod_vyuzit.html")
+
         hlas.voted = 1
         
 
