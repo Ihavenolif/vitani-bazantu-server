@@ -71,17 +71,17 @@ def index():
     if spravne1a+spatne1a == 0:
         uspesnost_a = 0
     else:
-        uspesnost_a = round((spravne1a/spravne1a+spatne1a)*100)
+        uspesnost_a = round((spravne1a/(spravne1a+spatne1a))*100)
 
     if spravne1b+spatne1b == 0:
         uspesnost_b = 0
     else:
-        uspesnost_b = round((spravne1b/spravne1b+spatne1b)*100)
+        uspesnost_b = round((spravne1b/(spravne1b+spatne1b))*100)
 
     if spravne1c+spatne1c == 0:
         uspesnost_c = 0
     else:
-        uspesnost_c = round((spravne1c/spravne1c+spatne1c)*100)
+        uspesnost_c = round((spravne1c/(spravne1c+spatne1c))*100)
 
     
     
