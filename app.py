@@ -5,6 +5,13 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
 import math
+import logging
+
+logging.basicConfig(
+        format='%(asctime)s %(levelname)-8s %(message)s',
+        level=logging.INFO,
+        datefmt='%Y-%m-%d %H:%M:%S',
+        filename='log.log')
 
 PASSWORD = os.getenv("PASSWORD")
 
