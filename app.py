@@ -38,6 +38,10 @@ class Odpovedi(db.Model):
 
 @app.route("/")
 def index():
+    return render_template("index.html")
+
+@app.route("/prehled_kvizu")
+def prehled_kvizu():
     odpovedi = Odpovedi.query.all()
 
     spravne1a = 0
@@ -91,7 +95,7 @@ def index():
     percentage_spatne1b = round((spatne1b/36)*100)
     percentage_spatne1c = round((spatne1c/36)*100)
 
-    return render_template("index.html", 
+    return render_template("prehled_kvizu.html", 
         spravne1a=spravne1a,
         spravne1b=spravne1b, 
         spravne1c=spravne1c, 
