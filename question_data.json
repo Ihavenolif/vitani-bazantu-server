@@ -1,0 +1,874 @@
+{
+    "_COMMENT1": "TRIDA: 1.A",
+
+    "58c65b7a37b74ae4": {
+        "otazka": "Kolik je na gymnáziu studentů?",
+        "odpoved1": "200 - 300",
+        "odpoved2": "300 - 400",
+        "odpoved3": "400 - 500",
+        "odpoved4": "500 - 600",
+        "spravnaOdpoved": 3
+    },
+    "1be547d586b4121c": {
+        "otazka": "Kolik je na gymnáziu učitelů?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "30 - 35",
+        "odpoved3": "35 - 40",
+        "odpoved4": "40 - 45",
+        "spravnaOdpoved": 4
+    },
+    "d90fe9a408e4aad8": {
+        "otazka": "Kolik je na gymnáziu učeben?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "25 - 30",
+        "odpoved3": "30 - 35",
+        "odpoved4": "35 - 40",
+        "spravnaOdpoved": 2
+    },
+    "08c73f4a5c56cde7": {
+        "otazka": "Jak dlouho trvá velká přestávka?",
+        "odpoved1": "10 minut",
+        "odpoved2": "20 minut",
+        "odpoved3": "30 minut",
+        "odpoved4": "25 minut",
+        "spravnaOdpoved": 2
+    },
+    "a35671f8fadaf6fe": {
+        "otazka": "Co je nejdůležitější při komunikaci s paní ředitelkou?",
+        "odpoved1": "Pokora",
+        "odpoved2": "Pozdravit",
+        "odpoved3": "Přezůvky",
+        "odpoved4": "Usmívat se",
+        "spravnaOdpoved": 1
+    },
+    "08114e31152b301a": {
+        "otazka": "Co je nejlepší jídlo v jídelně",
+        "odpoved1": "Barončino tajemství",
+        "odpoved2": "Hrachová kaše",
+        "odpoved3": "Šišky s mákem",
+        "odpoved4": "Těstoviny po Lotrinsku",
+        "spravnaOdpoved": 4
+    },
+    "15a5455b014895b6": {
+        "otazka": "Co znamená Bruh?",
+        "odpoved1": "Bruh",
+        "odpoved2": "Bruh",
+        "odpoved3": "Bruh",
+        "odpoved4": "Bruh",
+        "spravnaOdpoved": 1
+    },
+    "6d4646660a101be1": {
+        "otazka": "Kolik míst k sezení je ve vaší kmenové třídě?",
+        "odpoved1": "30",
+        "odpoved2": "32",
+        "odpoved3": "34",
+        "odpoved4": "35",
+        "spravnaOdpoved": 4
+    },
+    "ee13441ef3a3eacf": {
+        "otazka": "Jak dlouho trvá zvonění?",
+        "odpoved1": "5s",
+        "odpoved2": "10s",
+        "odpoved3": "6s",
+        "odpoved4": "8s",
+        "spravnaOdpoved": 4
+    },
+    "aa8a459d2608a170": {
+        "otazka": "Kde je busta Vítězslava Nováka?",
+        "odpoved1": "U hlavního vchodu",
+        "odpoved2": "Před sekretariátem",
+        "odpoved3": "V mezipatře mezi 2. a 3. patrem",
+        "odpoved4": "Před fyzikou",
+        "spravnaOdpoved": 2
+    },
+    "5bbfd5cad92d8ed0": {
+        "otazka": "V kolik končí velká přestávka?",
+        "odpoved1": "10:35",
+        "odpoved2": "10.50",
+        "odpoved3": "10.55",
+        "odpoved4": "11.00",
+        "spravnaOdpoved": 3
+    },
+    "6f2feb5b1804575b": {
+        "otazka": "Kolik schodů je v tubusu?",
+        "odpoved1": "54",
+        "odpoved2": "68",
+        "odpoved3": "79",
+        "odpoved4": "97",
+        "spravnaOdpoved": 4
+    },
+    "f565875f580f282a": {
+        "otazka": "Kdo byl Vítězslav Novák?",
+        "odpoved1": "Hudební skladatel",
+        "odpoved2": "Sportovec",
+        "odpoved3": "Spisovatel",
+        "odpoved4": "Prezident",
+        "spravnaOdpoved": 1
+    },
+    "f8270e1e979a40f4": {
+        "otazka": "Do kdy je otevřená jídelna?",
+        "odpoved1": "14:00",
+        "odpoved2": "14:30",
+        "odpoved3": "15:00",
+        "odpoved4": "15:30",
+        "spravnaOdpoved": 2
+    },
+    "89575cdc15f6b8aa": {
+        "otazka": "Jak se jmenuje paní ředitelka křestním jménem?",
+        "odpoved1": "Lenka",
+        "odpoved2": "Ivana",
+        "odpoved3": "Lucie",
+        "odpoved4": "Anna",
+        "spravnaOdpoved": 1
+    },
+    "cfe3cc66bec8250a": {
+        "otazka": "Kolikátého proběhne Pasování nováčků?",
+        "odpoved1": "19. záři",
+        "odpoved2": "20. záři",
+        "odpoved3": "23. záři",
+        "odpoved4": "25. záři",
+        "spravnaOdpoved": 3
+    },
+    "013b51ef085b25bf": {
+        "otazka": "V jakém patře sídlí třídy mazáků?",
+        "odpoved1": "Ve druhém",
+        "odpoved2": "Ve třetím",
+        "odpoved3": "Ve čtvrtém",
+        "odpoved4": "V pátém",
+        "spravnaOdpoved": 3
+    },
+    "d405085ca7cc23c2": {
+        "otazka": "Jak se jmenuje vaše třídní učitelka křestním jménem?",
+        "odpoved1": "Iveta",
+        "odpoved2": "Ivana",
+        "odpoved3": "Irena",
+        "odpoved4": "Iva",
+        "spravnaOdpoved": 2
+    },
+    "223064c4d6799b74": {
+        "otazka": "Kolik je na gymnáziu studentů?",
+        "odpoved1": "200 - 300",
+        "odpoved2": "300 - 400",
+        "odpoved3": "400 - 500",
+        "odpoved4": "500 - 600",
+        "spravnaOdpoved": 3
+    },
+    "df3586ffc4242050": {
+        "otazka": "Kolik je na gymnáziu učitelů?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "30 - 35",
+        "odpoved3": "35 - 40",
+        "odpoved4": "40 - 45",
+        "spravnaOdpoved": 4
+    },
+    "eaa56c53a8fa1a2e": {
+        "otazka": "Kolik je na gymnáziu učeben?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "25 - 30",
+        "odpoved3": "30 - 35",
+        "odpoved4": "35 - 40",
+        "spravnaOdpoved": 2
+    },
+    "68e15cf795ae669b": {
+        "otazka": "Jak dlouho trvá velká přestávka?",
+        "odpoved1": "10 minut",
+        "odpoved2": "20 minut",
+        "odpoved3": "30 minut",
+        "odpoved4": "25 minut",
+        "spravnaOdpoved": 2
+    },
+    "f851f215ebef2d5c": {
+        "otazka": "Co je nejdůležitější při komunikaci s paní ředitelkou?",
+        "odpoved1": "Pokora",
+        "odpoved2": "Pozdravit",
+        "odpoved3": "Přezůvky",
+        "odpoved4": "Usmívat se",
+        "spravnaOdpoved": 1
+    },
+    "8c59da87c0261421": {
+        "otazka": "Co je nejlepší jídlo v jídelně",
+        "odpoved1": "Barončino tajemství",
+        "odpoved2": "Hrachová kaše",
+        "odpoved3": "Šišky s mákem",
+        "odpoved4": "Těstoviny po Lotrinsku",
+        "spravnaOdpoved": 4
+    },
+    "b3145cd3ab9ec42e": {
+        "otazka": "Co znamená Bruh?",
+        "odpoved1": "Bruh",
+        "odpoved2": "Bruh",
+        "odpoved3": "Bruh",
+        "odpoved4": "Bruh",
+        "spravnaOdpoved": 1
+    },
+    "ee6d707f76f3f239": {
+        "otazka": "Kolik míst k sezení je ve vaší kmenové třídě?",
+        "odpoved1": "30",
+        "odpoved2": "32",
+        "odpoved3": "34",
+        "odpoved4": "35",
+        "spravnaOdpoved": 4
+    },
+    "0e692855fa047380": {
+        "otazka": "Jak dlouho trvá zvonění?",
+        "odpoved1": "5s",
+        "odpoved2": "10s",
+        "odpoved3": "6s",
+        "odpoved4": "8s",
+        "spravnaOdpoved": 4
+    },
+    "5349ac1cd81029e0": {
+        "otazka": "Kde je busta Vítězslava Nováka?",
+        "odpoved1": "U hlavního vchodu",
+        "odpoved2": "Před sekretariátem",
+        "odpoved3": "V mezipatře mezi 2. a 3. patrem",
+        "odpoved4": "Před fyzikou",
+        "spravnaOdpoved": 2
+    },
+    "87d9f19f596010dd": {
+        "otazka": "V kolik končí velká přestávka?",
+        "odpoved1": "10:35",
+        "odpoved2": "10.50",
+        "odpoved3": "10.55",
+        "odpoved4": "11.00",
+        "spravnaOdpoved": 3
+    },
+    "80f4de8104e9c70c": {
+        "otazka": "Kolik schodů je v tubusu?",
+        "odpoved1": "54",
+        "odpoved2": "68",
+        "odpoved3": "79",
+        "odpoved4": "97",
+        "spravnaOdpoved": 4
+    },
+    "b37296c24a0b570d": {
+        "otazka": "Kdo byl Vítězslav Novák?",
+        "odpoved1": "Hudební skladatel",
+        "odpoved2": "Sportovec",
+        "odpoved3": "Spisovatel",
+        "odpoved4": "Prezident",
+        "spravnaOdpoved": 1
+    },
+    "36bec45cfd7cd6fe": {
+        "otazka": "Do kdy je otevřená jídelna?",
+        "odpoved1": "14:00",
+        "odpoved2": "14:30",
+        "odpoved3": "15:00",
+        "odpoved4": "15:30",
+        "spravnaOdpoved": 2
+    },
+    "d34768391fd60187": {
+        "otazka": "Jak se jmenuje paní ředitelka křestním jménem?",
+        "odpoved1": "Lenka",
+        "odpoved2": "Ivana",
+        "odpoved3": "Lucie",
+        "odpoved4": "Anna",
+        "spravnaOdpoved": 1
+    },
+    "442b24672885fc56": {
+        "otazka": "Kolikátého proběhne Pasování nováčků?",
+        "odpoved1": "19. záři",
+        "odpoved2": "20. záři",
+        "odpoved3": "23. záři",
+        "odpoved4": "25. záři",
+        "spravnaOdpoved": 3
+    },
+    "8bf787f2f74bcde0": {
+        "otazka": "V jakém patře sídlí třídy mazáků?",
+        "odpoved1": "Ve druhém",
+        "odpoved2": "Ve třetím",
+        "odpoved3": "Ve čtvrtém",
+        "odpoved4": "V pátém",
+        "spravnaOdpoved": 3
+    },
+    "eb418f64f9c41a1d": {
+        "otazka": "Jak se jmenuje vaše třídní učitelka křestním jménem?",
+        "odpoved1": "Iveta",
+        "odpoved2": "Ivana",
+        "odpoved3": "Irena",
+        "odpoved4": "Iva",
+        "spravnaOdpoved": 2
+    },
+
+    "_COMMENT2": "TRIDA: 1.B",
+
+    "b76866e49ce22336": {
+        "otazka": "Kolik je na gymnáziu studentů?",
+        "odpoved1": "200 - 300",
+        "odpoved2": "300 - 400",
+        "odpoved3": "400 - 500",
+        "odpoved4": "500 - 600",
+        "spravnaOdpoved": 3
+    },
+    "73fb4c30fd3993c8": {
+        "otazka": "Kolik je na gymnáziu učitelů?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "30 - 35",
+        "odpoved3": "35 - 40",
+        "odpoved4": "40 - 45",
+        "spravnaOdpoved": 4
+    },
+    "6806455c681796e5": {
+        "otazka": "Kolik je na gymnáziu učeben?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "25 - 30",
+        "odpoved3": "30 - 35",
+        "odpoved4": "35 - 40",
+        "spravnaOdpoved": 2
+    },
+    "ba7c25da6059c4c5": {
+        "otazka": "Jak dlouho trvá velká přestávka?",
+        "odpoved1": "10 minut",
+        "odpoved2": "20 minut",
+        "odpoved3": "30 minut",
+        "odpoved4": "25 minut",
+        "spravnaOdpoved": 2
+    },
+    "615f29d92d10fc44": {
+        "otazka": "Co je nejdůležitější při komunikaci s paní ředitelkou?",
+        "odpoved1": "Pokora",
+        "odpoved2": "Pozdravit",
+        "odpoved3": "Přezůvky",
+        "odpoved4": "Usmívat se",
+        "spravnaOdpoved": 1
+    },
+    "954d044f195a132b": {
+        "otazka": "Co je nejlepší jídlo v jídelně",
+        "odpoved1": "Barončino tajemství",
+        "odpoved2": "Hrachová kaše",
+        "odpoved3": "Šišky s mákem",
+        "odpoved4": "Těstoviny po Lotrinsku",
+        "spravnaOdpoved": 4
+    },
+    "90a123205952cdf0": {
+        "otazka": "Co znamená Bruh?",
+        "odpoved1": "Bruh",
+        "odpoved2": "Bruh",
+        "odpoved3": "Bruh",
+        "odpoved4": "Bruh",
+        "spravnaOdpoved": 1
+    },
+    "faf4f6a0a90412d2": {
+        "otazka": "Kolik míst k sezení je ve vaší kmenové třídě?",
+        "odpoved1": "30",
+        "odpoved2": "32",
+        "odpoved3": "34",
+        "odpoved4": "35",
+        "spravnaOdpoved": 4
+    },
+    "9d82f564d4eaa80d": {
+        "otazka": "Jak dlouho trvá zvonění?",
+        "odpoved1": "5s",
+        "odpoved2": "10s",
+        "odpoved3": "6s",
+        "odpoved4": "8s",
+        "spravnaOdpoved": 4
+    },
+    "0157e2c396ae60ac": {
+        "otazka": "Kde je busta Vítězslava Nováka?",
+        "odpoved1": "U hlavního vchodu",
+        "odpoved2": "Před sekretariátem",
+        "odpoved3": "V mezipatře mezi 2. a 3. patrem",
+        "odpoved4": "Před fyzikou",
+        "spravnaOdpoved": 2
+    },
+    "a9fb47b4458d0bab": {
+        "otazka": "V kolik končí velká přestávka?",
+        "odpoved1": "10:35",
+        "odpoved2": "10.50",
+        "odpoved3": "10.55",
+        "odpoved4": "11.00",
+        "spravnaOdpoved": 3
+    },
+    "d958cc1c20a358dd": {
+        "otazka": "Kolik schodů je v tubusu?",
+        "odpoved1": "54",
+        "odpoved2": "68",
+        "odpoved3": "79",
+        "odpoved4": "97",
+        "spravnaOdpoved": 4
+    },
+    "d125ab71a1a66c9c": {
+        "otazka": "Kdo byl Vítězslav Novák?",
+        "odpoved1": "Hudební skladatel",
+        "odpoved2": "Sportovec",
+        "odpoved3": "Spisovatel",
+        "odpoved4": "Prezident",
+        "spravnaOdpoved": 1
+    },
+    "0705c38425bde886": {
+        "otazka": "Do kdy je otevřená jídelna?",
+        "odpoved1": "14:00",
+        "odpoved2": "14:30",
+        "odpoved3": "15:00",
+        "odpoved4": "15:30",
+        "spravnaOdpoved": 2
+    },
+    "16bee04aa1c46813": {
+        "otazka": "Jak se jmenuje paní ředitelka křestním jménem?",
+        "odpoved1": "Lenka",
+        "odpoved2": "Ivana",
+        "odpoved3": "Lucie",
+        "odpoved4": "Anna",
+        "spravnaOdpoved": 1
+    },
+    "938fd82170bf2d26": {
+        "otazka": "Kolikátého proběhne Pasování nováčků?",
+        "odpoved1": "19. záři",
+        "odpoved2": "20. záři",
+        "odpoved3": "23. záři",
+        "odpoved4": "25. záři",
+        "spravnaOdpoved": 3
+    },
+    "1a48d603a288d3f1": {
+        "otazka": "V jakém patře sídlí třídy mazáků?",
+        "odpoved1": "Ve druhém",
+        "odpoved2": "Ve třetím",
+        "odpoved3": "Ve čtvrtém",
+        "odpoved4": "V pátém",
+        "spravnaOdpoved": 3
+    },
+    "e3e23036cc0e8399": {
+        "otazka": "Jak se jmenuje vaše třídní učitelka křestním jménem?",
+        "odpoved1": "Sylvie",
+        "odpoved2": "Sylva",
+        "odpoved3": "Simona",
+        "odpoved4": "Silva",
+        "spravnaOdpoved": 2
+    },
+    "68959195e27bebac": {
+        "otazka": "Kolik je na gymnáziu studentů?",
+        "odpoved1": "200 - 300",
+        "odpoved2": "300 - 400",
+        "odpoved3": "400 - 500",
+        "odpoved4": "500 - 600",
+        "spravnaOdpoved": 3
+    },
+    "ee375d245fe82da0": {
+        "otazka": "Kolik je na gymnáziu učitelů?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "30 - 35",
+        "odpoved3": "35 - 40",
+        "odpoved4": "40 - 45",
+        "spravnaOdpoved": 4
+    },
+    "70ae0502589b9a22": {
+        "otazka": "Kolik je na gymnáziu učeben?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "25 - 30",
+        "odpoved3": "30 - 35",
+        "odpoved4": "35 - 40",
+        "spravnaOdpoved": 2
+    },
+    "e2c76e4f17a7c0fc": {
+        "otazka": "Jak dlouho trvá velká přestávka?",
+        "odpoved1": "10 minut",
+        "odpoved2": "20 minut",
+        "odpoved3": "30 minut",
+        "odpoved4": "25 minut",
+        "spravnaOdpoved": 2
+    },
+    "698c34c2b3934052": {
+        "otazka": "Co je nejdůležitější při komunikaci s paní ředitelkou?",
+        "odpoved1": "Pokora",
+        "odpoved2": "Pozdravit",
+        "odpoved3": "Přezůvky",
+        "odpoved4": "Usmívat se",
+        "spravnaOdpoved": 1
+    },
+    "65da242cee3f7087": {
+        "otazka": "Co je nejlepší jídlo v jídelně",
+        "odpoved1": "Barončino tajemství",
+        "odpoved2": "Hrachová kaše",
+        "odpoved3": "Šišky s mákem",
+        "odpoved4": "Těstoviny po Lotrinsku",
+        "spravnaOdpoved": 4
+    },
+    "de068d98588715c6": {
+        "otazka": "Co znamená Bruh?",
+        "odpoved1": "Bruh",
+        "odpoved2": "Bruh",
+        "odpoved3": "Bruh",
+        "odpoved4": "Bruh",
+        "spravnaOdpoved": 1
+    },
+    "1f370b23673c0a94": {
+        "otazka": "Kolik míst k sezení je ve vaší kmenové třídě?",
+        "odpoved1": "30",
+        "odpoved2": "32",
+        "odpoved3": "34",
+        "odpoved4": "35",
+        "spravnaOdpoved": 4
+    },
+    "d3585cbf92170b39": {
+        "otazka": "Jak dlouho trvá zvonění?",
+        "odpoved1": "5s",
+        "odpoved2": "10s",
+        "odpoved3": "6s",
+        "odpoved4": "8s",
+        "spravnaOdpoved": 4
+    },
+    "2ede1de708a4e227": {
+        "otazka": "Kde je busta Vítězslava Nováka?",
+        "odpoved1": "U hlavního vchodu",
+        "odpoved2": "Před sekretariátem",
+        "odpoved3": "V mezipatře mezi 2. a 3. patrem",
+        "odpoved4": "Před fyzikou",
+        "spravnaOdpoved": 2
+    },
+    "da1a4af96b1f6550": {
+        "otazka": "V kolik končí velká přestávka?",
+        "odpoved1": "10:35",
+        "odpoved2": "10.50",
+        "odpoved3": "10.55",
+        "odpoved4": "11.00",
+        "spravnaOdpoved": 3
+    },
+    "36753c61cc07a2ef": {
+        "otazka": "Kolik schodů je v tubusu?",
+        "odpoved1": "54",
+        "odpoved2": "68",
+        "odpoved3": "79",
+        "odpoved4": "97",
+        "spravnaOdpoved": 4
+    },
+    "0a4fb833128ac93a": {
+        "otazka": "Kdo byl Vítězslav Novák?",
+        "odpoved1": "Hudební skladatel",
+        "odpoved2": "Sportovec",
+        "odpoved3": "Spisovatel",
+        "odpoved4": "Prezident",
+        "spravnaOdpoved": 1
+    },
+    "a0f6b4efab0dbd12": {
+        "otazka": "Do kdy je otevřená jídelna?",
+        "odpoved1": "14:00",
+        "odpoved2": "14:30",
+        "odpoved3": "15:00",
+        "odpoved4": "15:30",
+        "spravnaOdpoved": 2
+    },
+    "9b2e5b122c9d2760": {
+        "otazka": "Jak se jmenuje paní ředitelka křestním jménem?",
+        "odpoved1": "Lenka",
+        "odpoved2": "Ivana",
+        "odpoved3": "Lucie",
+        "odpoved4": "Anna",
+        "spravnaOdpoved": 1
+    },
+    "14eedd8597cc1c1e": {
+        "otazka": "Kolikátého proběhne Pasování nováčků?",
+        "odpoved1": "19. záři",
+        "odpoved2": "20. záři",
+        "odpoved3": "23. záři",
+        "odpoved4": "25. záři",
+        "spravnaOdpoved": 3
+    },
+    "b99016eb1ec9036e": {
+        "otazka": "V jakém patře sídlí třídy mazáků?",
+        "odpoved1": "Ve druhém",
+        "odpoved2": "Ve třetím",
+        "odpoved3": "Ve čtvrtém",
+        "odpoved4": "V pátém",
+        "spravnaOdpoved": 3
+    },
+    "b041f44784e4c197": {
+        "otazka": "Jak se jmenuje vaše třídní učitelka křestním jménem?",
+        "odpoved1": "Sylvie",
+        "odpoved2": "Sylva",
+        "odpoved3": "Simona",
+        "odpoved4": "Silva",
+        "spravnaOdpoved": 2
+    },
+
+    "_COMMENT3": "TRIDA: 1.C",
+
+    "f009c9f9f709d924": {
+        "otazka": "Kolik je na gymnáziu studentů?",
+        "odpoved1": "200 - 300",
+        "odpoved2": "300 - 400",
+        "odpoved3": "400 - 500",
+        "odpoved4": "500 - 600",
+        "spravnaOdpoved": 3
+    },
+    "772eff3ec955abc1": {
+        "otazka": "Kolik je na gymnáziu učitelů?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "30 - 35",
+        "odpoved3": "35 - 40",
+        "odpoved4": "40 - 45",
+        "spravnaOdpoved": 4
+    },
+    "5c5b7aafb15037f6": {
+        "otazka": "Kolik je na gymnáziu učeben?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "25 - 30",
+        "odpoved3": "30 - 35",
+        "odpoved4": "35 - 40",
+        "spravnaOdpoved": 2
+    },
+    "e222cd4c682ecaee": {
+        "otazka": "Jak dlouho trvá velká přestávka?",
+        "odpoved1": "10 minut",
+        "odpoved2": "20 minut",
+        "odpoved3": "30 minut",
+        "odpoved4": "25 minut",
+        "spravnaOdpoved": 2
+    },
+    "b53debfa9dd360cf": {
+        "otazka": "Co je nejdůležitější při komunikaci s paní ředitelkou?",
+        "odpoved1": "Pokora",
+        "odpoved2": "Pozdravit",
+        "odpoved3": "Přezůvky",
+        "odpoved4": "Usmívat se",
+        "spravnaOdpoved": 1
+    },
+    "f89b2a33767a4a9c": {
+        "otazka": "Co je nejlepší jídlo v jídelně",
+        "odpoved1": "Barončino tajemství",
+        "odpoved2": "Hrachová kaše",
+        "odpoved3": "Šišky s mákem",
+        "odpoved4": "Těstoviny po Lotrinsku",
+        "spravnaOdpoved": 4
+    },
+    "ba63d0b96d6d2e41": {
+        "otazka": "Co znamená Bruh?",
+        "odpoved1": "Bruh",
+        "odpoved2": "Bruh",
+        "odpoved3": "Bruh",
+        "odpoved4": "Bruh",
+        "spravnaOdpoved": 1
+    },
+    "7ae35401013572b4": {
+        "otazka": "Kolik míst k sezení je ve vaší kmenové třídě?",
+        "odpoved1": "30",
+        "odpoved2": "32",
+        "odpoved3": "34",
+        "odpoved4": "35",
+        "spravnaOdpoved": 4
+    },
+    "d5b62accd7a60a93": {
+        "otazka": "Jak dlouho trvá zvonění?",
+        "odpoved1": "5s",
+        "odpoved2": "10s",
+        "odpoved3": "6s",
+        "odpoved4": "8s",
+        "spravnaOdpoved": 4
+    },
+    "8223feaec4b4f0d2": {
+        "otazka": "Kde je busta Vítězslava Nováka?",
+        "odpoved1": "U hlavního vchodu",
+        "odpoved2": "Před sekretariátem",
+        "odpoved3": "V mezipatře mezi 2. a 3. patrem",
+        "odpoved4": "Před fyzikou",
+        "spravnaOdpoved": 2
+    },
+    "b263412a8243f2b6": {
+        "otazka": "V kolik končí velká přestávka?",
+        "odpoved1": "10:35",
+        "odpoved2": "10.50",
+        "odpoved3": "10.55",
+        "odpoved4": "11.00",
+        "spravnaOdpoved": 3
+    },
+    "b079d4ee5b61be8b": {
+        "otazka": "Kolik schodů je v tubusu?",
+        "odpoved1": "54",
+        "odpoved2": "68",
+        "odpoved3": "79",
+        "odpoved4": "97",
+        "spravnaOdpoved": 4
+    },
+    "5b7f772e52392001": {
+        "otazka": "Kdo byl Vítězslav Novák?",
+        "odpoved1": "Hudební skladatel",
+        "odpoved2": "Sportovec",
+        "odpoved3": "Spisovatel",
+        "odpoved4": "Prezident",
+        "spravnaOdpoved": 1
+    },
+    "f1bfad6e503c99cd": {
+        "otazka": "Do kdy je otevřená jídelna?",
+        "odpoved1": "14:00",
+        "odpoved2": "14:30",
+        "odpoved3": "15:00",
+        "odpoved4": "15:30",
+        "spravnaOdpoved": 2
+    },
+    "087148cfb656acdc": {
+        "otazka": "Jak se jmenuje paní ředitelka křestním jménem?",
+        "odpoved1": "Lenka",
+        "odpoved2": "Ivana",
+        "odpoved3": "Lucie",
+        "odpoved4": "Anna",
+        "spravnaOdpoved": 1
+    },
+    "daac53252cd66211": {
+        "otazka": "Kolikátého proběhne Pasování nováčků?",
+        "odpoved1": "19. záři",
+        "odpoved2": "20. záři",
+        "odpoved3": "23. záři",
+        "odpoved4": "25. záři",
+        "spravnaOdpoved": 3
+    },
+    "2add049b81b1112c": {
+        "otazka": "V jakém patře sídlí třídy mazáků?",
+        "odpoved1": "Ve druhém",
+        "odpoved2": "Ve třetím",
+        "odpoved3": "Ve čtvrtém",
+        "odpoved4": "V pátém",
+        "spravnaOdpoved": 3
+    },
+    "4d5cd03c32757d64": {
+        "otazka": "Jak se jmenuje váš třídní učitel křestním jménem?",
+        "odpoved1": "Michal",
+        "odpoved2": "Martin",
+        "odpoved3": "Matěj",
+        "odpoved4": "Marek",
+        "spravnaOdpoved": 2
+    },
+    "9f9116b1e187d20f": {
+        "otazka": "Kolik je na gymnáziu studentů?",
+        "odpoved1": "200 - 300",
+        "odpoved2": "300 - 400",
+        "odpoved3": "400 - 500",
+        "odpoved4": "500 - 600",
+        "spravnaOdpoved": 3
+    },
+    "cd9b9af22955c7fb": {
+        "otazka": "Kolik je na gymnáziu učitelů?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "30 - 35",
+        "odpoved3": "35 - 40",
+        "odpoved4": "40 - 45",
+        "spravnaOdpoved": 4
+    },
+    "7d8639a040ebd37b": {
+        "otazka": "Kolik je na gymnáziu učeben?",
+        "odpoved1": "20 - 25",
+        "odpoved2": "25 - 30",
+        "odpoved3": "30 - 35",
+        "odpoved4": "35 - 40",
+        "spravnaOdpoved": 2
+    },
+    "ac45d4abc2851c38": {
+        "otazka": "Jak dlouho trvá velká přestávka?",
+        "odpoved1": "10 minut",
+        "odpoved2": "20 minut",
+        "odpoved3": "30 minut",
+        "odpoved4": "25 minut",
+        "spravnaOdpoved": 2
+    },
+    "ee2af2f9d37dd9ea": {
+        "otazka": "Co je nejdůležitější při komunikaci s paní ředitelkou?",
+        "odpoved1": "Pokora",
+        "odpoved2": "Pozdravit",
+        "odpoved3": "Přezůvky",
+        "odpoved4": "Usmívat se",
+        "spravnaOdpoved": 1
+    },
+    "ca25e43d6d2334d8": {
+        "otazka": "Co je nejlepší jídlo v jídelně",
+        "odpoved1": "Barončino tajemství",
+        "odpoved2": "Hrachová kaše",
+        "odpoved3": "Šišky s mákem",
+        "odpoved4": "Těstoviny po Lotrinsku",
+        "spravnaOdpoved": 4
+    },
+    "6fc786382c30f72d": {
+        "otazka": "Co znamená Bruh?",
+        "odpoved1": "Bruh",
+        "odpoved2": "Bruh",
+        "odpoved3": "Bruh",
+        "odpoved4": "Bruh",
+        "spravnaOdpoved": 1
+    },
+    "2933dad8859eddcd": {
+        "otazka": "Kolik míst k sezení je ve vaší kmenové třídě?",
+        "odpoved1": "30",
+        "odpoved2": "32",
+        "odpoved3": "34",
+        "odpoved4": "35",
+        "spravnaOdpoved": 4
+    },
+    "fcb332d187df65f9": {
+        "otazka": "Jak dlouho trvá zvonění?",
+        "odpoved1": "5s",
+        "odpoved2": "10s",
+        "odpoved3": "6s",
+        "odpoved4": "8s",
+        "spravnaOdpoved": 4
+    },
+    "842afdb5cb20f61f": {
+        "otazka": "Kde je busta Vítězslava Nováka?",
+        "odpoved1": "U hlavního vchodu",
+        "odpoved2": "Před sekretariátem",
+        "odpoved3": "V mezipatře mezi 2. a 3. patrem",
+        "odpoved4": "Před fyzikou",
+        "spravnaOdpoved": 2
+    },
+    "dab760dc0e94df60": {
+        "otazka": "V kolik končí velká přestávka?",
+        "odpoved1": "10:35",
+        "odpoved2": "10.50",
+        "odpoved3": "10.55",
+        "odpoved4": "11.00",
+        "spravnaOdpoved": 3
+    },
+    "8ddd8239d8ca5228": {
+        "otazka": "Kolik schodů je v tubusu?",
+        "odpoved1": "54",
+        "odpoved2": "68",
+        "odpoved3": "79",
+        "odpoved4": "97",
+        "spravnaOdpoved": 4
+    },
+    "c018ff402f39c9fb": {
+        "otazka": "Kdo byl Vítězslav Novák?",
+        "odpoved1": "Hudební skladatel",
+        "odpoved2": "Sportovec",
+        "odpoved3": "Spisovatel",
+        "odpoved4": "Prezident",
+        "spravnaOdpoved": 1
+    },
+    "46a45cbb70e3e166": {
+        "otazka": "Do kdy je otevřená jídelna?",
+        "odpoved1": "14:00",
+        "odpoved2": "14:30",
+        "odpoved3": "15:00",
+        "odpoved4": "15:30",
+        "spravnaOdpoved": 2
+    },
+    "41f9eee01c4514f0": {
+        "otazka": "Jak se jmenuje paní ředitelka křestním jménem?",
+        "odpoved1": "Lenka",
+        "odpoved2": "Ivana",
+        "odpoved3": "Lucie",
+        "odpoved4": "Anna",
+        "spravnaOdpoved": 1
+    },
+    "6f09d975f457fb6e": {
+        "otazka": "Kolikátého proběhne Pasování nováčků?",
+        "odpoved1": "19. záři",
+        "odpoved2": "20. záři",
+        "odpoved3": "23. záři",
+        "odpoved4": "25. záři",
+        "spravnaOdpoved": 3
+    },
+    "e49a287743358678": {
+        "otazka": "V jakém patře sídlí třídy mazáků?",
+        "odpoved1": "Ve druhém",
+        "odpoved2": "Ve třetím",
+        "odpoved3": "Ve čtvrtém",
+        "odpoved4": "V pátém",
+        "spravnaOdpoved": 3
+    },
+    "7649e3d35f997fa6": {
+        "otazka": "Jak se jmenuje váš třídní učitel křestním jménem?",
+        "odpoved1": "Michal",
+        "odpoved2": "Martin",
+        "odpoved3": "Matěj",
+        "odpoved4": "Marek",
+        "spravnaOdpoved": 2
+    }
+}
