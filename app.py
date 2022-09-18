@@ -1,5 +1,4 @@
 import json
-from re import U
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -14,7 +13,6 @@ logging.basicConfig(
         filename='log.log')
 
 PASSWORD = os.getenv("PASSWORD")
-
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
 
@@ -46,6 +44,48 @@ class Odpovedi(db.Model):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/g5jeguq2")
+def kod_na_dvorku_a():
+    f = open("detektivka_log.txt", "a")
+    f.write("A našlo kód na dvorku - " + str(datetime.now()) + "\n")
+    f.close()
+    return render_template("detektivka/day1/kod_na_dvorku_a.html")
+
+@app.route("/qafu9fg3")
+def kod_na_dvorku_b():
+    f = open("detektivka_log.txt", "a")
+    f.write("B našlo kód na dvorku - " + str(datetime.now()) + "\n")
+    f.close()
+    return render_template("detektivka/day1/kod_na_dvorku_b.html")
+
+@app.route("/io6ednnl")
+def kod_na_dvorku_c():
+    f = open("detektivka_log.txt", "a")
+    f.write("C našlo kód na dvorku - " + str(datetime.now()) + "\n")
+    f.close()
+    return render_template("detektivka/day1/kod_na_dvorku_c.html")
+
+@app.route("/e04szccd")
+def kod_mimo_skolu_a():
+    f = open("detektivka_log.txt", "a")
+    f.write("A našlo kód na hřišti - " + str(datetime.now()) + "\n")
+    f.close()
+    return render_template("detektivka/day1/kod_mimo_skolu.html")
+
+@app.route("/nfqgrui6")
+def kod_mimo_skolu_b():
+    f = open("detektivka_log.txt", "a")
+    f.write("B našlo kód v altánku - " + str(datetime.now()) + "\n")
+    f.close()
+    return render_template("detektivka/day1/kod_mimo_skolu.html")
+
+@app.route("/zq17hdr8")
+def kod_mimo_skolu_c():
+    f = open("detektivka_log.txt", "a")
+    f.write("C našlo kód u pomníku - " + str(datetime.now()) + "\n")
+    f.close()
+    return render_template("detektivka/day1/kod_mimo_skolu.html")
 
 @app.route("/prehled_kvizu")
 def prehled_kvizu():
