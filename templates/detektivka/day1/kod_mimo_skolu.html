@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1 id="timer" style="text-align: center; margin-top: 10%;"></h1>
+
+    <div id="content" style="display: none;">
+        <h3 style="margin: 10px; text-align: center;">Vyběhni a zodpovědně hledej v mazácké řadě toho, kdo sundá ti věc z nejvyšší poličky hravě.</h3>
+    </div>
+
+    <script>
+        function updateTime(){
+            const d = new Date()
+            time = d.getTime() /1000
+            timeDiff = 1663651800 - time
+
+            hours = Math.floor(timeDiff/3600)
+            minutes = Math.floor(Math.floor(timeDiff%3600)/60)
+            seconds = Math.floor(timeDiff - (hours*3600) - (minutes*60))
+
+            if(hours.toString().length == 1){
+                hours = "0" + hours
+            }
+            if(minutes.toString().length == 1){
+                minutes = "0" + minutes
+            }
+            if(seconds.toString().length == 1){
+                seconds = "0" + seconds
+            }
+
+            const textField = document.getElementById("timer")
+
+            textField.innerHTML = "" + hours + ":" + minutes + ":" + seconds
+
+            if(timeDiff < 0){
+                textField.style.display = "none"
+                document.getElementById("content").style.display = "block"
+            }
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
