@@ -87,6 +87,10 @@ def kod_mimo_skolu_c():
     f.close()
     return render_template("detektivka/day1/kod_mimo_skolu.html")
 
+@app.route("/7ozk1bw5")
+def oteviraci_doba():
+    return render_template("detektivka/day3/oteviraci_doba.html")
+
 @app.route("/prehled_kvizu")
 def prehled_kvizu():
     odpovedi = Odpovedi.query.all()
