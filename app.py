@@ -41,6 +41,14 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
+@app.route("/jestlitohlenekdouhadnetakjegej")
+def body_realtime():
+    return render_template("body_realtime.html")
+
+@app.route("/jestlitohlenekdouhadnetakjekokot")
+def body_realtime_zapis():
+    return render_template("realtime_zapis_bodu.html")
+
 @app.route("/")
 def index():
     return render_template("index.html")
