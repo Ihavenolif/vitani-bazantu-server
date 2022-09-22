@@ -8,14 +8,10 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
-let client = null
+let clients = []
 
 app.get("/", function (req, res) {
     console.log(req.socket.remoteAddress)
-
-    if(client){
-        client.send("get request received")
-    }
 
     res.send("Hello World")
 })
@@ -23,11 +19,14 @@ app.get("/", function (req, res) {
 app.post("/pripsat_body", function (req, res) {
     input = req.body
 
-    client.send(JSON.stringify(input))
+    for(x of clients){
+        console.log(x)
+        x.send(JSON.stringify(input))
+    }
 })
 
 app.ws("/", function (ws, req) {
-    client = ws
+    clients.push(ws)
     console.log("connection opened")
 
     ws.on("close", () => {
