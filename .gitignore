@@ -2,3 +2,5 @@ __pycache__
 test.js
 data.json
 db.sqlite3
+realtime-server/node_modules
+livechat-server/node_modules
