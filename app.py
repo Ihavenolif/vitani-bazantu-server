@@ -49,7 +49,7 @@ def body_realtime():
 def body_realtime_zapis():
     return render_template("realtime_zapis_bodu.html")
 
-@app.route("/jasetistrasnemocomlouvam")
+@app.route("/tricetminutwellspent")
 def livechat():
     return render_template("livechat.html")
 
