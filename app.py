@@ -1,10 +1,12 @@
 import json
-from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 import os
 import math
 import logging
+import openai
+import random
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 logging.basicConfig(
         format='%(asctime)s %(levelname)-8s %(message)s',
@@ -13,6 +15,8 @@ logging.basicConfig(
         filename='log.log')
 
 PASSWORD = os.getenv("PASSWORD")
+openai.api_key = "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"
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
 
@@ -102,6 +106,43 @@ def kod_mimo_skolu_c():
 @app.route("/7ozk1bw5")
 def oteviraci_doba():
     return render_template("detektivka/day3/oteviraci_doba.html")
+
+@app.route("/ladka", methods=["GET", "POST"])
+def ladka():
+    if(request.method == "GET"):
+        return render_template("ladka_generator.html")
+    
+    response = openai.Completion.create(
+        model = "text-davinci-002",
+        prompt = "Write a presentation in czech on the topic of těžba hnědého uhlí.",
+        temperature=0.7,
+        max_tokens=500
+    )
+    response_text = response.get("choices")[0].get("text")
+
+
+
+    final_text = ""
+
+    for x in response_text:
+        slovo = ""
+        roll = random.randint(0, 50)
+
+        if roll < 10:
+            slovo = "samozřejmě"
+        elif roll < 30:
+            slovo = "tedy"
+        elif roll < 40:
+            slovo = "tak"
+        else:
+            slovo = "prosimvás"
+    
+        if x == " " and random.random() < 0.15:
+            final_text += " " + slovo + " "
+        else:
+            final_text += x
+
+    return final_text
 
 @app.route("/prehled_kvizu")
 def prehled_kvizu():
