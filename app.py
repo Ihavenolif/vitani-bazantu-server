@@ -45,6 +45,18 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
+@app.route("/rplace")
+def rplace():
+    return render_template("rplace.html")
+
+@app.route("/rplace_content")
+def rplace_content():
+    return render_template("rplace_content.html")
+
+@app.route("/rplace_menu")
+def rplace_menu():
+    return render_template("rplace_menu.html")
+
 @app.route("/jestlitohlenekdouhadnetakjegej")
 def body_realtime():
     return render_template("body_realtime.html")
@@ -356,4 +368,4 @@ def kviz():
     )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port="5000", debug=True)
