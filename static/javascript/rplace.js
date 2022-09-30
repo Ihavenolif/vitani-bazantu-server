@@ -1,5 +1,5 @@
 const TABLE = document.getElementById("table")
-const IP = "localhost"
+const IP = "gvnqrkod.cz:5000"
 let pole = []
 
 function generateTable(){
