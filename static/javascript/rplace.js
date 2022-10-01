@@ -1,5 +1,5 @@
 const TABLE = document.getElementById("table")
-const IP = "gvnqrkod.cz"
+const IP = "localhost"
 let pole = []
 
 function generateTable(){
@@ -20,12 +20,10 @@ function generateTable(){
 }
 
 function requestInitialData(){
-    console.log("ioeguiwhoiguh")
     xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = () =>{
         if(xhttp.readyState == 4 && xhttp.status == 200){
-            console.log("request received back")
-            for(x of JSON.parse(xhttp.responseText)){
+            for(x of JSON.parse(LZString.decompressFromUTF16(xhttp.responseText))){
                 drawSquare(x)
             }
         }
@@ -76,9 +74,6 @@ function sendPixelInfo(object){
 
 function drawSquare(pixelInfo){
     square = document.getElementById(pixelInfo.y + "," + pixelInfo.x)
-
-    console.log("square-received")
-    console.log(square)
 
     square.style.backgroundColor = pixelInfo.color
     square.style.border = "1px solid " + pixelInfo.border
