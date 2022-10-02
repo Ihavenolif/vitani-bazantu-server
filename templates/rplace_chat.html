@@ -12,8 +12,8 @@
     <script src="/static/javascript/lz-string.js"></script>
 </head>
 <body>
-    <div style="overflow:scroll !important; height: 60vh !important;">
-        <table class="table table-striped">
+    <div id="table-container" style="overflow:scroll !important; height: 60vh !important;">
+        <table id="table" class="table table-striped">
             <tbody id="tableBody">
                 
             </tbody>
@@ -49,6 +49,8 @@
                 timestamp: Date.now()
             }
 
+            document.getElementById("zprava").value = ""
+
             /*xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -83,8 +85,17 @@
         })
 
         socket.addEventListener("message", (event) => {
+            if(parent.document.getElementById("chat-popup").style.display == "none"){
+                parent.MENU.contentWindow.document.body.getElementsByTagName("span")[1].style.color = "red" 
+                parent.MENU.contentDocument.getElementById("show-chat-button").style.borderColor = "red"
+            }
             insertIntoChatbox(JSON.parse(event.data))
+            
         })
+
+        window.scrollChat = () => {
+            document.getElementById("table-container").scroll(0,document.getElementById("tableBody").scrollHeight)
+        }
 
         window.onload = () => {
             requestInitialData()

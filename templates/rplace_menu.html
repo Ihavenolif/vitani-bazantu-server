@@ -62,7 +62,7 @@
 
     <div class="menu">
         <button class="btn btn-primary" onclick="parent.showNapoveda()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Nápověda <span class="glyphicon glyphicon-question-sign"></span></button>
-        <button class="btn btn-primary" onclick="parent.showChat()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Chat <span class="glyphicon glyphicon-comment"></span></button>
+        <button class="btn btn-primary" id="show-chat-button" onclick="parent.showChat()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Chat <span class="glyphicon glyphicon-comment"></span></button>
     </div>
 
     
@@ -118,6 +118,10 @@
             value += 0.1
             document.getElementById("table-scale-slider").value = value
             parent.window.CONTENT.contentWindow.scaleTable(Math.pow(2.5, document.getElementById("table-scale-slider").value)-1)
+        }
+
+        window.setUnreadMessage = () => {
+            document.getElementById("show-chat-button").style.borderColor = "red"
         }
     </script>
 </body>

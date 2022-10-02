@@ -45,23 +45,23 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
-@app.route("/rplace_welcome")
+@app.route("/gymplace_welcome")
 def rplace_welcome():
     return render_template("rplace_welcome.html")
 
-@app.route("/rplace")
+@app.route("/gymplace")
 def rplace():
     return render_template("rplace.html")
 
-@app.route("/rplace_content")
+@app.route("/gymplace_content")
 def rplace_content():
     return render_template("rplace_content.html")
 
-@app.route("/rplace_menu")
+@app.route("/gymplace_menu")
 def rplace_menu():
     return render_template("rplace_menu.html")
 
-@app.route("/rplace_chat")
+@app.route("/gymplace_chat")
 def rplace_chat():
     return render_template("rplace_chat.html")
 
