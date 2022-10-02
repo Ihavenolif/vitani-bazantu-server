@@ -16,7 +16,52 @@ function generateTable(){
             pole[y][x].blue = 254
         }
     }
+    window.addEventListener("mousedown", mouseDownHandler)
     requestInitialData()
+}
+
+window.selectHand = () =>{
+    TABLE.classList.add("hand")
+}
+
+window.unselectHand = () => {
+    TABLE.classList.remove("hand")
+}
+
+ele = window
+
+let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+const mouseDownHandler = function (e) {
+    if(parent.MENU.contentWindow.mode != "hand") return
+    e.preventDefault()
+    pos = {
+        // The current scroll
+        left: ele.scrollX,
+        top: ele.scrollY,
+        // Get the current mouse position
+        x: e.clientX,
+        y: e.clientY,
+    };
+
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+}
+
+const mouseMoveHandler = function (e) {
+    // How far the mouse has been moved
+    const dx = e.clientX - pos.x;
+    const dy = e.clientY - pos.y;
+
+    // Scroll the element
+    ele.scroll(pos.left - dx, pos.top - dy)
+    ele.scrollTop = pos.top - dy;
+    ele.scrollLeft = pos.left - dx;
+}
+
+const mouseUpHandler = function () {
+    document.removeEventListener('mousemove', mouseMoveHandler);
+    document.removeEventListener('mouseup', mouseUpHandler);
 }
 
 function requestInitialData(){
@@ -60,8 +105,6 @@ function tah(pole, y, x){
         })
         return
     }
-
-
 }
 
 function sendPixelInfo(object){
@@ -87,6 +130,10 @@ window.scaleTable = function(value){
     TABLE.style.transform = "translate(" + transformValue  + "%, " + transformValue + "%)"
     TABLE.style.scale = value
     
+    const tableContainer = document.getElementById("table-container")
+
+    tableContainer.style.width = (12*250 * value).toString() + "px"
+    tableContainer.style.height = (12*250 * value).toString() + "px"
 }
 
 generateTable()

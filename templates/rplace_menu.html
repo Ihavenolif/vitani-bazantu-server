@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         .menu-img{
             width: 50px;
@@ -23,6 +26,21 @@
         #table-scale-slider{
             width: 100%;
         }
+
+        .centered{
+            position: fixed;
+            /*margin: auto;
+            width: 75%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border: 2px solid black;
+            text-align: center;
+            max-height: fit-content;
+            height: -moz-max-content;
+            background-color: white;*/
+        }
     </style>
 </head>
 <body>
@@ -35,12 +53,19 @@
         <img src="/static/images/rplace/zoom-in.png" onclick="zoomIn()" class="slider-img" alt="">
     </div>
     
-    <div class="menu">
+    <div class="menu" style="margin-bottom: 5px">
         <img class="menu-img" id="handIcon" style="border: 5px solid black;" onclick="selectHand()" src="/static/images/rplace/hand.png">
         <img class="menu-img" id="brushIcon" style="border: 5px solid red;" onclick="selectBrush()" src="/static/images/rplace/brush.png">
         <img class="menu-img" id="eraserIcon" style="border: 5px solid black;" onclick="selectEraser()" src="/static/images/rplace/eraser.jpg">
         <input type="color" id="color">
     </div>
+
+    <div class="menu">
+        <button class="btn btn-primary" onclick="parent.showNapoveda()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Nápověda <span class="glyphicon glyphicon-question-sign"></span></button>
+        <button class="btn btn-primary" onclick="parent.showChat()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Chat <span class="glyphicon glyphicon-comment"></span></button>
+    </div>
+
+    
 
     <script>
         window.mode = "brush"
@@ -62,6 +87,7 @@
             document.getElementById("handIcon").style = "border: 5px solid black"
             document.getElementById("brushIcon").style = "border: 5px solid red"
             document.getElementById("eraserIcon").style = "border: 5px solid black"
+            parent.CONTENT.contentWindow.unselectHand()
         }
 
         function selectHand(){
@@ -69,6 +95,7 @@
             document.getElementById("handIcon").style = "border: 5px solid red"
             document.getElementById("brushIcon").style = "border: 5px solid black"
             document.getElementById("eraserIcon").style = "border: 5px solid black"
+            parent.CONTENT.contentWindow.selectHand()
         }
 
         function selectEraser(){
@@ -76,6 +103,7 @@
             document.getElementById("handIcon").style = "border: 5px solid black"
             document.getElementById("brushIcon").style = "border: 5px solid black"
             document.getElementById("eraserIcon").style = "border: 5px solid red"
+            parent.CONTENT.contentWindow.unselectHand()
         }
 
         function zoomOut(){

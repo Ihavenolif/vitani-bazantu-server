@@ -45,6 +45,10 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
+@app.route("/rplace_welcome")
+def rplace_welcome():
+    return render_template("rplace_welcome.html")
+
 @app.route("/rplace")
 def rplace():
     return render_template("rplace.html")
@@ -56,6 +60,10 @@ def rplace_content():
 @app.route("/rplace_menu")
 def rplace_menu():
     return render_template("rplace_menu.html")
+
+@app.route("/rplace_chat")
+def rplace_chat():
+    return render_template("rplace_chat.html")
 
 @app.route("/jestlitohlenekdouhadnetakjegej")
 def body_realtime():

@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
 let clients = []
+let chatClients = []
 let pixelChanges = []
+let messages = []
 
 function removeClientFromList(ws){
     for(x in clients){
@@ -28,6 +30,21 @@ function removeClientFromList(ws){
     clients = temp
 }
 
+function removeChatClientFromList(ws){
+    for(x in chatClients){
+        if(chatClients[x] && chatClients[x].ws == ws){
+            chatClients[x] = undefined
+        }
+    }
+
+    temp = []
+    for(x of chatClients){
+        if(x) temp.push(x)
+    }
+
+    chatClients = temp
+}
+
 app.get("/", function (req, res) {
     console.log(req.socket.remoteAddress)
 
@@ -36,6 +53,10 @@ app.get("/", function (req, res) {
 
 app.post("/getInitialDrawings", function (req, res) {
     res.send(LZString.compressToUTF16(JSON.stringify(pixelChanges)))
+})
+
+app.post("/getChatHistory", function (req, res) {
+    res.send(LZString.compressToUTF16(JSON.stringify(messages)))
 })
 
 app.ws("/", function (ws, req) {
@@ -54,6 +75,26 @@ app.ws("/", function (ws, req) {
 
     ws.on("close", () => {
         removeClientFromList(ws)
+        console.log("Connection closed")
+    })
+})
+
+app.ws("/chat", function (ws, req) {
+    chatClients.push(ws)
+    console.log("connection opened")
+
+    ws.on("message", (msg) => {
+        messages.push(JSON.parse(msg))
+
+        fs.appendFileSync("./backups/messages.txt", msg + ";\n")
+
+        for(x of chatClients){
+            x.send(msg)
+        }
+    })
+
+    ws.on("close", () => {
+        removeChatClientFromList(ws)
         console.log("Connection closed")
     })
 })
