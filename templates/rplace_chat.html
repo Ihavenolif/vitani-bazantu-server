@@ -79,7 +79,7 @@
         const socket = new WebSocket("ws://" + IP + ":6969/chat")
 
         socket.addEventListener("open", (event) => {
-            alert("Connected successfully")
+            console.log("Connected successfully")
         })
 
         socket.addEventListener("message", (event) => {

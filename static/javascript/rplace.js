@@ -141,7 +141,7 @@ generateTable()
 const socket = new WebSocket("ws://" + IP + ":6969")
 
 socket.addEventListener("open", (event) => {
-    alert("Connected successfully")
+    console.log("connected successfully")
 })
 
 socket.addEventListener("message", (event) => {
