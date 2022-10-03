@@ -1,5 +1,5 @@
 const TABLE = document.getElementById("table")
-const IP = "gvnqrkod.cz"
+const IP = "localhost"
 let pole = []
 
 function generateTable(){
@@ -142,6 +142,10 @@ const socket = new WebSocket("ws://" + IP + ":6969")
 
 socket.addEventListener("open", (event) => {
     console.log("connected successfully")
+})
+
+socket.addEventListener("close", (event) => {
+    parent.showDisconnectedPopup()
 })
 
 socket.addEventListener("message", (event) => {
