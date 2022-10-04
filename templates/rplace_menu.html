@@ -57,6 +57,7 @@
         <img class="menu-img" id="handIcon" style="border: 5px solid black;" onclick="selectHand()" src="/static/images/rplace/hand.png">
         <img class="menu-img" id="brushIcon" style="border: 5px solid red;" onclick="selectBrush()" src="/static/images/rplace/brush.png">
         <img class="menu-img" id="eraserIcon" style="border: 5px solid black;" onclick="selectEraser()" src="/static/images/rplace/eraser.jpg">
+        <img class="menu-img" id="colorpickerIcon" style="border: 5px solid black;" onclick="selectColorpicker()" src="/static/images/rplace/colorpicker.png">
         <input type="color" id="color">
     </div>
 
@@ -82,11 +83,17 @@
             color = event.target.value
         }
 
+        function setColor(color){
+            document.getElementById("color").value = color
+            window.color = color
+        }
+
         function selectBrush(){
             mode = "brush"
             document.getElementById("handIcon").style = "border: 5px solid black"
             document.getElementById("brushIcon").style = "border: 5px solid red"
             document.getElementById("eraserIcon").style = "border: 5px solid black"
+            document.getElementById("colorpickerIcon").style = "border: 5px solid black"
             parent.CONTENT.contentWindow.unselectHand()
         }
 
@@ -95,6 +102,7 @@
             document.getElementById("handIcon").style = "border: 5px solid red"
             document.getElementById("brushIcon").style = "border: 5px solid black"
             document.getElementById("eraserIcon").style = "border: 5px solid black"
+            document.getElementById("colorpickerIcon").style = "border: 5px solid black"
             parent.CONTENT.contentWindow.selectHand()
         }
 
@@ -103,6 +111,16 @@
             document.getElementById("handIcon").style = "border: 5px solid black"
             document.getElementById("brushIcon").style = "border: 5px solid black"
             document.getElementById("eraserIcon").style = "border: 5px solid red"
+            document.getElementById("colorpickerIcon").style = "border: 5px solid black"
+            parent.CONTENT.contentWindow.unselectHand()
+        }
+
+        function selectColorpicker(){
+            mode = "colorpicker"
+            document.getElementById("handIcon").style = "border: 5px solid black"
+            document.getElementById("brushIcon").style = "border: 5px solid black"
+            document.getElementById("eraserIcon").style = "border: 5px solid black"
+            document.getElementById("colorpickerIcon").style = "border: 5px solid red"
             parent.CONTENT.contentWindow.unselectHand()
         }
 
