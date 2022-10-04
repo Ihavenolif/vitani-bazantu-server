@@ -39,9 +39,16 @@
             }else{
                 minuty = date.getMinutes()
             }
+
+            if(data.jmeno == ""){
+                jmeno = "<i>Anonymní</i>"
+            }else{
+                jmeno = data.jmeno
+            }
+
             BODY.innerHTML += "<tr>"+
                                    "<th>" + date.getHours() + ":" + minuty + "</th>"+
-                                   "<th>" + data.jmeno + "</th>"+
+                                   "<th>" + jmeno + "</th>"+
                                    "<th>" + data.zprava + "</th>"+
                                   "</tr>"
         }
@@ -50,7 +57,6 @@
             if(!document.getElementById("zprava").value){
                 return
             }
-            jmeno = document.getElementById("jmeno") == "" ? "(Anonymní)" : document.getElementById("jmeno").value
             sendableData = {
                 jmeno: jmeno,
                 zprava: document.getElementById("zprava").value,
