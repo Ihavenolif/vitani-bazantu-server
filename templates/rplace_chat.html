@@ -33,15 +33,23 @@
         BODY = document.getElementById("tableBody")
 
         function insertIntoChatbox(data){
-            date = new Date(data.timestamp)
+            const date = new Date(data.timestamp)
+            if(date.getMinutes().toString().length == 1){
+                minuty = "0" + date.getMinutes()
+            }else{
+                minuty = date.getMinutes()
+            }
             BODY.innerHTML += "<tr>"+
-                                   "<th>" + date.getHours() + ":" + date.getMinutes() + "</th>"+
+                                   "<th>" + date.getHours() + ":" + minuty + "</th>"+
                                    "<th>" + data.jmeno + "</th>"+
                                    "<th>" + data.zprava + "</th>"+
                                   "</tr>"
         }
 
         function send(){
+            if(!document.getElementById("zprava").value){
+                return
+            }
             jmeno = document.getElementById("jmeno") == "" ? "(Anonymní)" : document.getElementById("jmeno").value
             sendableData = {
                 jmeno: jmeno,
