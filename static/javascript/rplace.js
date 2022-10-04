@@ -78,6 +78,15 @@ function requestInitialData(){
     xhttp.send(JSON.stringify({kokot: 12}))
 }
 
+function componentToHex(c) {
+    const hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+  
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
 function tah(pole, y, x){
     if(parent.MENU.contentWindow.mode == "hand") return
     if(parent.MENU.contentWindow.mode == "brush"){
@@ -103,6 +112,27 @@ function tah(pole, y, x){
             color: "#FEFEFE",
             border: "#999"
         })
+        return
+    }
+    if(parent.MENU.contentWindow.mode == "colorpicker"){
+        const square = document.getElementById(y + "," + x)
+        
+        if(!square.style.backgroundColor){
+            parent.MENU.contentWindow.setColor("#ffffff")
+            return
+        }
+
+        if(square.style.backgroundColor == "black"){
+            parent.MENU.contentWindow.setColor("#000000")
+            return
+        }
+
+        const rgbFunc = square.style.backgroundColor
+        const red = rgbFunc.split(",")[0].substring(4)
+        const green = rgbFunc.split(",")[1].substring(1)
+        const blue = rgbFunc.split(",")[2].substring(1, rgbFunc.split(",")[2].length-1)
+
+        parent.MENU.contentWindow.setColor(rgbToHex(Number(red), Number(green), Number(blue)))
         return
     }
 }
