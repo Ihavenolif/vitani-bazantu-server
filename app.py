@@ -2,11 +2,8 @@ import json
 import os
 import math
 import logging
-from django.shortcuts import render
 import openai
 import random
-
-from phonenumbers import region_code_for_country_code
 from copypasta import copypasta
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
