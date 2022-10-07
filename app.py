@@ -46,7 +46,13 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
+@app.route("/archiv")
+def archiv():
+    return render_template("archiv/archiv.html")
 
+@app.route("/archiv/vitani_novacku")
+def vitani():
+    return render_template("archiv/vitani_novacku.html")
 
 @app.route("/gymplace_welcome")
 def rplace_welcome():
@@ -377,8 +383,6 @@ def kviz():
         kod=kod,
         trida=hlas.trida
     )
-
-import archiv
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000", debug=True)
