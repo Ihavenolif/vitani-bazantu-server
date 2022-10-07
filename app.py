@@ -2,9 +2,12 @@ import json
 import os
 import math
 import logging
+from django.shortcuts import render
 import openai
 import random
 
+from phonenumbers import region_code_for_country_code
+from copypasta import copypasta
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -301,6 +304,10 @@ def prehled_kvizu():
         uspesnost_a=uspesnost_a,
         uspesnost_b=uspesnost_b,
         uspesnost_c=uspesnost_c)
+
+@app.route("/copypasta")
+def copypasta_route():
+    return render_template("copypasta.html", pasta=copypasta())
 
 @app.route("/kviz", methods=["GET", "POST"])
 def kviz():
