@@ -50,6 +50,10 @@ class Odpovedi(db.Model):
 def archiv():
     return render_template("archiv/archiv.html")
 
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
+
 @app.route("/archiv/vitani_novacku")
 def vitani():
     return render_template("archiv/vitani_novacku.html")

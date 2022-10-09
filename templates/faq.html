@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/collapsible.css">
+    <title>FAQ</title>
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="/">Hlavní stránka</a>
+        <div class="dropdown">
+          <button class="dropbtn">Archiv
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/archiv">Archiv</a>
+            <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div> 
+        <a href="/gymplace_welcome">GYMPlace</a>
+        <a href="/faq" class="active">FAQ</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+      </div>
+
+      <div class="row">
+        <div class="column left"></div>
+        <div class="column middle">
+            <h2>
+                Frequently asked questions
+            </h2>
+            <p>Nebo také často kladené otázky. Pokud máš nějakou otázku ohledně našeho projektu, na&nbsp;této stránce na&nbsp;ni máme odpověď. Pokud se tady tvoje otázka nevyskytuje, napiš nám ji dolů a my ti na&nbsp;ni odpovíme!</p>
+
+            <br><hr><br><br>
+
+            <button type="button" class="collapsible"><strong>Jak tohle celé vzniklo?</strong></button>
+            <div class="collapsible-content">
+              <p>Původní nápad na stránku přes QR kódy vznikl na jaře 2022. V tu chvíli se tehdejší 8.A rozhodla propagovat svůj maturitní ples přes QR kódy a my jsme si řekli, že si uděláme vlastní. Začalo to tím, že jsme tam měli jenom pár obrázků, každopádně později jsme tam přidali i různé jednoduché hry. Původní projekt s QR kódy skončil s koncem školního roku.</p>
+              <p>Posuneme se o pár měsíců dopředu, na konec srpna 2022. V tu chvíli se začalo řešit Vítání nováčků a nás napadlo, že by bylo super, kdyby mezi sebou třídy soutežily celé září. A aby bylo jednoduché sledovat, jak si na tom třídy vedou, vytvořili jsme tuto stránku. Pořádaly se tady různorodé aktivity pro nové studenty gymnázia, za které následně třídy sbíraly body. Více informací o vítání si můžeš přečíst v archivu.</p>
+              <p>Když bylo Vítání nováčků u konce, přišla nám škoda tuhle stránku nevyužít. Chtěli jsme vymyslet něco pro všechny, od primánů až po maturanty. Něco, kde se bude moct zapojit každý. A tak vznikl GYMPlace, plátno pro všechny, kde si každý může nakreslit co chce, kdy chce, a všichni to uvidí. </p>
+            </div> 
+
+            <button type="button" class="collapsible"><strong>Kdo za tím stojí?</strong></button>
+            <div class="collapsible-content">
+              <p>Nejspíš není žádným tajemstvím, že celý projekt mají na svědomí studenti z maturitních ročníků. Stránku samu o sobě spravuje jeden člověk, s pomocí skupinky nadšenců, kteří mají na starosti, co se na stránce vlastně bude dít.</p>
+            </div> 
+
+            <button type="button" class="collapsible"><strong>Jak to celé funguje?</strong></button>
+            <div class="collapsible-content">
+              <p>Ve zkratce, jedná se o normální webovou stránku, QR kódy fungují pouze jako odkaz. Ti, které by zajímaly podrobnosti, se můžou podívat na GitHub, kde je veškerý zdrojový kód stránky i s jednoduchým popisem toho, jak to funguje.</p>
+              <a href="https://github.com/Ihavenolif/vitani-bazantu-server"><p>https://github.com/Ihavenolif/vitani-bazantu-server</p></a>
+            </div> 
+
+            <button type="button" class="collapsible"><strong>Myslíte, že z toho můžete mít problém?</strong></button>
+            <div class="collapsible-content">
+              <p>Myslíme, že ano. Doufáme, že ne.</p>
+            </div> 
+
+            <button type="button" class="collapsible"><strong>Co máte ještě v plánu?</strong></button>
+            <div class="collapsible-content">
+              <p>V plánu jsou další hry, případně jiné záležitosti s tématikou gymnázia a špetkou (nebo spíš kamionem) humoru. Pokud má někdo z vás problémy v zeměpise, může se těšit na náš další projekt, který spouštíme v <strong>pátek 14. 10.</strong></p>
+            </div> 
+        </div>
+        <div class="column right"></div>
+      </div>
+
+      <!--
+        PASTED GARBAGE AHEAD
+      -->
+
+      <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+
+        var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("collapsible-active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+} 
+      </script>
+</body>
+</html>
