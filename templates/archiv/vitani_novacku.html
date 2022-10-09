@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+    <link rel="stylesheet" href="/static/styles/slideshow.css">
+    <link rel="stylesheet" href="/static/styles/scroll-to-top-button.css">
+    <title>Archiv</title>
+</head>
+<body> 
+  <button onclick="scrollToTop()" id="scroll-to-top-button" title="Go to top"><i class="fa fa-caret-up"></i></button>
+  <div class="topnav" id="myTopnav">
+    <a href="/">Hlavní stránka</a>
+    <div class="dropdown">
+      <button class="dropbtn">Archiv
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/archiv">Archiv</a>
+        <a href="/archiv/vitani_novacku" class="active-inverted">Vítání nováčků</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div> 
+    <a href="/gymplace_welcome">GYMPlace</a>
+    <a href="/faq">FAQ</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+  </div>
+
+  <div class="row">
+    <div class="column left">
+    </div>
+    <div class="column middle">
+      <h2>Vítání nováčků 2022</h2>
+      <p>
+        Vítejte v&nbsp;archivu. <br><br>
+        
+        Zde se&nbsp;uchovává všechno, co se kdy dělo na&nbsp;této stránce. Můžete zde najít články a&nbsp;fotky z&nbsp;různých akcí, historii a&nbsp;záznamy všech her a&nbsp;projektů a&nbsp;spoustu dalšího. <br> <br>
+
+        Dole najdete odkazy na již archivované aktivity této stránky. <br><br>
+
+        Vítejte v&nbsp;archivu. <br><br>
+        
+        Zde se&nbsp;uchovává všechno, co se kdy dělo na&nbsp;této stránce. Můžete zde najít články a&nbsp;fotky z&nbsp;různých akcí, historii a&nbsp;záznamy všech her a&nbsp;projektů a&nbsp;spoustu dalšího. <br> <br>
+
+        Dole najdete odkazy na již archivované aktivity této stránky.
+      </p>
+
+      <div class="gallery-container">
+        <div class="mySlides">
+          <div class="numbertext">1 / 6</div>
+          <img src="/static/images/archiv/vitani/sifra.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+      
+        <div class="mySlides">
+          <div class="numbertext">2 / 6</div>
+          <img src="/static/images/archiv/vitani/chodba_4p.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+      
+        <div class="mySlides">
+          <div class="numbertext">3 / 6</div>
+          <img src="/static/images/archiv/vitani/kvasek_1a.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+          
+        <div class="mySlides">
+          <div class="numbertext">4 / 6</div>
+          <img src="/static/images/archiv/vitani/pasovani_nalevy.JPG" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+      
+        <div class="mySlides">
+          <div class="numbertext">5 / 6</div>
+          <img src="/static/images/archiv/vitani/prvni_den_1.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+          
+        <div class="mySlides">
+          <div class="numbertext">6 / 6</div>
+          <img src="/static/images/archiv/vitani/rohliky.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+          
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+      
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+      
+        <div class="row">
+          <div class="gallery-column">
+            <img class="demo cursor" src="/static/images/archiv/vitani/sifra.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(1)" alt="The Woods">
+          </div>
+          <div class="gallery-column">
+            <img class="demo cursor" src="/static/images/archiv/vitani/chodba_4p.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(2)" alt="Cinque Terre">
+          </div>
+          <div class="gallery-column">
+            <img class="demo cursor" src="/static/images/archiv/vitani/kvasek_1a.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(3)" alt="Mountains and fjords">
+          </div>
+          <div class="gallery-column">
+            <img class="demo cursor" src="/static/images/archiv/vitani/pasovani_nalevy.JPG" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(4)" alt="Northern Lights">
+          </div>
+          <div class="gallery-column">
+            <img class="demo cursor" src="/static/images/archiv/vitani/prvni_den_1.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(5)" alt="Nature and sunrise">
+          </div>    
+          <div class="gallery-column">
+            <img class="demo cursor" src="/static/images/archiv/vitani/rohliky.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(6)" alt="Snowy Mountains">
+          </div>
+        </div>
+      </div>
+
+      
+    <div class="column right">
+      
+    </div>
+  </div>
+
+  
+</div>
+
+  <!--
+    PASTED GARBAGE AHEAD
+  -->
+  <script>
+    function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+
+// Get the button
+let mybutton = document.getElementById("scroll-to-top-button");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function scrollToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+    </script>
+</body>
+</html>

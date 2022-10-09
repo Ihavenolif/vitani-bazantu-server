@@ -2,8 +2,10 @@ import json
 import os
 import math
 import logging
+import re
 import openai
 import random
+from copypasta import copypasta
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -21,6 +23,12 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
 
 db = SQLAlchemy(app)
+
+LADKA_VALUES = {
+    "1": "Těžba hnědého uhlí",
+    "2": "Těžba černého uhlí",
+    "3": "Jaderné elektrárny v České Republice"
+}
 
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,6 +52,18 @@ class Odpovedi(db.Model):
     kod = db.Column(db.String(256))
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
+
+@app.route("/archiv")
+def archiv():
+    return render_template("archiv/archiv.html")
+
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
+
+@app.route("/archiv/vitani_novacku")
+def vitani():
+    return render_template("archiv/vitani_novacku.html")
 
 @app.route("/gymplace_welcome")
 def rplace_welcome():
@@ -131,16 +151,21 @@ def oteviraci_doba():
 def ladka():
     if(request.method == "GET"):
         return render_template("ladka_generator.html")
-    
+
     response = openai.Completion.create(
         model = "text-davinci-002",
-        prompt = "Write a presentation in czech on the topic of těžba hnědého uhlí.",
+        prompt = "Write a presentation in czech on the topic of " + LADKA_VALUES[request.json["option"]] + ".",
         temperature=0.7,
         max_tokens=500
     )
     response_text = response.get("choices")[0].get("text")
 
+    regex_list = re.findall("(\. [A-Z]\w+)", response_text)
 
+    for x in regex_list:
+        if random.random() < 0.2:
+            word_after_whitespace = x.split(" ")[1]
+            response_text = response_text.replace(x, " jo? " + word_after_whitespace)
 
     final_text = ""
 
@@ -163,6 +188,63 @@ def ladka():
             final_text += x
 
     return final_text
+
+@app.route("/body")
+def body():
+    entries = Entry.query.all()
+
+    list = []
+
+    for entry in entries:
+        temp = {}
+        temp["timestamp"] = entry.timestamp
+        temp["trida"] = entry.trida
+        temp["pocetBodu"] = entry.pocetBodu
+        temp["aktivita"] = entry.aktivita
+        list.append(temp)
+
+    sum1a = 0
+    sum1b = 0
+    sum1c = 0
+
+    for x in list:
+        if x["trida"] == "1.A":
+            sum1a += x["pocetBodu"]
+        elif x["trida"] == "1.B":
+            sum1b += x["pocetBodu"]
+        else:
+            sum1c += x["pocetBodu"]
+
+    return render_template("body.html", sum1a=sum1a, sum1b=sum1b, sum1c=sum1c)
+
+@app.route("/podrobnosti")
+def podrobnosti():
+    entries = Entry.query.all()
+
+    list = []
+
+    for entry in entries:
+        temp = {}
+        temp["timestamp"] = entry.timestamp
+        temp["trida"] = entry.trida
+        temp["pocetBodu"] = entry.pocetBodu
+        temp["aktivita"] = entry.aktivita
+        list.append(temp)
+    
+    return render_template("podrobnosti.html", list=list)
+
+@app.route("/pridat_body", methods=["GET", "POST"])
+def pridat_body():
+    if request.method == "POST":
+        if not PASSWORD == request.form["password"]:
+            return "wrong password"
+        
+        entry = Entry(timestamp=math.floor(datetime.timestamp(datetime.now())*1000), trida=request.form["trida"], pocetBodu=int(request.form["pocetBodu"]), aktivita=request.form["aktivita"])
+        db.session.add(entry)
+        db.session.commit()
+        return "body pridany"
+    
+    return render_template("pridat_body.html")
 
 @app.route("/prehled_kvizu")
 def prehled_kvizu():
@@ -236,62 +318,9 @@ def prehled_kvizu():
         uspesnost_b=uspesnost_b,
         uspesnost_c=uspesnost_c)
 
-@app.route("/body")
-def body():
-    entries = Entry.query.all()
-
-    list = []
-
-    for entry in entries:
-        temp = {}
-        temp["timestamp"] = entry.timestamp
-        temp["trida"] = entry.trida
-        temp["pocetBodu"] = entry.pocetBodu
-        temp["aktivita"] = entry.aktivita
-        list.append(temp)
-
-    sum1a = 0
-    sum1b = 0
-    sum1c = 0
-
-    for x in list:
-        if x["trida"] == "1.A":
-            sum1a += x["pocetBodu"]
-        elif x["trida"] == "1.B":
-            sum1b += x["pocetBodu"]
-        else:
-            sum1c += x["pocetBodu"]
-
-    return render_template("body.html", sum1a=sum1a, sum1b=sum1b, sum1c=sum1c)
-
-@app.route("/podrobnosti")
-def podrobnosti():
-    entries = Entry.query.all()
-
-    list = []
-
-    for entry in entries:
-        temp = {}
-        temp["timestamp"] = entry.timestamp
-        temp["trida"] = entry.trida
-        temp["pocetBodu"] = entry.pocetBodu
-        temp["aktivita"] = entry.aktivita
-        list.append(temp)
-    
-    return render_template("podrobnosti.html", list=list)
-
-@app.route("/pridat_body", methods=["GET", "POST"])
-def pridat_body():
-    if request.method == "POST":
-        if not PASSWORD == request.form["password"]:
-            return "wrong password"
-        
-        entry = Entry(timestamp=math.floor(datetime.timestamp(datetime.now())*1000), trida=request.form["trida"], pocetBodu=int(request.form["pocetBodu"]), aktivita=request.form["aktivita"])
-        db.session.add(entry)
-        db.session.commit()
-        return "body pridany"
-    
-    return render_template("pridat_body.html")
+@app.route("/copypasta")
+def copypasta_route():
+    return render_template("copypasta.html", pasta=copypasta())
 
 @app.route("/kviz", methods=["GET", "POST"])
 def kviz():
