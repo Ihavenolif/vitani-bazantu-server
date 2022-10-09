@@ -1,13 +1,15 @@
 const TABLE = document.getElementById("table")
 const IP = "gvnqrkod.cz"
 let pole = []
+const height = 250
+const width = 400
 
 function generateTable(){
     document.body.style.zoom="50%"
-    for(y = 0; y < 250; y++){ //ITERACE NA DVOUROZMĚRNÉM POLI
+    for(y = 0; y < height; y++){ //ITERACE NA DVOUROZMĚRNÉM POLI
         pole[y] = []
         row = table.insertRow(y) 
-        for(x = 0; x < 250; x++){ 
+        for(x = 0; x < width; x++){ 
             pole[y][x] = row.insertCell(x)
             //PŘIDÁNÍ KLIKATELNÉHO DIV ELEMENTU, KTERÝ PŘI KLIKNUTÍ ZAVOLÁ FUNKCI tah() SÁM NA SEBE
             pole[y][x].innerHTML = "<div class=\"policko\" id=\"" + y + "," + x + "\" onclick=\"tah(pole[" + y + "][" + x + "], " + y + ", " + x + ")\"></div>"
