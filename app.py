@@ -2,6 +2,7 @@ import json
 import os
 import math
 import logging
+import re
 import openai
 import random
 from copypasta import copypasta
@@ -22,6 +23,12 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
 
 db = SQLAlchemy(app)
+
+LADKA_VALUES = {
+    "1": "Těžba hnědého uhlí",
+    "2": "Těžba černého uhlí",
+    "3": "Jaderné elektrárny v České Republice"
+}
 
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -144,16 +151,21 @@ def oteviraci_doba():
 def ladka():
     if(request.method == "GET"):
         return render_template("ladka_generator.html")
-    
+
     response = openai.Completion.create(
         model = "text-davinci-002",
-        prompt = "Write a presentation in czech on the topic of těžba hnědého uhlí.",
+        prompt = "Write a presentation in czech on the topic of " + LADKA_VALUES[request.json["option"]] + ".",
         temperature=0.7,
         max_tokens=500
     )
     response_text = response.get("choices")[0].get("text")
 
+    regex_list = re.findall("(\. [A-Z]\w+)", response_text)
 
+    for x in regex_list:
+        if random.random() < 0.2:
+            word_after_whitespace = x.split(" ")[1]
+            response_text = response_text.replace(x, " jo? " + word_after_whitespace)
 
     final_text = ""
 
