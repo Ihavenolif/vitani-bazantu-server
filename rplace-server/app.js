@@ -85,6 +85,7 @@ app.ws("/chat", function (ws, req) {
 
     ws.on("message", (msg) => {
         messages.push(JSON.parse(msg))
+        // XSS VULN
 
         fs.appendFileSync("./backups/messages.txt", msg + ";\n")
 
