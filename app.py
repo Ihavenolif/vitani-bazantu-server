@@ -17,7 +17,7 @@ logging.basicConfig(
         filename='log.log')
 
 PASSWORD = os.getenv("PASSWORD")
-openai.api_key = "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"
+openai.api_key = "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" # not 
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
