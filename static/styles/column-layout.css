@@ -23,9 +23,17 @@
     clear: both;
   }
 
+  .img-in-the-middle{
+    width: 50%;
+  }
+
   /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
     .middle {
+      width: 100%;
+    }
+
+    .img-in-the-middle{
       width: 100%;
     }
 

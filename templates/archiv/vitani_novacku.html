@@ -39,80 +39,231 @@
     <div class="column middle">
       <h2>Vítání nováčků 2022</h2>
       <p>
-        Vítejte v&nbsp;archivu. <br><br>
-        
-        Zde se&nbsp;uchovává všechno, co se kdy dělo na&nbsp;této stránce. Můžete zde najít články a&nbsp;fotky z&nbsp;různých akcí, historii a&nbsp;záznamy všech her a&nbsp;projektů a&nbsp;spoustu dalšího. <br> <br>
-
-        Dole najdete odkazy na již archivované aktivity této stránky. <br><br>
-
-        Vítejte v&nbsp;archivu. <br><br>
-        
-        Zde se&nbsp;uchovává všechno, co se kdy dělo na&nbsp;této stránce. Můžete zde najít články a&nbsp;fotky z&nbsp;různých akcí, historii a&nbsp;záznamy všech her a&nbsp;projektů a&nbsp;spoustu dalšího. <br> <br>
-
-        Dole najdete odkazy na již archivované aktivity této stránky.
+        Chleba. Ve jménu tohoto skvostného lidského výrobku se nesla letošní soutěž Vítání Nováčků. Pro naše nové přírůstky do studentského kolektivu si mazáci z maturitních ročníků pečlivě naplánovali měsíc, ve kterém Nováčci plnili rozmanité úkoly s tématikou chlebu a soutěžili tak v mezi třídním souboji. 
       </p>
 
-      <div class="gallery-container">
+      <h3>První školní den</h3>
+      <p>
+        První den jsme přivítali Nováčky hned u vchodu do školy. Darovali jsme jim odznáček Nováčka a radu od zkušeného gympláka. Pomohli jsme jim se zorientovat ve škole, najít třídu a zodpověděli jsme zvídavé dotazy. 
+      </p>
+
+      <div class="gallery-container" id="gallery-1">
         <div class="mySlides">
-          <div class="numbertext">1 / 6</div>
-          <img src="/static/images/archiv/vitani/sifra.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+          <div class="numbertext">1 / 2</div>
+          <img src="/static/images/archiv/vitani/novacek.png" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
         </div>
       
         <div class="mySlides">
-          <div class="numbertext">2 / 6</div>
-          <img src="/static/images/archiv/vitani/chodba_4p.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
-        </div>
-      
-        <div class="mySlides">
-          <div class="numbertext">3 / 6</div>
-          <img src="/static/images/archiv/vitani/kvasek_1a.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+          <div class="numbertext">2 / 2</div>
+          <img src="/static/images/archiv/vitani/mazak.png" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
         </div>
           
-        <div class="mySlides">
-          <div class="numbertext">4 / 6</div>
-          <img src="/static/images/archiv/vitani/pasovani_nalevy.JPG" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
-        </div>
-      
-        <div class="mySlides">
-          <div class="numbertext">5 / 6</div>
-          <img src="/static/images/archiv/vitani/prvni_den_1.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
-        </div>
-          
-        <div class="mySlides">
-          <div class="numbertext">6 / 6</div>
-          <img src="/static/images/archiv/vitani/rohliky.jpg" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
-        </div>
-          
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
+        <a class="prev" onclick="plusSlides(1, -1)">❮</a>
+        <a class="next" onclick="plusSlides(1, 1)">❯</a>
       
         <div class="caption-container">
-          <p id="caption"></p>
+          <p id="caption-1"></p>
         </div>
       
         <div class="row">
-          <div class="gallery-column">
-            <img class="demo cursor" src="/static/images/archiv/vitani/sifra.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(1)" alt="The Woods">
+          <div class="gallery-column-two">
+            <img class="demo cursor" src="/static/images/archiv/vitani/novacek.png" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(1, 1)" alt="Cedulka Nováček">
           </div>
-          <div class="gallery-column">
-            <img class="demo cursor" src="/static/images/archiv/vitani/chodba_4p.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(2)" alt="Cinque Terre">
-          </div>
-          <div class="gallery-column">
-            <img class="demo cursor" src="/static/images/archiv/vitani/kvasek_1a.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(3)" alt="Mountains and fjords">
-          </div>
-          <div class="gallery-column">
-            <img class="demo cursor" src="/static/images/archiv/vitani/pasovani_nalevy.JPG" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(4)" alt="Northern Lights">
-          </div>
-          <div class="gallery-column">
-            <img class="demo cursor" src="/static/images/archiv/vitani/prvni_den_1.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(5)" alt="Nature and sunrise">
-          </div>    
-          <div class="gallery-column">
-            <img class="demo cursor" src="/static/images/archiv/vitani/rohliky.jpg" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(6)" alt="Snowy Mountains">
+          <div class="gallery-column-two">
+            <img class="demo cursor" src="/static/images/archiv/vitani/mazak.png" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(1, 2)" alt="Cedulka Mazák">
           </div>
         </div>
       </div>
 
+      <p>Rady, které naši Nováčci obdrželi si můžete přečíst zde:</p>
+
+      <ul>
+        <li>Heslo na wifi GVN public: gvnhradec</li>
+        <li>Nejdůležitější je pokora.</li>
+        <li>Nikdy si nedávej k obědu něco, co zní až moc zdravě.</li>
+        <li>Psát učitelům o víkendu je zakázaný.</li>
+        <li>Když potkáš na chodbě Fialu a nemáš přezůvky, zdrhej! - jen z nostalgie.</li>
+        <li>Na začátku roku si nakraď co nejvíc háčků do skříňky. Lepší je si je vzít na konci předchozího roku.</li>
+        <li>Nezmeškej těstoviny po Lotrinsku.</li>
+        <li>Zprávy v Edupage po čase zmizí.</li>
+        <li>V tubusu se chodí VPRAVO.</li>
+        <li>Když fotíš test, vypni si blesk. Když koukáš na tiktok, vypni si zvuk.</li>
+        <li>Pozor na dozory v jídelně.</li>
+        <li>V mailu pozdravte a podepište se.</li>
+        <li>Fronta v jídelně nemá řád ani systém. Teda… zkušenější můžou dopředu.</li>
+        <li>Pozdravte pány učitele, paní uklízečky, kuchařky i všechny ostatní, když je potkáte na chodbě.</li>
+        <li>V zimě do třídy svetr. Letos rovnou šálu a kulicha.</li>
+        <li>Nezapomeň si mobil v lavici. Radši už ho tam nedávej, jsou tam žvýkačky.</li>
+        <li>Pastelky se zásadně ořezávají do spodního parta lavice.</li>
+        <li>Na záchodě platí pravidlo lichý nebo stojíme ob.</li>
+        <li>Dělejte srandu!</li>
+        <li>Třídy s televizí jsou místa nekonečných možností.</li>
+        <li>Ve třídě 7. A je keška.</li>
+        <li>Na sedacím pytli má přednost ma(zák)turant.</li>
+        <li>Nikdy nespoléhej s absencí na červen.</li>
+        <li>Přečtěte si školní řád, je tam spousta vtipností.</li>
+        <li>Erasmus+ je dovolená zdarma.</li>
+        <li>Při vstupu a odchodu ze školy VŽDY podrž dveře tomu, co jde za tebou.</li>
+        <li>V zadní části jídelny v pravém rohu je učitelský stůl. Nesedat.</li>
+        <li>Okna smí otevírat pouze učitel, žák pověřený učitelem nebo největší frajeři ze třídy.</li>
+        <li>U okna je zima, u dveří vedro. A budete se hádat.</li>
+        <li>Účastni se akcí jako Majáles, poslední zvonění a tak. Je to boží.</li>
+        <li>Kdo má seminář, patří na začátek fronty na oběd.</li>
+        <li>Jediné onlinovky, který jsou povolené hrát na školní wifi, jsou hry od Supercellu.</li>
+      </ul>
+
+      <h3>První týden školy</h3>
+
+      <p>V pátek 9. září přišli mazáci i Nováčci v oblečení naruby. Za oblečení naruby sbírali body, které později najdou velké využití, o tom ale Nováčci neměli ještě zdání. Body sledovali online na qrkodu a stránce gvnqrkod.cz 
+      </p>
+
+      <p>Ve středu 14. září prošli Nováčci kvízem. Každý dostal unikátní qr kód na kterém na něj čekala otázka. Na zodpovězení měli 1 minutu a bod za správnou otázku se automaticky připočítal pro jejich třídu. </p>
+
+      <div class="gallery-container" id="gallery-2">
+        <div class="mySlides">
+          <div class="numbertext">1 / 3</div>
+          <img src="/static/images/archiv/vitani/kviz_1a.png" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
       
+        <div class="mySlides">
+          <div class="numbertext">2 / 3</div>
+          <img src="/static/images/archiv/vitani/kviz_1b.png" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">2 / 3</div>
+          <img src="/static/images/archiv/vitani/kviz_1c.png" style="max-height: 50vh; margin: auto; display: block; max-width: 100%;">
+        </div>
+          
+        <a class="prev" onclick="plusSlides(2, -1)">❮</a>
+        <a class="next" onclick="plusSlides(2, 1)">❯</a>
+      
+        <div class="caption-container">
+          <p id="caption-2"></p>
+        </div>
+      
+        <div class="row">
+          <div class="gallery-column-three">
+            <img class="demo cursor" src="/static/images/archiv/vitani/kviz_1a.png" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(2, 1)" alt="Výsledky kvízu 1.A">
+          </div>
+          <div class="gallery-column-three">
+            <img class="demo cursor" src="/static/images/archiv/vitani/kviz_1b.png" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(2, 2)" alt="Výsledky kvízu 1.B">
+          </div>
+          <div class="gallery-column-three">
+            <img class="demo cursor" src="/static/images/archiv/vitani/kviz_1c.png" style="width: 100%; height: 20vh; object-fit: cover;" onclick="currentSlide(2, 3)" alt="Výsledky kvízu 1.C">
+          </div>
+        </div>
+      </div>
+
+      <h3>Pyžamový den</h3>
+
+      <p>Kdo kdy viděl, aby se na chodbě potkali jednorožec, tygr, spacák a elektrická myš? Všichni, kdo přišli ve čtvrtek 15. září na GVN, kde proběhl Pyžamový den. Z per maturantů se totiž v jejich roli mazáků zrodila myšlenka vyrazit do školy v pyžamu a zavzpomínat a společně si postesknout nad postelemi, které každý den musíme opustit, abychom mohli v lavicích pracovat na plné obrátky. Akce byla původně myšlena pouze jako součást bodovací soutěže pro Nováčky a jejich mazáky, ale nakonec se zapojila celá škola, včetně některých učitelů. K vidění byla přehlídka barevných overalů a pyžam, příjemných dek, veselých plyšáků, měkkých polštářů, ale i originální a kreativní alternativy v podobě spacáků a celebrity dne – matrace s peřinami.
+        Pyžamového dne se zúčastnilo překvapivě velké množství studentů a za mazáky tak tímto všem moc děkujeme!
+        </p>
+
+      <h3>Záhadologové v akci</h3>
+      <p>V pondělí 19. září se stala strastiplná věc. Neváhali jsme požádat o pomoc Nováčky. 
+        Naši milí Nováčci, neuvěříte co se stalo. Někdo snědl náš posvátný chleba. Potřebujeme tým zkušených detektivů a odborných vyšetřovatelů, kteří nám pomohou s dopadením pachatele. Je potřeba urychleně zahájit vyšetřování. Hledat indicie, následovat stopy, vyslechnout svědky, množná i mnohem víc. Sami nevíme, co se děje a ještě dít může. Našim záhadologům se podařilo objevit první stopu. Na místě je potřeba pomoc detektivů a vyšetřovatelů. Pokud si nebudete vědět rady, obraťte se na naše záhadology, kteří vedou vyšetřování.
+        </p>
+
+        <p>Nováčkům se podařilo najít části qr kódu, který poskládali a zjistili, že na něm je fotografie místa ve škole. S velikým nadšením a odvahou běželi místo najít. Během přestávky tak objevili na místě schovanou mapu. Mapa vedla do parku u školy. I tam se záhadologové vypravili a další den nám ukázali, co našli. </p>
+        
+        <img src="/static/images/archiv/vitani/mapa.png" class="img-in-the-middle" alt="">
+
+        <p>Našli qr kód na kterém byla podivná šifra: <br><br> <i>“Vyběhni a zodpovědně hledej ve svojí mazácké řadě toho, kdo sundá ti věc z nejvyšší poličky hravě.”</i><br><br> Brzy bylo zjištěno, že nejvyšší mazáci něco mají, o něčem vědí. Dodnes nevíme, zda byli mazáci spiklenci nebo svědci krádeže a také kde přišli k tak důležité věci, ale měli u sebe starý rohlík. Né ale jen tak obyčejný. Po chvilce zkoumání našli Nováčci šifru napsanou podivnou abecedou a zapečenou uvnitř rohlíku. Co se v šifře píše, jsme se ale ten den nedozvěděli. 
+        </p>
+
+        <p>Přes noc se mazáčtí záhadologové věnovali pátrání v archivu a našli klíč k abecedě, která vypadala velmi podobně jako ta na šifře z rohlíku. Nováčci se ujali překladu. Když jsme se přišli poradit a zeptat se na jejich pokrok, už nám ukazovali překlad hotový. Ten zněl: <br><br> <i>"Ten, který Vyhlíží ferraty v atlasu, je moudřejší." </i> <br><br> Po dlouhé společné diskuzi jsme usoudili, že se vydáme zeptat pana učitele zeměpisu Vyhlídky, zda neví něco o krádeži posvátného chleba. Pan učitel byl skutečně dobrý tip. <br><br> Řekl nám: “Už jsem zaslechl o pátrání a musím se teda přiznat, že chleba jsem snědl já. Zapomněl jsem si oběd, chleba ležel na dvorku a vypadal moc hezky, tak jsem ho, no… Netušil jsem, že je pro vás tak důležitý. Ale jako omluvu jsem pro vás objednal putovní pobočku CHLIDLU, tady pro vás mám leták.” <br><br> Viníka jsme společně našli a celé nedorozumění jsme pochopili. </p>
+
+        <h3>CHLIDL a pekárna</h3>
+        <p>Ve čtvrtek o velké přestávce se ve škole skutečně otevřel CHLIDL. Konečně našli využití také posbírané body. Z nich se stali Chlebové koruny a za akční ceny se prodávali nejrůznější potraviny. Od mouky, kvasnic až po lentilky, májku nebo želé ovoce. Před CHLIDLEM probíhala současně dražba dvou tajných surovin. První surovinu vydražila 1.B za 70 CHK a získala tak Krtkův dort. Druhou surovinu získala 1.C. Za neuveřejnitelnou cenu koupila kočičí žrádlo.</p>
+
+        <img src="/static/images/archiv/vitani/penize.png" class="img-in-the-middle" alt="">
+
+        <p>V pátek ještě před školou jsme se společně sešli a zavítali do CHLIDL pekárny. Z nakoupených surovin každá třída zadělala těsto na prvotřídní chléb. Těsto bylo velmi nevšední a s nadějí jsme očekávali, jak budou chutnat upečené chleby. Ingredience použité na chleby si můžete přečíst zde:</p>
+
+        <h4>1.A</h4>
+        <ul>
+          <li>Mouka</li>
+          <li>Sůl</li>
+          <li>Cukr</li>
+          <li>Mléko</li>
+          <li>Vejce</li>
+          <li>Sušené droždí</li>
+          <li>Kmín</li>
+          <li>Mák</li>
+          <li>Máslo</li>
+          <li>Fialové barvivo</li>
+          <li>Čokoláva</li>
+          <li>Bonbony čočky</li>
+          <li>Gumoví medvídci</li>
+          <li>Marshmallowy</li>
+          <li>Vanilkový cukr</li>
+          <li>Pudink</li>
+          <li>Bílý jogurt</li>
+        </ul>
+
+        <h4>1.B</h4>
+
+        <ul>
+          <li>Mouka</li>
+          <li>Sůl</li>
+          <li>Cukr</li>
+          <li>Sušené droždí</li>
+          <li>Slunečnicová semínka</li>
+          <li>Lněná semínka</li>
+          <li>Majoránka</li>
+          <li>Libeček</li>
+          <li>Banán</li>
+          <li>Krtkův dort</li>
+          <li>Modré barvivo</li>
+          <li>Kukuřice</li>
+        </ul>
+
+        <h4>1.C</h4>
+
+        <ul>
+          <li>Mouka</li>
+          <li>Sůl</li>
+          <li>Cukr</li>
+          <li>Sušené droždí</li>
+          <li>Chilli</li>
+          <li>Eidam 30%</li>
+          <li>Zelené barvivo</li>
+          <li>Rumové aroma</li>
+          <li>Lentilky</li>
+          <li>Májka</li>
+          <li>Nealkoholické pivo Bruncvík</li>
+          <li>Kočičí žrádlo</li>
+        </ul>
+
+        <h4>Mazáci</h4>
+
+        <ul>
+          <li>Mouka</li>
+          <li>Sůl</li>
+          <li>Cukr</li>
+          <li>Droždí</li>
+          <li>Kokos</li>
+          <li>Olej</li>
+          <li>Perníkové kořeni</li>
+          <li>Kandované ovoce</li>
+          <li>Rozinky</li>
+          <li>Skořice</li>
+          <li>Červené a oranžové barvivo</li>
+          <li>Čínská polévka s krevetovou příchutí</li>
+          <li>Koření Divočina</li>
+          <li>Kečup</li>
+          <li>Hořčice</li>
+          <li>Tatarská omáčka</li>
+        </ul>
+
+        <h3>Pasování nováčků</h3>
+        <p>Celá pouť dozrála v pátek 23. září, kdy se všichni žáci ze tříd 1.A, 1.B a 1.C shromáždili ve školní tělocvičně, aby se rozhodlo o nejlepší třídě, a aby je mazáci náležitě přivítali na gymnáziu. V rámci jednoho odpoledne nám tak například představili kvásek, o který se společně starali celý měsíc. Poté dali porotě posoudit svůj speciální chléb z nejlepších surovin z CHLIDLU, každý zářící barvami a skrývající mnoho chutí. Nováčci se následně zúčastnili několika soutěží, včetně hledání pokladu, mazání krajíců, kde byla hodnocena preciznost a vzhled nebo soutěž v padání chleba na počest Ládi Hrušky, týmovou soutěž v jedení bochníku chleba na rychlost. Vítězem soutěže Pasování se stala 1.A, která porotu oslovila jednoznačně nejlepším kváskem, nadšením do soutěže a ukázala se i zdatným kompetitorem ve všech kompeticích. Každý Nováček poté pokorně pasováni na gympláka a za své výkony byly Nováčci oceněny výjimečným chlebem. Za melodie písně Klid, mír a pokora celá akce skončila a my jsme se pustili do dalších projektů.</p>
+
+        <h3>Závěr</h3>
+        <p>Za mazáky musíme tímto zároveň poděkovat všem, kteří se podíleli na organizaci a kteří přišli podpořit Nováčky na Pasování. Hlavně a zejména ale děkujeme primánům a prvákům a doufáme, že jejich cesta gymnáziem bude stejně záživná, jako byly ty naše.</p>
+
     <div class="column right">
       
     </div>
@@ -134,33 +285,38 @@
           }
         }
 
-    let slideIndex = 1;
-showSlides(slideIndex);
+    const slideIndex = {
+      1: 1,
+      2: 1
+    }
+showSlides(1, slideIndex[1]);
+showSlides(2, slideIndex[2]);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function plusSlides(num, n) {
+  showSlides(num, slideIndex[num] += n);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function currentSlide(num, n) {
+  showSlides(num, slideIndex[num] = n);
 }
 
-function showSlides(n) {
+function showSlides(num, n) {
+  const table = document.getElementById("gallery-" + num)
   let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("demo");
-  let captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+  let slides = table.getElementsByClassName("mySlides");
+  let dots = table.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption-" + num);
+  if (n > slides.length) {slideIndex[num] = 1}
+  if (n < 1) {slideIndex[num] = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
+  slides[slideIndex[num]-1].style.display = "block";
+  dots[slideIndex[num]-1].className += " active";
+  captionText.innerHTML = dots[slideIndex[num]-1].alt;
 }
 
 // Get the button

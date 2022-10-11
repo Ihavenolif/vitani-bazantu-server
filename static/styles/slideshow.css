@@ -81,9 +81,14 @@ body {
   }
   
   /* Six columns side by side */
-  .gallery-column {
+  .gallery-column-two {
     float: left;
-    width: 16.66%;
+    width: 50%;
+  }
+
+  .gallery-column-three {
+    float: left;
+    width: 33.33%;
   }
   
   /* Add a transparency effect for thumnbail images */
