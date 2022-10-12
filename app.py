@@ -53,6 +53,10 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
+@app.route("/ivanman")
+def ivanman():
+    return render_template("ivanman/ivanman.html")
+
 @app.route("/archiv")
 def archiv():
     return render_template("archiv/archiv.html")
