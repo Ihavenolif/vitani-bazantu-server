@@ -151,7 +151,7 @@ def kod_mimo_skolu_c():
 def oteviraci_doba():
     return render_template("detektivka/day3/oteviraci_doba.html")
 
-@app.route("/ladka", methods=["GET", "POST"])
+@app.route("/ucitel_zemepisu", methods=["GET", "POST"])
 def ladka():
     if(request.method == "GET"):
         return render_template("ladka_generator.html")
