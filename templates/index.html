@@ -14,19 +14,17 @@
 <body id="body">
     <div class="topnav" id="myTopnav">
         <a class="active" href="/">Hlavní stránka</a>
-        <!--<div class="dropdown">
+        <div class="dropdown">
           <button class="dropbtn">Archiv
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
             <a href="/archiv">Archiv</a>
             <a href="/archiv/vitani_novacku">Vítání nováčků</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
           </div>
-        </div> -->
+        </div>
         <a href="/gymplace_welcome">GYMPlace</a>
-        <!--<a href="/faq">FAQ</a>-->
+        <a href="/faq">FAQ</a>
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
     </div>
 
@@ -34,36 +32,85 @@
         <div class="column left">
         </div>
         <div class="column middle">
-            <h2>GYMPlace</h2>
-            <p>Plátno pro všechny jménem GYMPlace je připraveno. Více informací na odkazu níže.</p>
+            <span id="gymplace-message-container">
+              <h2>GYMPlace je skoro u konce!</h2>
+              <p>Plátno pro všechny končí v <strong>pátek, 14. 10.</strong> Pokud na něj chceš ještě něco nakreslit, teď je poslední možnost. Po ukončení plátna bude v archivu finální obrázek, co na plátně zůstane po ukončení, spolu s timelapsem celé historie plátna.</p>
 
-            <br>
+              <br>
 
-            <i>Byli jste tam už tento týden?</i>
-
-            <br><br>
-
-            <p>Na stránce můžete velmi brzy očekávat další hry. Buďte ve střehu!</p>
+              <p>Odkaz na plátno je níže. Čas do konce plátna: <strong><span id="cas-konec-platna"></span></strong></p>
+            </span>
+            
             <div class="vertical-menu">
                 <a href="/gymplace_welcome">Pokračovat na GYMPlace</a>
             </div>
 
-            <!--<br><br><hr><br>
+            <br><br><hr><br>
 
             <h2>Archiv</h2>
-            <p>Blablabla o archivu.</p>
-
-            <br>
-
-            <p>Blablabla o archivu podruhé (nemusíme)</p>
+            <p>Nově na naší stránce najdeš archiv. Jedná se o stránku, kde jsou popsány všechny minulé aktivity tohoto projektu a uchovávány výsledky her. Více informací na odkazu níže.</p>
             <div class="vertical-menu">
                 <a href="/archiv">Pokračovat do archivu</a>
-            </div>-->
+            </div>
         </div>
         <div class="column right">
           
         </div>
     </div>
+
+    <script>
+      function updateCas(){
+        const d = new Date()
+        time = d.getTime() /1000
+        timeDiff = 1665770400 - time
+        const textField = document.getElementById("cas-konec-platna")
+        const messageContainer = document.getElementById("gymplace-message-container")
+
+        if(timeDiff < 0){
+          messageContainer.innerHTML = "<h2>GYMPlace je u konce!</h2><p>Děkujeme všem, kteří se zúčastnili. Na plátno se pořád můžeš podívat. Pokud ještě není prázdné, můžeš nám pomoct s úklidem.</p> "
+          return
+        }
+
+        hours = Math.floor(timeDiff/3600)
+        /**
+         * @type {number}
+        */
+        let minutes = Math.floor(Math.floor(timeDiff%3600)/60)
+        /**
+         * @type {number}
+        */
+        let seconds = Math.floor(timeDiff - (hours*3600) - (minutes*60))
+
+        if(minutes.toString().length == 1){
+          /**
+            * @type {string}
+            */
+          var minutesString = "0" + minutes
+        }else{
+          /**
+            * @type {string}
+            */
+          var minutesString = minutes
+        }
+
+        if(seconds.toString().length == 1){
+          /**
+            * @type {string}
+            */
+          var secondsString = "0" + seconds
+        }else{
+          /**
+            * @type {string}
+            */
+          var secondsString = seconds
+        }
+        textField.innerHTML = hours + ":" + minutesString + ":" + secondsString
+      }
+
+      updateCas()
+
+      setInterval(updateCas, 1000);
+    </script>
 
     <!--
         PASTED GARBAGE AHEAD

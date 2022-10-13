@@ -53,24 +53,43 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
+@app.route("/ivanman")
+def ivanman():
+    return render_template("ivanman/ivanman.html")
+
 @app.route("/archiv")
 def archiv():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/archiv" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
     return render_template("archiv/archiv.html")
 
 @app.route("/faq")
 def faq():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/faq" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
     return render_template("faq.html")
 
 @app.route("/archiv/vitani_novacku")
 def vitani():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/archiv/vitani_novacku" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
     return render_template("archiv/vitani_novacku.html")
 
 @app.route("/gymplace_welcome")
 def rplace_welcome():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/gymplace_welcome" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
     return render_template("rplace_welcome.html")
 
 @app.route("/gymplace")
 def rplace():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/gymplace" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
     return render_template("rplace.html")
 
 @app.route("/gymplace_content")
@@ -99,6 +118,9 @@ def livechat():
 
 @app.route("/")
 def index():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
     return render_template("index.html")
 
 @app.route("/g5jeguq2")
@@ -147,9 +169,21 @@ def kod_mimo_skolu_c():
 def oteviraci_doba():
     return render_template("detektivka/day3/oteviraci_doba.html")
 
+@app.route("/send_question", methods=["POST"])
+def send_question():
+    print("kokot")
+    with open("question_log.txt", "a") as question_file:
+        question_file.write(request.json["otazka"] + "\n")
+        question_file.close()
+    
+    return "ok"
+
 @app.route("/ucitel_zemepisu", methods=["GET", "POST"])
 def ladka():
     if(request.method == "GET"):
+        f = open("navstevnost_log.txt", "a")
+        f.write("/ucitel_zemepisu" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+        f.close()
         return render_template("ladka_generator.html")
 
     response = openai.Completion.create(
@@ -320,6 +354,9 @@ def prehled_kvizu():
 
 @app.route("/copypasta")
 def copypasta_route():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/copypasta" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
     return render_template("copypasta.html", pasta=copypasta())
 
 @app.route("/kviz", methods=["GET", "POST"])

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IvanMan</title>
+    <style>
+        #canvas{
+            max-width: 100vw;
+            border-bottom: 5px solid black;
+        }
+
+        #joystick-canvas{
+            max-width: 100vw;
+        }
+
+        #controls-container{
+            text-align: center;
+            width: 100%;
+        }
+
+        .menu-img{
+            width: 50px;
+        }
+    </style>
+</head>
+<body style="padding: 0; margin: 0;">
+    <canvas id="canvas"></canvas>
+    <!--<canvas id="joystick-canvas"></canvas>-->
+
+    <div id="controls-container">
+        <img class="menu-img" id="handIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'up'" src="/static/images/ivanman/up_arrow.png"><br>
+        <img class="menu-img" id="brushIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'left'" src="/static/images/ivanman/left_arrow.png">
+        <img class="menu-img" id="eraserIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'down'" src="/static/images/ivanman/down_arrow.png">
+        <img class="menu-img" id="colorpickerIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'right'" src="/static/images/ivanman/right_arrow.png">
+    </div>
+
+    <script src="/static/javascript/ivanman/classes/TouchInfo.js"></script>
+    <script src="/static/javascript/ivanman/classes/GameObject.js"></script>
+    <script src="/static/javascript/ivanman/classes/Player.js"></script>
+    <script src="/static/javascript/ivanman/classes/Drawing.js"></script>
+    <script src="/static/javascript/ivanman/ivanman.js"></script>
+</body>
+</html>

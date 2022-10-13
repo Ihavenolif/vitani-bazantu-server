@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
     <link rel="stylesheet" href="/static/styles/column-layout.css">
     <link rel="stylesheet" href="/static/styles/collapsible.css">
+    <link rel="stylesheet" href="/static/styles/form.css">
     <title>FAQ</title>
 </head>
 <body>
@@ -21,8 +22,6 @@
           <div class="dropdown-content">
             <a href="/archiv">Archiv</a>
             <a href="/archiv/vitani_novacku">Vítání nováčků</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
           </div>
         </div> 
         <a href="/gymplace_welcome">GYMPlace</a>
@@ -67,9 +66,47 @@
             <div class="collapsible-content">
               <p>V plánu jsou další hry, případně jiné záležitosti s tématikou gymnázia a špetkou (nebo spíš kamionem) humoru. Pokud má někdo z vás problémy v zeměpise, může se těšit na náš další projekt, který spouštíme v <strong>pondělí 17. 10.</strong></p>
             </div> 
+
+            <br><br>
+
+            <input type="text" id="otazka" placeholder="Napiš nám otázku">
+            <button class="form-button" onclick="odeslat()">Odeslat</button>
         </div>
         <div class="column right"></div>
       </div>
+
+      <script>
+        function odeslat(){
+          /**
+           * @type {HTMLInputElement}
+           */
+           let otazka = document.getElementById("otazka")
+
+          IP = "gvnqrkod.cz"
+
+           if(!otazka.value){
+                return
+            }
+            sendableData = {
+                otazka: otazka.value
+            }
+
+            otazka.value = ""
+            
+            /**
+             * @type {XMLHttpRequest}
+             * */
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  console.log("ok")
+                }
+            }
+            xhttp.open("POST", "http://" + IP + "/send_question", true)
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+            xhttp.send(JSON.stringify(sendableData))
+        }
+      </script>
 
       <!--
         PASTED GARBAGE AHEAD
