@@ -53,7 +53,7 @@
         <img src="/static/images/rplace/zoom-in.png" onclick="zoomIn()" class="slider-img" alt="">
     </div>
     
-    <div class="menu" style="margin-bottom: 5px">
+    <div class="menu" id="mode-menu" style="margin-bottom: 5px">
         <img class="menu-img" id="handIcon" style="border: 5px solid black;" onclick="selectHand()" src="/static/images/rplace/hand.png">
         <img class="menu-img" id="brushIcon" style="border: 5px solid red;" onclick="selectBrush()" src="/static/images/rplace/brush.png">
         <img class="menu-img" id="eraserIcon" style="border: 5px solid black;" onclick="selectEraser()" src="/static/images/rplace/eraser.jpg">
@@ -66,7 +66,9 @@
         <button class="btn btn-primary" id="show-chat-button" onclick="parent.showChat()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Chat <span class="glyphicon glyphicon-comment"></span></button>
     </div>
 
-    
+    <div class="menu">
+        <span id="cas-konec-platna"></span>
+    </div>
 
     <script>
         window.mode = "brush"
@@ -78,6 +80,59 @@
         })
 
         document.getElementById("color").addEventListener("change", onColorChange, false)
+
+        function updateCas(){
+            const d = new Date()
+            time = d.getTime() /1000
+            timeDiff = 1665777600 - time
+            const textField = document.getElementById("cas-konec-platna")
+
+            if(timeDiff < 0){
+                textField.innerHTML = "GYMPlace je u konce. Můžeš nám pomoct s úklidem."
+                document.getElementById("mode-menu").innerHTML = "<img class=\"menu-img\" id=\"eraserIcon\" style=\"border: 5px solid red;\" onclick=\"selectEraser()\" src=\"/static/images/rplace/eraser.jpg\">"
+                window.mode = "eraser"
+                return
+            }
+
+            hours = Math.floor(timeDiff/3600)
+            /**
+             * @type {number}
+            */
+            let minutes = Math.floor(Math.floor(timeDiff%3600)/60)
+            /**
+             * @type {number}
+            */
+            let seconds = Math.floor(timeDiff - (hours*3600) - (minutes*60))
+
+            if(minutes.toString().length == 1){
+              /**
+                * @type {string}
+                */
+                var minutesString = "0" + minutes
+            }else{
+              /**
+                * @type {string}
+                */
+              var minutesString = minutes
+            }
+
+            if(seconds.toString().length == 1){
+              /**
+                * @type {string}
+                */
+              var secondsString = "0" + seconds
+            }else{
+              /**
+                * @type {string}
+                */
+              var secondsString = seconds
+            }
+            textField.innerHTML = hours + ":" + minutesString + ":" + secondsString
+        }
+
+        updateCas()
+
+        setInterval(updateCas, 1000);
 
         function onColorChange(event){
             color = event.target.value
