@@ -1,9 +1,14 @@
+import json
+
 with open("generate_query.txt") as query_file:
     QUERY = query_file.read()
 
 LINES = QUERY.splitlines()
 
 result_file = open("result_file.txt", "a")
+result_json = open("result_json.json", "a")
+
+result_string = ""
 
 #Iterating through lines of the file
 for task in LINES:
@@ -20,10 +25,26 @@ for task in LINES:
             letter = task.split(";")[task_to_print].split(":")[1]
         
             for i in range(0, letter_count):
+                result_string += letter + ";"
                 result_file.write(letter + ";")
                 #print(letter + ";")
         
         #print("\n")
+        result_string += "\n"
         result_file.write("\n")
     
+
 result_file.close()
+
+result_list = []
+
+for x in result_string.splitlines():
+    temp_list = []
+    for y in x.split(";"):
+        if y == "": continue
+        temp_list.append(y)
+    
+    result_list.append(temp_list)
+
+print(json.dumps(result_list))   
+result_json.write(json.dumps(result_list))
