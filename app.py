@@ -7,6 +7,7 @@ import openai
 import random
 from copypasta import copypasta
 from flask import Flask, render_template, request
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -21,6 +22,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
+CORS(app)
 
 db = SQLAlchemy(app)
 
@@ -55,7 +57,7 @@ class Odpovedi(db.Model):
 
 @app.route("/timelapse", methods=["GET", "POST"])
 def timelapse():
-    with open("parsed_drawing_data.json") as map_file:
+    with open("parsed_drawing_data_post_purge.json") as map_file:
         map_text = map_file.read()
         map_file.close()
     
