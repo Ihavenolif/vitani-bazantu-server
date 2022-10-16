@@ -27,9 +27,18 @@ CORS(app)
 db = SQLAlchemy(app)
 
 LADKA_VALUES = {
-    "1": "Těžba hnědého uhlí",
-    "2": "Těžba černého uhlí",
-    "3": "Jaderné elektrárny v České Republice"
+    "1": "Asie",
+    "2": "Česká republika",
+    "3": "Evropa",
+    "4": "HDP x DPH",
+    "5": "kontinent",
+    "6": "Jaderné elektrárny v České republice",
+    "7": "obilnice světa",
+    "8": "roční období",
+    "9": "Těžba černého uhlí",
+    "10": "Těžba hnědého uhlí",
+    "11": "udržitelný rozvoj",
+    "12": "vesmír"
 }
 
 class Entry(db.Model):
@@ -57,7 +66,7 @@ class Odpovedi(db.Model):
 
 @app.route("/timelapse", methods=["GET", "POST"])
 def timelapse():
-    with open("parsed_drawing_data_post_purge.json") as map_file:
+    with open("parsed_drawing_data.json") as map_file:
         map_text = map_file.read()
         map_file.close()
     
@@ -97,6 +106,13 @@ def vitani():
     f.write("/archiv/vitani_novacku" + "," + str(datetime.timestamp(datetime.now())) + "\n")
     f.close()
     return render_template("archiv/vitani_novacku.html")
+
+@app.route("/archiv/gymplace")
+def gymplace_archiv():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/archiv/gymplace" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
+    return render_template("archiv/gymplace.html")
 
 @app.route("/gymplace_welcome")
 def rplace_welcome():
@@ -198,6 +214,15 @@ def send_question():
     
     return "ok"
 
+@app.route("/navrhy_pro_ladku", methods=["POST"])
+def navrhy_pro_ladku():
+    print("kokot")
+    with open("navrhy_pro_ladku.txt", "a") as question_file:
+        question_file.write(request.json["otazka"] + "\n")
+        question_file.close()
+    
+    return "ok"
+
 @app.route("/ucitel_zemepisu", methods=["GET", "POST"])
 def ladka():
     if(request.method == "GET"):
@@ -225,21 +250,27 @@ def ladka():
 
     for x in response_text:
         slovo = ""
-        roll = random.randint(0, 50)
+        roll = random.randint(0, 100)
 
-        if roll < 10:
-            slovo = "samozřejmě"
-        elif roll < 30:
+        if roll < 13:
             slovo = "tedy"
-        elif roll < 40:
-            slovo = "tak"
-        else:
+        elif roll < 13+37:
+            slovo = "vlastně"
+        elif roll < 13+37+15:
+            slovo = "samozřejmě"
+        elif roll < 13+37+15+10:
             slovo = "prosimvás"
+        else:
+            slovo = "tak"
     
         if x == " " and random.random() < 0.15:
             final_text += " " + slovo + " "
         else:
             final_text += x
+
+    with open("ladka_vyplody.txt", "a") as question_file:
+        question_file.write(final_text + "\n\n\n")
+        question_file.close()
 
     return final_text
 

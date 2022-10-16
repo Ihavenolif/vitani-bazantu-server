@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+    <link rel="stylesheet" href="/static/styles/slideshow.css">
+    <link rel="stylesheet" href="/static/styles/scroll-to-top-button.css">
+    <title>Archiv</title>
+</head>
+<body> 
+  <div class="topnav" id="myTopnav">
+    <a href="/">Hlavní stránka</a>
+    <div class="dropdown">
+      <button class="dropbtn">Archiv
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/archiv">Archiv</a>
+        <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+        <a href="/archiv/gymplace" class="active-inverted">GYMPlace</a>
+      </div>
+    </div> 
+    <a href="/faq">FAQ</a>
+    <a href="/ucitel_zemepisu">Učitel zeměpisu</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+  </div>
+
+  <div class="row">
+    <div class="column left">
+    </div>
+    <div class="column middle">
+      <h2>GYMPlace</h2>
+      <p>GYMPlace byl projekt, na kterém se mohl každý realizovat v tom nejlepším slova smyslu. Jednalo se o plátno, kde si mohli návštěvníci stránky kreslit a ostatní jejich výtvory viděli v reálném čase. Na tomto plátně vznikla opravdu velkolepá díla, která by jednotlivec jen těžko dával dohromady sám. </p>
+      <p>Tímto bychom se chtěli poděkovat každému, kdo přispěl na plátno sebemenším výtvorem, stali jste se součástí úžasné události, která by bez vás nevznikla.</p>
+      <p>Zde si můžeš prohlédnout plátno, jak vypadalo při ukončení GYMPlace.</p>
+      <img src="/static/images/archiv/gymplace/canvas_final.png" style="width: 100%;" alt="">
+      <p>Odkaz na obrázek v plné kvalitě <a href="/static/images/archiv/gymplace/canvas_final.png">zde</a>.</p>
+      <p>Veškerá data o plátně v JSON formátu <a href="/static/images/archiv/gymplace/parsed_drawing_data_post_purge.json" download>zde</a>.</p>
+      <p><strong>Připravujeme pro vás timelapse plátna za celou dobu, co bylo aktivní. Video bude připraveno v úterý, 18. 10.</strong></p>
+    <div class="column right">
+      
+    </div>
+  </div>
+
+  
+</div>
+
+  <!--
+    PASTED GARBAGE AHEAD
+  -->
+  <script>
+    function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+    </script>
+</body>
+</html>
