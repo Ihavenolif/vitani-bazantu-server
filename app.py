@@ -53,9 +53,16 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
-@app.route("/ivanman")
+@app.route("/ivanman", methods=["GET", "POST"])
 def ivanman():
-    return render_template("ivanman/ivanman.html")
+    with open("result_json.json") as map_file:
+        map_text = map_file.read()
+        map_file.close()
+    
+    if(request.method == "GET"):
+        return render_template("ivanman/ivanman.html", map=map_text)
+    
+    return map_text
 
 @app.route("/archiv")
 def archiv():
