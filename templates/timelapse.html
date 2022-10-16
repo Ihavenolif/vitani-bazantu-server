@@ -63,7 +63,7 @@ function requestInitialData(){
             
             const parsedResponse = JSON.parse(xhttp.responseText)
 
-            setInterval(() => {
+            /*setInterval(() => {
                 drawSquare(parsedResponse[count])
                 drawSquare(parsedResponse[count+1])
                 drawSquare(parsedResponse[count+2])
@@ -75,7 +75,11 @@ function requestInitialData(){
                 drawSquare(parsedResponse[count+8])
                 drawSquare(parsedResponse[count+9])
                 count += 10
-            }, 1);
+            }, 1);*/
+
+            for(x of parsedResponse){
+                drawSquare(x)
+            }
         }
     }
     xhttp.open("POST", "http://localhost:5000/timelapse", true)

@@ -21,10 +21,11 @@
           <div class="dropdown-content">
             <a href="/archiv">Archiv</a>
             <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+            <a href="/archiv/gymplace">GYMPlace</a>
           </div>
         </div>
-        <a href="/gymplace_welcome">GYMPlace</a>
         <a href="/faq">FAQ</a>
+        <a href="/ucitel_zemepisu">Učitel zeměpisu</a>
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
     </div>
 
@@ -33,24 +34,20 @@
         </div>
         <div class="column middle">
             <span id="gymplace-message-container">
-              <h2>GYMPlace je skoro u konce!</h2>
-              <p>Plátno pro všechny končí v <strong>pátek, 14. 10.</strong> Pokud na něj chceš ještě něco nakreslit, teď je poslední možnost. Po ukončení plátna bude v archivu finální obrázek, co na plátně zůstane po ukončení, spolu s timelapsem celé historie plátna.</p>
-
-              <br>
-
-              <p>Odkaz na plátno je níže. Čas do konce plátna: <strong><span id="cas-konec-platna"></span></strong></p>
+              <h2>GYMPlace je u konce!</h2>
+              <p>Děkujeme všem za účast! Výsledek plátna spolu s timelapsem celé historie <strong>(v úterý, 18. 10.)</strong> můžeš najít v archivu, odkaz níže.</p>
             </span>
             
             <div class="vertical-menu">
-                <a href="/gymplace_welcome">Pokračovat na GYMPlace</a>
+                <a href="/archiv/gymplace">Pokračovat do archivu o GYMPlace</a>
             </div>
 
             <br><br><hr><br>
 
-            <h2>Archiv</h2>
-            <p>Nově na naší stránce najdeš archiv. Jedná se o stránku, kde jsou popsány všechny minulé aktivity tohoto projektu a uchovávány výsledky her. Více informací na odkazu níže.</p>
+            <h2>Učitel zeměpisu</h2>
+            <p>Měl/a jsi někdy pocit, že máš problém s učením zeměpisu? Pokud byla tvoje odpověď "Ano", náše nová aplikace je přímo pro tebe! Pokud nebyla, pořád se na ní jdi podívat a vyzkoušet, zajisté tě ve spoustě ohledů obohatí.</p>
             <div class="vertical-menu">
-                <a href="/archiv">Pokračovat do archivu</a>
+                <a href="/archiv">Pokračovat k učiteli zeměpisu</a>
             </div>
         </div>
         <div class="column right">
@@ -106,10 +103,6 @@
         }
         textField.innerHTML = hours + ":" + minutesString + ":" + secondsString
       }
-
-      updateCas()
-
-      setInterval(updateCas, 1000);
     </script>
 
     <!--
