@@ -53,6 +53,17 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
+@app.route("/timelapse", methods=["GET", "POST"])
+def timelapse():
+    with open("parsed_drawing_data.json") as map_file:
+        map_text = map_file.read()
+        map_file.close()
+    
+    if(request.method == "GET"):
+        return render_template("timelapse.html")
+
+    return map_text
+
 @app.route("/ivanman", methods=["GET", "POST"])
 def ivanman():
     with open("result_json.json") as map_file:
