@@ -30,15 +30,19 @@ LADKA_VALUES = {
     "1": "Asie",
     "2": "Česká republika",
     "3": "Evropa",
-    "4": "HDP x DPH",
-    "5": "kontinent",
-    "6": "Jaderné elektrárny v České republice",
-    "7": "obilnice světa",
-    "8": "roční období",
-    "9": "Těžba černého uhlí",
-    "10": "Těžba hnědého uhlí",
-    "11": "udržitelný rozvoj",
-    "12": "vesmír"
+    "4": "Evropská Unie",
+    "5": "HDP x DPH",
+    "6": "kontinent",
+    "7": "Latinská amerika",
+    "8": "Jaderné elektrárny v České republice",
+    "9": "obilnice světa",
+    "10": "podnebná pásma",
+    "11": "půda",
+    "12": "roční období",
+    "13": "Těžba černého uhlí",
+    "14": "Těžba hnědého uhlí",
+    "15": "udržitelný rozvoj",
+    "16": "vesmír"
 }
 
 class Entry(db.Model):
