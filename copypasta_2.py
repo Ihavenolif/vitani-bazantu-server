@@ -55,7 +55,7 @@ def copypasta_2():
         random.choice(["jednotlivců", "dvojic", "trojic"]) + 
         ". A dělá se to tak, že " + 
         jak_se_to_dela + 
-        ".<br><br>Není to jako " +
+        ".\n\nNení to jako " +
         co_to_neni + 
         ", většinou to bývá víc " +
         jaky_to_byva_1 + 
@@ -65,7 +65,7 @@ def copypasta_2():
         pro_koho_1 +
         " a " +
         pro_koho_2 +
-        " ;)<br><br>Tak jsme si to s " +
+        " ;)\n\nTak jsme si to s " +
         osoba1 +
         " představovaly tak, že by se " +
         cinnost +
@@ -85,11 +85,11 @@ def copypasta_2():
         " (teoreticky! " +
         str(random.randint(2,4)) +
         " " + skupinky +
-        ").<br><br>Takže by bylo super, kdybyste si během tohodle týdne sehnali " +
+        ").\n\nTakže by bylo super, kdybyste si během tohodle týdne sehnali " +
         sehnali +
         " a napsali to bud mně do chatu, nebo " + 
         osoba2 +
-        ".<br>Díky za spolupráci!"        
+        ".\nDíky za spolupráci!"        
     )
 
 if __name__ == "__main__":
