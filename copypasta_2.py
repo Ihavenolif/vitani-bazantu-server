@@ -6,40 +6,42 @@ def rand_line(soubor):
     x = random.choice(file_content)
     return x
 
-osoba1 = rand_line("osoby1.txt")
-co_probiha = rand_line("aktivity.txt")
-jak_se_to_dela = rand_line("jak_se_to_dela.txt")
-co_to_neni = rand_line("aktivity.txt")
-
-while(co_probiha == co_to_neni):
+def copypasta_2():
+    osoba1 = rand_line("osoby1.txt")
+    co_probiha = rand_line("aktivity.txt")
+    jak_se_to_dela = rand_line("jak_se_to_dela.txt")
     co_to_neni = rand_line("aktivity.txt")
 
-jaky_to_byva_1 = rand_line("jaky_to_byva.txt")
-jaky_to_byva_2 = rand_line("jaky_to_byva.txt")
+    while(co_probiha == co_to_neni):
+        co_to_neni = rand_line("aktivity.txt")
 
-while(jaky_to_byva_1 == jaky_to_byva_2):
-    jaky_to_byva_2 = rand_line("jakoy_to_byva.txt")
+    jaky_to_byva_1 = rand_line("jaky_to_byva.txt")
+    jaky_to_byva_2 = rand_line("jaky_to_byva.txt")
 
-pro_koho_1 = rand_line("pro_koho.txt")
-pro_koho_2 = rand_line("pro_koho.txt")
+    while(jaky_to_byva_1 == jaky_to_byva_2):
+        jaky_to_byva_2 = rand_line("jaky_to_byva.txt")
 
-while(pro_koho_1 == pro_koho_2):
+    pro_koho_1 = rand_line("pro_koho.txt")
     pro_koho_2 = rand_line("pro_koho.txt")
 
-cinnost = rand_line("cinnosti.txt")
-kazdy_1 = rand_line("kazdy_1.txt")
-kazdy_2 = rand_line("kazdy_2.txt")
-kazdy_3 = rand_line("kazdy_2.txt")
+    while(pro_koho_1 == pro_koho_2):
+        pro_koho_2 = rand_line("pro_koho.txt")
 
-while(kazdy_3 == kazdy_2):
+    cinnost = rand_line("cinnosti.txt")
+    kazdy_1 = rand_line("kazdy_1.txt")
+    kazdy_2 = rand_line("kazdy_2.txt")
     kazdy_3 = rand_line("kazdy_2.txt")
 
-vic = rand_line("a_jelikoz_je_nas_vic.txt")
-jen = rand_line("dvojice_jen.txt")
-sehnali = rand_line("sehnali.txt")
-osoba2 = rand_line("osoby2.txt")
+    while(kazdy_3 == kazdy_2):
+        kazdy_3 = rand_line("kazdy_2.txt")
 
-def copypasta_2():
+    vic = rand_line("a_jelikoz_je_nas_vic.txt")
+    jen = rand_line("dvojice_jen.txt")
+    sehnali = rand_line("sehnali.txt")
+    osoba2 = rand_line("osoby2.txt")
+
+
+
     skupinky = random.choice(["páry", "trojice", "čtveřice"])
     return ("Hii, zjistily jsme s " +
         osoba1 +
