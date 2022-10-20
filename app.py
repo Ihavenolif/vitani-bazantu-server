@@ -43,7 +43,8 @@ LADKA_VALUES = {
     "13": "Těžba černého uhlí",
     "14": "Těžba hnědého uhlí",
     "15": "udržitelný rozvoj",
-    "16": "vesmír"
+    "16": "vesmír",
+    "17": "globalizace"
 }
 
 class Entry(db.Model):
