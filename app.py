@@ -239,7 +239,7 @@ def ladka():
 
     response = openai.Completion.create(
         model = "text-davinci-002",
-        prompt = "Write a presentation in czech on the topic of " + LADKA_VALUES[request.json["option"]] + ".",
+        prompt = "Napiš prezentaci v češtině na téma " + LADKA_VALUES[request.json["option"]] + ".",
         temperature=0.7,
         max_tokens=500
     )
