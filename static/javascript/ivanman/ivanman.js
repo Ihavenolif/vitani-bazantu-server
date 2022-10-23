@@ -1,14 +1,19 @@
+//CANVAS SETUP
+
 /**
  * @type {HTMLCanvasElement}
  */
- const canvas = document.getElementById("canvas")
- const ctx = canvas.getContext("2d")
-
- canvas.height = 1002
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
+canvas.height = 1002
 canvas.width = 1002
-//GETTING THE MAP INFO
 
-const mapInfo = {}
+//VARS SETUP
+
+/**
+ * @type {Player}
+ */
+const player = new Player(30,30,40,40)
 
 /**
  * @type {Array<Coin>}
@@ -29,11 +34,14 @@ ghostList.push(new Ghost(760,40))
  * @type {number}
  */
 let collectedCoins = 0
-
 /**
- * @type {HTMLImageElement}
+ * @type {number}
  */
-const mapImageElement = document.getElementById("map-img")
+let totalCoins = 0
+
+//GETTING THE MAP INFO
+
+const mapInfo = {}
 
 /**
  * @type {XMLHttpRequest}
@@ -46,15 +54,17 @@ xhttp.onreadystatechange = function() {
          * @type {Array[Array][String]}
          */
         mapInfo.parsed = JSON.parse(xhttp.responseText)
-        console.log(mapInfo)
-        Coin.generate()
+        startGame()
+        
     }
 }
 xhttp.open("POST", " /ivanman", true)
 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-xhttp.send(JSON.stringify({
-    
-}))
+
+/**
+ * @type {HTMLImageElement}
+ */
+const mapImageElement = document.getElementById("map-img")
 
 /**
  * @type {HTMLCanvasElement}
@@ -67,7 +77,7 @@ xhttp.send(JSON.stringify({
 //joystickCanvas.width = canvas.clientHeight
 //joystickCanvas.height = canvas.clientHeight * 0.7
 
-const player = new Player(30,30,40,40)
+
 //const touchInfo = new TouchInfo(false, 0, 0)
 
 //SETTING UP KEYBOARD EVENT DETECTION
@@ -182,6 +192,12 @@ function gameLoop(){
 }
 
 window.onload = () =>{
+    xhttp.send(JSON.stringify({}))
+}
+
+function startGame(){
+    console.log(mapInfo)
+    Coin.generate()
     const gameLoopInterval = setInterval(gameLoop, 1000/60)
     for(let ghost of ghostList){
         ghost.startMovement()
