@@ -53,12 +53,12 @@ xhttp.onreadystatechange = function() {
         /**
          * @type {Array[Array][String]}
          */
-        mapInfo.parsed = JSON.parse(xhttp.responseText)
+        mapInfo.parsed = JSON.parse(LZString.decompressFromUTF16(xhttp.responseText))
         startGame()
         
     }
 }
-xhttp.open("POST", "/ivanman", true)
+xhttp.open("POST", "http://gvnqrkod.cz:6969/getMap", true)
 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
 /**
