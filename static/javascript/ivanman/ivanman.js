@@ -58,7 +58,7 @@ xhttp.onreadystatechange = function() {
         
     }
 }
-xhttp.open("POST", " /ivanman", true)
+xhttp.open("POST", "/ivanman", true)
 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
 /**
