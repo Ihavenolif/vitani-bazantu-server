@@ -30,16 +30,20 @@
     <!--<canvas id="joystick-canvas"></canvas>-->
 
     <div id="controls-container">
-        <img class="menu-img" id="handIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'up'" src="/static/images/ivanman/up_arrow.png"><br>
-        <img class="menu-img" id="brushIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'left'" src="/static/images/ivanman/left_arrow.png">
-        <img class="menu-img" id="eraserIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'down'" src="/static/images/ivanman/down_arrow.png">
-        <img class="menu-img" id="colorpickerIcon" style="border: 5px solid black;" onclick="player.moveDirection = 'right'" src="/static/images/ivanman/right_arrow.png">
+        <img class="menu-img" id="handIcon" style="border: 5px solid black;" onclick="player.switchDirection = 'up'" src="/static/images/ivanman/up_arrow.png"><br>
+        <img class="menu-img" id="brushIcon" style="border: 5px solid black;" onclick="player.switchDirection = 'left'" src="/static/images/ivanman/left_arrow.png">
+        <img class="menu-img" id="eraserIcon" style="border: 5px solid black;" onclick="player.switchDirection = 'down'" src="/static/images/ivanman/down_arrow.png">
+        <img class="menu-img" id="colorpickerIcon" style="border: 5px solid black;" onclick="player.switchDirection = 'right'" src="/static/images/ivanman/right_arrow.png">
     </div>
+
+    <img src="/static/images/ivanman/test_map_2.png" id="map-img" style="display: none;">
 
     <script src="/static/javascript/ivanman/classes/TouchInfo.js"></script>
     <script src="/static/javascript/ivanman/classes/GameObject.js"></script>
     <script src="/static/javascript/ivanman/classes/Player.js"></script>
     <script src="/static/javascript/ivanman/classes/Drawing.js"></script>
+    <script src="/static/javascript/ivanman/classes/Coin.js"></script>
+    <script src="/static/javascript/ivanman/classes/Ghost.js"></script>
     <script src="/static/javascript/ivanman/ivanman.js"></script>
 </body>
 </html>

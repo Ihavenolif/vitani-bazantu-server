@@ -93,6 +93,17 @@ def ivanman():
     
     return map_text
 
+@app.route("/map_gen", methods=["GET", "POST"])
+def map_gen():
+    with open("result_json.json") as map_file:
+        map_text = map_file.read()
+        map_file.close()
+    
+    if(request.method == "GET"):
+        return render_template("map_image_generator.html", map=map_text)
+    
+    return map_text
+
 @app.route("/archiv")
 def archiv():
     f = open("navstevnost_log.txt", "a")
