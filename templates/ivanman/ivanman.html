@@ -49,6 +49,23 @@
         document.getElementById("left").addEventListener("contextmenu", (evt) => {evt.preventDefault()})
         document.getElementById("down").addEventListener("contextmenu", (evt) => {evt.preventDefault()})
         document.getElementById("right").addEventListener("contextmenu", (evt) => {evt.preventDefault()})
+
+        document.getElementById("up").addEventListener("touchstart", (evt) => {
+            evt.preventDefault()
+            player.switchDirection = 'up'
+        })
+        document.getElementById("left").addEventListener("touchstart", (evt) => {
+            evt.preventDefault()
+            player.switchDirection = 'left'
+        })
+        document.getElementById("down").addEventListener("touchstart", (evt) => {
+            evt.preventDefault()
+            player.switchDirection = 'down'
+        })
+        document.getElementById("right").addEventListener("touchstart", (evt) => {
+            evt.preventDefault()
+            player.switchDirection = 'right'
+        })
     </script>
     <script src="/static/javascript/ivanman/ivanman.js"></script>
 </body>
