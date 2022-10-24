@@ -53,12 +53,12 @@ xhttp.onreadystatechange = function() {
         /**
          * @type {Array[Array][String]}
          */
-        mapInfo.parsed = JSON.parse(xhttp.responseText)
+        mapInfo.parsed = JSON.parse(LZString.decompressFromUTF16(xhttp.responseText))
         startGame()
         
     }
 }
-xhttp.open("POST", " /ivanman", true)
+xhttp.open("POST", "http://gvnqrkod.cz:6969/getMap", true)
 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
 /**
@@ -195,11 +195,23 @@ window.onload = () =>{
     xhttp.send(JSON.stringify({}))
 }
 
+/**
+ * @type {interval}
+ */
+let gameLoopInterval = null
+
 function startGame(){
     console.log(mapInfo)
     Coin.generate()
-    const gameLoopInterval = setInterval(gameLoop, 1000/60)
+    gameLoopInterval = setInterval(gameLoop, 1000/60)
     for(let ghost of ghostList){
         ghost.startMovement()
+    }
+}
+
+function stopGame(){
+    clearInterval(gameLoopInterval)
+    for(let ghost of ghostList){
+        ghost.stopMovement()
     }
 }

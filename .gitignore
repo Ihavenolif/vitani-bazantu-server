@@ -1,5 +1,4 @@
 __pycache__
-test.js
 data.json
 db.sqlite3
 realtime-server/node_modules
@@ -8,3 +7,4 @@ rplace-server/node_modules
 rplace-server/backups/*
 navstevnost_log.txt
 question_log.txt
+node_modules/*
