@@ -27,6 +27,7 @@ class Ghost extends GameObject{
     checkPlayerCollision(){
         if(Math.abs(this.xpos - player.xpos) <= 10 && Math.abs(this.ypos - player.ypos) <= 10){
             alert("game over")
+            stopGame()
         }
     }
 
@@ -35,6 +36,9 @@ class Ghost extends GameObject{
     }
 
     startMovement(){
+        /**
+         * @type {}
+         */
         this.movementInterval = setInterval(() => {
             if(mapInfo.parsed[this.ypos/2][this.xpos/2] == "I"){
                 let canMove = false
@@ -85,5 +89,9 @@ class Ghost extends GameObject{
                 }
             }
         }, 1000/60);
+    }
+
+    stopMovement(){
+        clearInterval(this.movementInterval)
     }
 }
