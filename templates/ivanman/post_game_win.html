@@ -106,7 +106,7 @@
 
               <button onclick="submitCustom()" class="form-button">Odeslat</button>
             </div>
-            <div class="vertical-menu">
+            <div class="vertical-menu" id="vertical-menu">
               <a style="display: inline-block; margin-bottom: 4px;" href="/ivanman" id="hrat-znovu-button">Hrát znovu</a>
           </div>
             
@@ -159,7 +159,8 @@ if(list.indexOf(tempObject) < 10){
   document.getElementById("hrat-znovu-button").innerHTML += " (bez zapsání)"
   document.getElementById("vysledek-container").innerHTML = "Podařilo se ti umístit na " + (list.indexOf(tempObject) + 1) + ". místě! Pokud chceš svůj výsledek zapsat, napiš nám sem jméno, pod kterým bude možné výsledek dohledat:"
 }else{
-  document.getElementById("vysledek-container").innerHTML = "Bohužel, nepodařilo se ti umístit mezi prvními deseti. Možná nebuď taková žumpa a zkus to znovu?"
+  document.getElementById("vysledek-container").innerHTML = "Bohužel, nepodařilo se ti umístit mezi prvními deseti. Pro dosažení 10. místa musíš nasbírat " + list[9] +" bodů. Možná nebuď taková žumpa a zkus to znovu?"
+  document.getElementById("vertical-menu").innerHTML += "<a style=\"display: inline-block; margin-bottom: 4px;\" href=\"/ivanman/leaderboard\">Tabulka vítězů</a>"
 }
 
       function submitCustom(){
