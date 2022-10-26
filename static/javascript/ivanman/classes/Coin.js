@@ -19,6 +19,10 @@ class Coin extends GameObject{
         if(Math.abs(this.xpos - player.xpos) <= 4 && Math.abs(this.ypos - player.ypos) <= 4){
             coinList.splice(coinList.indexOf(this),1)
             collectedCoins++
+            if(collectedCoins == totalCoins){
+                stopGame(true)
+                //alert("you won, total score: " + (Math.pow(collectedCoins,2)/totalTicks).toString())
+            }
         }
     }
 
@@ -29,6 +33,7 @@ class Coin extends GameObject{
                     if(x%10==0 && y%10==0){
                         var temp = new Coin(x*2, y*2)
                         coinList.push(temp)
+                        totalCoins++
                     }
                 }
             }

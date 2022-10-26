@@ -38,6 +38,12 @@ let collectedCoins = 0
  * @type {number}
  */
 let totalCoins = 0
+/**
+ * @type {number}
+ */
+let totalTicks = 0
+
+
 
 //GETTING THE MAP INFO
 
@@ -51,7 +57,7 @@ xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         // Typical action to be performed when the document is ready:
         /**
-         * @type {Array[Array][String]}
+         * @type {Array<Array><String>}
          */
         mapInfo.parsed = JSON.parse(LZString.decompressFromUTF16(xhttp.responseText))
         startGame()
@@ -60,6 +66,13 @@ xhttp.onreadystatechange = function() {
 }
 xhttp.open("POST", "http://gvnqrkod.cz:6969/getMap", true)
 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+
+/**
+ * @type {XMLHttpRequest}
+ */
+const xhttpStart = new XMLHttpRequest();
+xhttpStart.open("POST", "http://gvnqrkod.cz:5000/ivanman", true)
+xhttpStart.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
 /**
  * @type {HTMLImageElement}
@@ -136,6 +149,7 @@ function keyDown(evt) {
  * This function will be run every frame, doing the math required for the game.
  */
 function gameLoop(){
+    totalTicks++
     if(player.switchDirection == "left" && player.canMoveLeft()){
         player.moveDirection = "left"
         player.switchDirection = ""
@@ -173,7 +187,11 @@ function gameLoop(){
             player.move(0,2)
         } 
     }
+    
+    draw()
+}
 
+function draw(){
     //Drawing.clearCanvas()
     Drawing.drawBackground()
     /*if(touchInfo.isActive){
@@ -193,6 +211,10 @@ function gameLoop(){
 
 window.onload = () =>{
     xhttp.send(JSON.stringify({}))
+    xhttpStart.send(JSON.stringify({
+        request: "start_game",
+        id: document.getElementById("id").value
+    }))
 }
 
 /**
@@ -203,15 +225,61 @@ let gameLoopInterval = null
 function startGame(){
     console.log(mapInfo)
     Coin.generate()
-    gameLoopInterval = setInterval(gameLoop, 1000/60)
-    for(let ghost of ghostList){
-        ghost.startMovement()
-    }
+    draw()
+    setTimeout(() => {
+        gameLoopInterval = setInterval(gameLoop, 1000/60)
+        for(let ghost of ghostList){
+            ghost.startMovement()
+        }
+    }, 1000);
+    
 }
 
-function stopGame(){
+/**
+ * @param {boolean} win 
+ */
+function stopGame(win){
     clearInterval(gameLoopInterval)
     for(let ghost of ghostList){
         ghost.stopMovement()
     }
+
+    /**
+     * @type {HTMLFormElement}
+     */
+    const redirectForm = document.getElementById("redirect-form")
+    /**
+     * @type {HTMLInputElement}
+     */
+    const winField = document.getElementById("win")
+    /**
+     * @type {HTMLInputElement}
+     */
+    const pocetBoduField = document.getElementById("pocetBodu")
+     /**
+     * @type {HTMLInputElement}
+     */
+    const pocetCoinuField = document.getElementById("pocetCoinu")
+    /**
+     * @type {HTMLInputElement}
+     */
+    const casField = document.getElementById("cas")
+    /**
+     * @type {number}
+     */
+    const score = Math.round((Math.pow(collectedCoins,2)/totalTicks)*6000)/100
+
+    if(win){
+        winField.value = 1
+        alert("you won, total score: " + score.toString())
+    }else{
+        winField.value = 0
+        alert("game over")
+    }
+    
+    pocetBoduField.value = score
+    pocetCoinuField.value = collectedCoins
+    casField.value = Math.round((totalTicks/60)*100)/100
+
+    redirectForm.submit()
 }

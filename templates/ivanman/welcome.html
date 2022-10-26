@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYMPlace</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+</head>
+<body>
+  <div class="topnav" id="myTopnav">
+    <a href="/">Hlavní stránka</a>
+    <div class="dropdown">
+      <button class="dropbtn">Archiv
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/archiv">Archiv</a>
+        <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+        <a href="/archiv/gymplace">GYMPlace</a>
+      </div>
+    </div> 
+    <div class="dropdown active">
+      <button class="dropbtn">IvanMan
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/ivanman_welcome" class="active-inverted">IvanMan</a>
+        <a href="/ivanman/leaderboard">Tabulka vítězů</a>
+      </div>
+    </div>
+    <a href="/faq">FAQ</a>
+    <a href="/ucitel_zemepisu">Učitel zeměpisu</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+  </div>
+
+    <div class="row">
+        <div class="column left">
+        </div>
+        <div class="column middle">
+            <img src="/static/images/rplace/gymplace.jpg" style="width: 100%; margin-top: 30px; max-width: 500px;">
+            <p>
+                Vítejte! <br><br>  GYMplace je místo, kde se můžete realizovat v tom nejlepším slova smyslu. Čeká na vás plátno a je jen na vás jak ho využijete. Teď je možná ještě prázdné, ale my doufáme, že brzy bude, díky vám, plné barevných pixelů a z nich vytvořených uměleckých děl. Plátno je online, a tak v reálném čase můžete se spolužáky a kamarády tvořit, co svět ještě neviděl. <br><br> 
+                Pokud jste někdy slyšeli o r/place, už víte jak to funguje. Na toho, kdo o tom dnes slyší poprvé, čekají hodiny a dny objevování neuvěřitelných možností. Připravili jsme pro vás i chat, který neváhejte využít pro komunikaci při tvorbě veledíla.
+            </p>
+
+            <h3>Zásady plátna</h3>
+
+            <p>Prosíme, vyvarujte se výtvorů a zpráv v chatu s urážlivým významem.</p>
+            <p>Autor stránky nenese zodpovědnost za obsah plátna ani zpráv v chatu.</p>
+            <p>Kliknutím na "pokračovat" souhlasíš se zásadami plátna.</p>
+
+            <h1>BLABLABLA TADY BUDOU KECY O IVANOVI</h1>
+            
+            <form action="/ivanman" method="post" style="display: none;" id="reditect-form">
+                <input type="text" name="request" id="request" value="from_landing_page">
+            </form>
+
+            <div class="vertical-menu">
+                <a href="/ivanman">Pokračovat</a>
+            </div>
+        </div>
+        <div class="column right">
+          
+        </div>
+    </div>
+
+    <!--
+        PASTED GARBAGE AHEAD
+    -->
+    <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+        </script>
+</body>
+</html>
