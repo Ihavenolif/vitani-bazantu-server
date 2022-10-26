@@ -162,7 +162,7 @@ def ivanman_leaderboard():
     new_list = sorted(list, key=lambda d: d["pocetBodu"])
     new_list.reverse()
 
-    sendable_list = new_list[0:5]
+    sendable_list = new_list[0:10]
 
     print(sendable_list)
 
