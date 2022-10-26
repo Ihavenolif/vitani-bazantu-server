@@ -267,7 +267,7 @@ function stopGame(win){
     /**
      * @type {number}
      */
-    const score = Math.round((Math.pow(collectedCoins,3)/totalTicks)*6000)/100
+    const score = Math.round((Math.pow(collectedCoins,2.2)/totalTicks)*6000)/100
 
     if(win){
         winField.value = 1
