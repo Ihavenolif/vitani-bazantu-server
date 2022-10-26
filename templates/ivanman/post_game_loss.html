@@ -88,11 +88,10 @@
                 </p>
             </div> 
 
-            <p>
-                Pokud chceš zveřejnit svůj výsledek, napiš nám sem jméno, pod kterým bude možné výsledek dohledat:
-            </p>
+            <p id="vysledek-container"></p>
 
-            <form action="/ivanman" method="post" id="submit-form">
+            <div id="form-container" style="display: none;">
+              <form action="/ivanman" method="post" id="submit-form">
                 <input type="text" id="jmeno" name="jmeno" placeholder="Jméno">
 
                 <div style="display: none;">
@@ -103,9 +102,13 @@
                     <input type="number" name="cas" id="cas" value="{{cas}}">
                     <input type="number" name="id" id="id" value="{{id}}">
                 </div>
-            </form>
+              </form>
 
-            <button onclick="submitCustom()" class="form-button">Odeslat</button>
+              <button onclick="submitCustom()" class="form-button">Odeslat</button>
+            </div>
+            <div class="vertical-menu">
+              <a style="display: inline-block; margin-bottom: 4px;" href="/ivanman" id="hrat-znovu-button">Hrát znovu</a>
+          </div>
         </div>
         <div class="column right">
           
@@ -115,7 +118,7 @@
         
           <h3>Příliš dlouhé jméno</h3>
 
-          <p>Jméno musí být kratší, než 20 znaků.</p>
+          <p>Jméno musí být kratší, než 30 znaků.</p>
   
           <div class="vertical-menu">
             <a style="display: inline;" href="javascript:hidePopup()">OK</a>
@@ -124,13 +127,46 @@
     </div>
 
     <script>
+      /**
+       * @type {Array}
+       */
+      const list = JSON.parse('{{  list|tojson }}')
+
+      const tempObject = {
+        pocetBodu: Number(document.getElementById("pocetBodu").value),
+        pocetCoinu: Number(document.getElementById("pocetCoinu").value),
+        cas: Number(document.getElementById("cas").value)
+      }
+
+      list.push(tempObject)
+
+      function sortList(a,b){
+        if(a.pocetBodu > b.pocetBodu){
+          return -1
+        }
+        if(a.pocetBodu < b.pocetBodu){
+          return 1
+        }
+        return 0
+      }
+      
+      list.sort(sortList)
+
+      if(list.indexOf(tempObject) < 10){
+        document.getElementById("form-container").style.display = "block"
+        document.getElementById("hrat-znovu-button").innerHTML += " (bez zapsání)"
+        document.getElementById("vysledek-container").innerHTML = "Podařilo se ti umístit na " + (list.indexOf(tempObject) + 1) + ". místě! Pokud chceš svůj výsledek zapsat, napiš nám sem jméno, pod kterým bude možné výsledek dohledat:"
+      }else{
+        document.getElementById("vysledek-container").innerHTML = "Bohužel, nepodařilo se ti umístit mezi prvními deseti. Možná nebuď taková žumpa a zkus to znovu?"
+      }
+
       function submitCustom(){
         /**
          * @type {HTMLInputElement}
          */ 
         const jmenoField = document.getElementById("jmeno")
 
-        if(jmeno.value.length > 20){
+        if(jmeno.value.length > 30){
           const popupDiv = document.getElementById("name-too-long-popup")
           popupDiv.style.display = "block"
           return "kokot"

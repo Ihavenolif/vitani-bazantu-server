@@ -108,6 +108,24 @@ def ivanman():
         () #does nothing
 
     if request.form["request"] == "post_game":
+        entries = IvanmanDatabase.query.all()
+
+        list = []
+
+        for entry in entries:
+            temp = {}
+            if not entry.pocet_bodu: continue
+            temp["pocetBodu"] = entry.pocet_bodu
+            temp["pocetCoinu"] = entry.pocet_coinu
+            temp["cas"] = entry.cas
+            temp["jmeno"] = entry.jmeno
+            list.append(temp)
+    
+        new_list = sorted(list, key=lambda d: d["pocetBodu"])
+        new_list.reverse()
+
+        sendable_list = new_list[0:10]
+
         if request.form["win"] == "1":
             return render_template(
                 "ivanman/post_game_win.html", 
@@ -115,7 +133,8 @@ def ivanman():
                 win=1,
                 pocetBodu=request.form["pocetBodu"],
                 pocetCoinu=request.form["pocetCoinu"],
-                cas=request.form["cas"]
+                cas=request.form["cas"],
+                list=sendable_list
             )
         else:
             return render_template(
@@ -124,7 +143,8 @@ def ivanman():
                 win=0,
                 pocetBodu=request.form["pocetBodu"],
                 pocetCoinu=request.form["pocetCoinu"],
-                cas=request.form["cas"]
+                cas=request.form["cas"],
+                list=sendable_list
             )
 
     if request.form["request"] == "point_submit":
@@ -135,7 +155,7 @@ def ivanman():
         entry.pocet_coinu = request.form["pocetCoinu"]
         entry.cas = request.form["cas"]
         db.session.commit()
-        return render_template("ivanman/post_submit.html")
+        return "<script>window.location=\"/ivanman/leaderboard\"</script>"
 
 @app.route("/ivanman_welcome")
 def ivanman_welcome():
