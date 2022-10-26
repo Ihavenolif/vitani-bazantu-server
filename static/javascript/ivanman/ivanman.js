@@ -271,15 +271,19 @@ function stopGame(win){
 
     if(win){
         winField.value = 1
-        alert("you won, total score: " + score.toString())
     }else{
         winField.value = 0
-        alert("game over")
+        document.getElementById("bruh").play()
+        
     }
     
     pocetBoduField.value = score
     pocetCoinuField.value = collectedCoins
     casField.value = Math.round((totalTicks/60)*100)/100
 
-    redirectForm.submit()
+    setTimeout(() => {
+        redirectForm.submit()
+    }, 1000);
+
+    
 }
