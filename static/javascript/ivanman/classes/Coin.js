@@ -5,14 +5,14 @@ class Coin extends GameObject{
      */
      constructor(xpos, ypos){
         super()
-        this.height = 5
-        this.width = 5
+        this.height = 3
+        this.width = 3
         this.xpos = xpos
         this.ypos = ypos
     }
 
     setFillStyle(){
-        ctx.fillStyle = "#00FF00"
+        ctx.fillStyle = "#FFFF00"
     }
 
     checkPlayerCollision(){
