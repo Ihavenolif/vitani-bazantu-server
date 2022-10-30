@@ -13,7 +13,7 @@ canvas.width = 1002
 /**
  * @type {Player}
  */
-const player = new Player(30,30,40,40)
+const player = new Player(30,30,500,20)
 
 /**
  * @type {Array<Coin>}
@@ -25,10 +25,10 @@ let coinList = []
  */
 let ghostList = []
 
-ghostList.push(new Ghost(760,960,0))
-ghostList.push(new Ghost(500,960,1))
-ghostList.push(new Ghost(240,960,2))
-ghostList.push(new Ghost(760,40,3))
+ghostList.push(new Ghost(20,20,0))
+ghostList.push(new Ghost(20,960,1))
+ghostList.push(new Ghost(980,20,2))
+ghostList.push(new Ghost(980,960,3))
 
 /**
  * @type {number}
