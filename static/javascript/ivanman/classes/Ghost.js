@@ -2,26 +2,44 @@ class Ghost extends GameObject{
     /**
      * @param {number} xpos 
      * @param {number} ypos 
+     * @param {number} id
      */
-     constructor(xpos, ypos){
+     constructor(xpos, ypos, id){
         super()
         this.height = 20
         this.width = 20
         this.xpos = xpos
         this.ypos = ypos
+        this.id = id
+    }
+
+    init(){
+        this.image = document.getElementById("ucitel-img-" + this.id.toString())
     }
 
     /**
+     * @type {HTMLImageElement}
+     */
+    image
+    /**
+     * @type {number}
+     */
+    id
+    /**
      * @type {string}
      */
-     moveDirection = ""
-     /**
-      * @type {string}
-      */
-     switchDirection = ""
+    moveDirection = ""
+    /**
+     * @type {string}
+     */
+    switchDirection = ""
 
     setFillStyle(){
         ctx.fillStyle = "#000000"
+    }
+
+    draw(){
+        ctx.drawImage(this.image, this.xpos-30, this.ypos-30, 60, 60)
     }
 
     checkPlayerCollision(){

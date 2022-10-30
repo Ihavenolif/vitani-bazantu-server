@@ -25,10 +25,10 @@ let coinList = []
  */
 let ghostList = []
 
-ghostList.push(new Ghost(760,960))
-ghostList.push(new Ghost(500,960))
-ghostList.push(new Ghost(240,960))
-ghostList.push(new Ghost(760,40))
+ghostList.push(new Ghost(760,960,0))
+ghostList.push(new Ghost(500,960,1))
+ghostList.push(new Ghost(240,960,2))
+ghostList.push(new Ghost(760,40,3))
 
 /**
  * @type {number}
@@ -223,12 +223,16 @@ window.onload = () =>{
 let gameLoopInterval = null
 
 function startGame(){
+    for(let ghost of ghostList){
+        ghost.init()
+    }
     console.log(mapInfo)
     Coin.generate()
     draw()
     setTimeout(() => {
         gameLoopInterval = setInterval(gameLoop, 1000/60)
         for(let ghost of ghostList){
+            
             ghost.startMovement()
         }
     }, 1000);
