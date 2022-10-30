@@ -9,7 +9,10 @@ canvas.height = 1002
 canvas.width = 1002
 
 //VARS SETUP
-
+/**
+ * @type {Array<String>}
+ */
+const ucitelDict = ["", "IP tě chytila", "JK tě chytil", "JM tě chytil", "JN tě chytil", "JS tě chytil", "JK tě chytila", "KK tě chytila", "LH tě chytila", "LK tě chytila", "LP tě chytila", "LZ tě chytila", "MB tě chytil", "Mistr JF tě chytil", "MK tě chytila", "OK tě chytil", "RB tě chytila", "RP tě chytil", "RP tě chytil", "SK tě chytila", "VZ tě chytil", "JJ tě chytil", "LK tě chytila", "MV tě chytil"]
 /**
  * @type {Player}
  */
@@ -29,6 +32,8 @@ ghostList.push(new Ghost(20,20,0))
 ghostList.push(new Ghost(20,960,1))
 ghostList.push(new Ghost(980,20,2))
 ghostList.push(new Ghost(980,960,3))
+ghostList.push(new Ghost(640,440,4))
+ghostList.push(new Ghost(360,540,5))
 
 /**
  * @type {number}

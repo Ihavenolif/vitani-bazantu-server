@@ -84,6 +84,8 @@
     <img src="/static/images/ivanman/ucitele/{{ucitel1}}.png" id="ucitel-img-1" style="height: 1px; border-radius: 50%; display: none;">
     <img src="/static/images/ivanman/ucitele/{{ucitel2}}.png" id="ucitel-img-2" style="height: 1px; border-radius: 50%; display: none;">
     <img src="/static/images/ivanman/ucitele/{{ucitel3}}.png" id="ucitel-img-3" style="height: 1px; border-radius: 50%; display: none;">
+    <img src="/static/images/ivanman/ucitele/{{ucitel4}}.png" id="ucitel-img-4" style="height: 1px; border-radius: 50%; display: none;">
+    <img src="/static/images/ivanman/ucitele/{{ucitel5}}.png" id="ucitel-img-5" style="height: 1px; border-radius: 50%; display: none;">
 
     <img src="/static/images/ivanman/map_classic.png" id="map-img" style="display: none;">
 
@@ -94,11 +96,16 @@
         <input type="number" name="pocetCoinu" id="pocetCoinu" value="0">
         <input type="number" name="cas" id="cas" value="0">
         <input type="number" name="id" id="id" value="{{id}}">
+        <input type="text" name="ucitel" id="ucitel">
     </form>
 
     <audio id="bruh">
       <source src="/static/sounds/bruh.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+      const ucitele = [Number("{{ucitel0}}"), Number("{{ucitel1}}"), Number("{{ucitel2}}"), Number("{{ucitel3}}"), Number("{{ucitel4}}"), Number("{{ucitel5}}")]
+    </script>
 
     <script src="/static/javascript/lz-string.js"></script>
     <script src="/static/javascript/ivanman/classes/TouchInfo.js"></script>

@@ -56,7 +56,7 @@
         </div>
         <div class="column middle">
             <h2>Dobrá práce!</h2>
-            <p>Povedlo se ti vyhrát blablabla pls dopiš to...</p>
+            <p>Povedlo se ti utéct z bludiště!</p>
 
             <p>Počet sesbíraných mincí: {{pocetCoinu}}</p>
             <p>Celkový čas: {{cas}}</p>
@@ -74,7 +74,7 @@
                        <mrow>
                          <msup>
                             <mi>pocetMinci</mi>
-                            <mn>2</mn>
+                            <mn>2.5</mn>
                          </msup>
                        </mrow>
                        <mrow>
@@ -159,7 +159,7 @@ if(list.indexOf(tempObject) < 10){
   document.getElementById("hrat-znovu-button").innerHTML += " (bez zapsání)"
   document.getElementById("vysledek-container").innerHTML = "Podařilo se ti umístit na " + (list.indexOf(tempObject) + 1) + ". místě! Pokud chceš svůj výsledek zapsat, napiš nám sem jméno, pod kterým bude možné výsledek dohledat:"
 }else{
-  document.getElementById("vysledek-container").innerHTML = "Bohužel, nepodařilo se ti umístit mezi prvními deseti. Pro dosažení 10. místa musíš nasbírat " + list[9].pocetBodu +" bodů. Možná nebuď taková žumpa a zkus to znovu?"
+  document.getElementById("vysledek-container").innerHTML = "Bohužel, nepodařilo se ti umístit mezi prvními deseti. Pro dosažení 10. místa musíš nasbírat " + list[9].pocetBodu +" bodů. Můžeš to zkusit znovu, prostě git gut, nehraj jako motyka a je to jednoduchý, ne?"
   document.getElementById("vertical-menu").innerHTML += "<a style=\"display: inline-block; margin-bottom: 4px;\" href=\"/ivanman/leaderboard\">Tabulka vítězů</a>"
 }
 

@@ -98,14 +98,14 @@ def ivanman():
 
         imgs_to_send.append(random.randint(1,22))
 
-        while len(imgs_to_send) < 4:
+        while len(imgs_to_send) < 6:
             roll = random.randint(1,22)
             if not (roll in imgs_to_send):
                 imgs_to_send.append(roll)
 
         last_id = db.session.query(func.max(IvanmanDatabase.id)).first()[0]
 
-        return render_template("ivanman/ivanman.html", id=last_id+1, imglist=imgs_to_send, ucitel0=imgs_to_send[0], ucitel1=imgs_to_send[1], ucitel2=imgs_to_send[2], ucitel3=imgs_to_send[3])
+        return render_template("ivanman/ivanman.html", id=last_id+1, imglist=imgs_to_send, ucitel0=imgs_to_send[0], ucitel1=imgs_to_send[1], ucitel2=imgs_to_send[2], ucitel3=imgs_to_send[3], ucitel4=imgs_to_send[4], ucitel5=imgs_to_send[5])
 
     try:
         if request.json["request"] == "start_game":
@@ -153,7 +153,8 @@ def ivanman():
                 pocetBodu=request.form["pocetBodu"],
                 pocetCoinu=request.form["pocetCoinu"],
                 cas=request.form["cas"],
-                list=sendable_list
+                list=sendable_list,
+                ucitel=request.form["ucitel"]
             )
 
     if request.form["request"] == "point_submit":

@@ -44,6 +44,7 @@ class Ghost extends GameObject{
 
     checkPlayerCollision(){
         if(Math.abs(this.xpos - player.xpos) <= 10 && Math.abs(this.ypos - player.ypos) <= 10){
+            document.getElementById("ucitel").value = ucitelDict[ucitele[this.id]]
             stopGame(false)
         }
     }
