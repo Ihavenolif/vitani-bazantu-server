@@ -46,7 +46,7 @@ xhttp.send(JSON.stringify({
             for(y in mapInfo.parsed){
                 for(x in mapInfo.parsed[y]){
                     if(mapInfo.parsed[y][x] == "W"){
-                        ctx.fillStyle = "blue"
+                        ctx.fillStyle = "black"
                         //ctx.fillRect(x*2,y*2,2,2)
                         ctx.fillRect(x*2,y*2,2,2)
                     }
@@ -55,8 +55,8 @@ xhttp.send(JSON.stringify({
             for(y in mapInfo.parsed){
                 for(x in mapInfo.parsed[y]){
                     if(mapInfo.parsed[y][x] == "P" || mapInfo.parsed[y][x] == "I"){
-                        ctx.fillStyle = "yellow"
-                        size = 10
+                        ctx.fillStyle = "#000061"
+                        size = 8
                         ctx.fillRect(x*2-size,y*2-size,2+2*size,2+2*size)
                     }
                 }

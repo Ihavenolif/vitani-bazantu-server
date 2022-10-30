@@ -1,6 +1,6 @@
 import json
 
-with open("generate_query.txt") as query_file:
+with open("generate_query_final.txt") as query_file:
     QUERY = query_file.read()
 
 LINES = QUERY.splitlines()
@@ -12,6 +12,8 @@ result_string = ""
 
 #Iterating through lines of the file
 for task in LINES:
+    if task.startswith("#"):
+        continue
     LINES_TO_PRINT = task.split(";")[0]
 
     #Iterating through each line
