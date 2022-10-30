@@ -1,8 +1,8 @@
 const TABLE = document.getElementById("table")
 const IP = "gvnqrkod.cz"
 let pole = []
-const height = 100
-const width = 100
+const height = 101
+const width = 101
 
 function generateTable(){
     document.body.style.zoom="50%"
