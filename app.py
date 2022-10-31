@@ -94,6 +94,11 @@ def timelapse():
 @app.route("/ivanman", methods=["GET", "POST"])
 def ivanman():
     if(request.method == "GET"):
+        try:
+            map = request.args["map"]
+        except:
+            map = "autoselect"
+
         imgs_to_send = []
 
         imgs_to_send.append(random.randint(1,22))
@@ -105,7 +110,11 @@ def ivanman():
 
         last_id = db.session.query(func.max(IvanmanDatabase.id)).first()[0]
 
-        return render_template("ivanman/ivanman.html", id=last_id+1, imglist=imgs_to_send, ucitel0=imgs_to_send[0], ucitel1=imgs_to_send[1], ucitel2=imgs_to_send[2], ucitel3=imgs_to_send[3], ucitel4=imgs_to_send[4], ucitel5=imgs_to_send[5])
+        f = open("navstevnost_log.txt", "a")
+        f.write("/ivanman" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+        f.close()
+
+        return render_template("ivanman/ivanman.html", id=last_id+1, imglist=imgs_to_send, ucitel0=imgs_to_send[0], ucitel1=imgs_to_send[1], ucitel2=imgs_to_send[2], ucitel3=imgs_to_send[3], ucitel4=imgs_to_send[4], ucitel5=imgs_to_send[5], map=map)
 
     try:
         if request.json["request"] == "start_game":
@@ -130,6 +139,11 @@ def ivanman():
             temp["jmeno"] = entry.jmeno
             list.append(temp)
     
+        with open("./ivanman_results.txt", "a") as result_file:
+            #WIN,POCETBODU,POCETCOINU,CAS,MAPA
+            result_file.write(request.form["win"] + "," + request.form["pocetBodu"] + "," + request.form["pocetCoinu"] + "," + request.form["cas"] + "," + request.form["map"] + "\n")
+            result_file.close()
+
         new_list = sorted(list, key=lambda d: d["pocetBodu"])
         new_list.reverse()
 
@@ -143,7 +157,8 @@ def ivanman():
                 pocetBodu=request.form["pocetBodu"],
                 pocetCoinu=request.form["pocetCoinu"],
                 cas=request.form["cas"],
-                list=sendable_list
+                list=sendable_list,
+                map=request.form["map"]
             )
         else:
             return render_template(
@@ -154,7 +169,8 @@ def ivanman():
                 pocetCoinu=request.form["pocetCoinu"],
                 cas=request.form["cas"],
                 list=sendable_list,
-                ucitel=request.form["ucitel"]
+                ucitel=request.form["ucitel"],
+                map=request.form["map"]
             )
 
     if request.form["request"] == "point_submit":
