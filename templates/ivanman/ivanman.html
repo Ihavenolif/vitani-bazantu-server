@@ -96,7 +96,7 @@
     <img src="/static/images/ivanman/ivani/ivan_open_r.png" id="ivan-open-r" style="height: 1px; display: none;">
     <img src="/static/images/ivanman/ivani/ivan_open_u.png" id="ivan-open-u" style="height: 1px; display: none;">
 
-    <img src="/static/images/ivanman/map_classic.png" id="map-img" style="display: none;">
+    <img src="/static/images/ivanman/map_{{map}}.png" id="map-img" style="display: none;">
 
     <form action="/ivanman" method="post" style="display: none;" id="redirect-form">
         <input type="text" name="request" id="request" value="post_game">
@@ -106,6 +106,7 @@
         <input type="number" name="cas" id="cas" value="0">
         <input type="number" name="id" id="id" value="{{id}}">
         <input type="text" name="ucitel" id="ucitel">
+        <input type="text" name="map" id="map" value="{{map}}">
     </form>
 
     <audio id="bruh">

@@ -12,7 +12,7 @@ canvas.width = 1002
 /**
  * @type {Array<String>}
  */
-const ucitelDict = ["", "IP tě chytila", "JK tě chytil", "JM tě chytil", "JN tě chytil", "JS tě chytil", "JK tě chytila", "KK tě chytila", "LH tě chytila", "LK tě chytila", "LP tě chytila", "LZ tě chytila", "MB tě chytil", "Mistr JF tě chytil", "MK tě chytila", "OK tě chytil", "RB tě chytila", "RP tě chytil", "RP tě chytil", "SK tě chytila", "VZ tě chytil", "JJ tě chytil", "LK tě chytila", "MV tě chytil"]
+const ucitelDict = ["", "IP tě chytila", "JK tě chytil", "JM tě chytil", "JN tě chytil", "JS tě chytil", "JK tě chytila", "KK tě chytila", "LH tě chytila", "LK tě chytila", "LP tě chytila", "LZ tě chytila", "MB tě chytil", "Mistr JF tě chytil", "MK tě chytila", "OK tě chytil", "RB tě chytila", "RP tě chytil", "RP tě chytil", "SK tě chytila", "VZ tě chytil", "JJ tě chytil", "LV tě chytila", "MV tě chytil"]
 /**
  * @type {Player}
  */
