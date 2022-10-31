@@ -231,6 +231,7 @@ function startGame(){
     for(let ghost of ghostList){
         ghost.init()
     }
+    player.init()
     console.log(mapInfo)
     Coin.generate()
     draw()

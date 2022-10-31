@@ -106,7 +106,7 @@ class Ghost extends GameObject{
                     this.moveDirection = "up"
                 }
             }
-        }, 1000/60);
+        }, 1000/70);
     }
 
     stopMovement(){
