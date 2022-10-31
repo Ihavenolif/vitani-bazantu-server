@@ -49,7 +49,6 @@ class Player extends GameObject{
         }else{
             var status = "closed"
         }
-        console.log(this.ivani)
         ctx.drawImage(this.ivani[status][this.moveDirection], this.xpos-30, this.ypos-30, 60, 60)
     }
 }
