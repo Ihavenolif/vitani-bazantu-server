@@ -241,7 +241,7 @@ function startGame(){
             
             ghost.startMovement()
         }
-    }, 1000);
+    }, 2000);
     
 }
 
