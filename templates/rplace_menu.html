@@ -62,8 +62,8 @@
     </div>
 
     <div class="menu">
-        <button class="btn btn-primary" onclick="parent.showNapoveda()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Nápověda <span class="glyphicon glyphicon-question-sign"></span></button>
-        <button class="btn btn-primary" id="show-chat-button" onclick="parent.showChat()" style="margin-bottom: 2.2%; background-color: black; border-color: black;">Chat <span class="glyphicon glyphicon-comment"></span></button>
+        <button class="btn btn-primary" onclick="parent.showNapoveda()" style="background-color: black; border-color: black;">Nápověda <span class="glyphicon glyphicon-question-sign"></span></button>
+        <button class="btn btn-primary" id="show-chat-button" onclick="parent.showChat()" style="background-color: black; border-color: black;">Chat <span class="glyphicon glyphicon-comment"></span></button>
     </div>
 
     <div class="menu">
@@ -84,13 +84,13 @@
         function updateCas(){
             const d = new Date()
             time = d.getTime() /1000
-            timeDiff = 1665777600 - time
+            timeDiff = 1665784800 - time
             const textField = document.getElementById("cas-konec-platna")
 
             if(timeDiff < 0){
                 textField.innerHTML = "GYMPlace je u konce. Můžeš nám pomoct s úklidem."
-                document.getElementById("mode-menu").innerHTML = "<img class=\"menu-img\" id=\"eraserIcon\" style=\"border: 5px solid red;\" onclick=\"selectEraser()\" src=\"/static/images/rplace/eraser.jpg\">"
-                window.mode = "eraser"
+                //document.getElementById("mode-menu").innerHTML = "<img class=\"menu-img\" id=\"eraserIcon\" style=\"border: 5px solid red;\" onclick=\"selectEraser()\" src=\"/static/images/rplace/eraser.jpg\">"
+                //window.mode = "eraser"
                 return
             }
 
