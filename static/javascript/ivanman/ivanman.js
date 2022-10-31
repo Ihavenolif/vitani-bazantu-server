@@ -76,7 +76,7 @@ xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
  * @type {XMLHttpRequest}
  */
 const xhttpStart = new XMLHttpRequest();
-xhttpStart.open("POST", "http://gvnqrkod.cz:5000/ivanman", true)
+xhttpStart.open("POST", "http://gvnqrkod.cz/ivanman", true)
 xhttpStart.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
 /**
