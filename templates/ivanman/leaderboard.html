@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+    <link rel="stylesheet" href="/static/styles/collapsible.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+}
+
+th{
+  background-color: #444;
+  color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 600px) {
+  th, td{
+    font-size: 70%;
+  }
+}
+    </style>
+    <title>Podrobnosti</title>
+</head>
+
+<body>   
+    <div class="topnav" id="myTopnav">
+        <a href="/">Hlavní stránka</a>
+        <div class="dropdown">
+          <button class="dropbtn">Archiv
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/archiv">Archiv</a>
+            <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+            <a href="/archiv/gymplace">GYMPlace</a>
+          </div>
+        </div> 
+        <div class="dropdown active">
+          <button class="dropbtn">IvanMan
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/ivanman_welcome">IvanMan</a>
+            <a href="/ivanman/leaderboard" class="active-inverted">Tabulka vítězů</a>
+          </div>
+        </div>
+        <a href="/faq">FAQ</a>
+        <a href="/ucitel_zemepisu">Učitel zeměpisu</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+      </div>
+
+    <div class="row">
+        <div class="column left">
+        </div>
+        <div class="column middle">
+            <h2>Blablabla...</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jméno</th>
+                        <th style="text-align: right;">Počet bodů</th>
+                        <th style="text-align: right;">Počet mincí</th>
+                        <th style="text-align: right;">Čas</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    
+                </tbody>
+            </table>
+            <button type="button" class="collapsible"><strong>Jak počítáme body?</strong></button>
+            <div class="collapsible-content">
+              <p>Body se počítají následujícím způsobem:</p>
+              <p>
+                <math>
+                    <mrow>
+                     <mi>pocetBodu</mi>
+                     <mo>=</mo>
+                     <mfrac>
+                       <mrow>
+                         <msup>
+                            <mi>pocetMinci</mi>
+                            <mn>2</mn>
+                         </msup>
+                       </mrow>
+                       <mrow>
+                         <mn>cas</mn>
+                         <!--<mo>&InvisibleTimes;</mo>
+                         <mi>a</mi>-->
+                       </mrow>
+                     </mfrac>
+                    </mrow>
+                   </math>
+                </p>
+            </div> 
+            <p>Blablabla znovu... odkazy...</p>
+            <div class="vertical-menu">
+                <a style="display: inline;" href="/ivanman_welcome">Hrát IvanMan</a>
+                <a style="display: inline;" href="/">Hlavní stránka</a>
+            </div>
+        </div>
+        <div class="column right">
+          
+        </div>
+    </div>
+
+
+    
+
+    <script>
+        function updateTable(){
+            BODY.innerHTML = ""
+
+            //list = sortList(filterList())
+
+            for(x of LIST){
+                date = new Date(x.timestamp)
+
+                day = date.toLocaleString().split("/")[1]
+                month = date.toLocaleString().split("/")[0]
+                BODY.innerHTML += "<tr>"+
+                                   "<td>" + x.jmeno + "</td>"+
+                                   "<td style=\"text-align: right;\">" + x.pocetBodu + "</td>"+
+                                   "<td style=\"text-align: right;\">" + x.pocetCoinu + "&nbsp;/&nbsp;769</td>"+
+                                   "<td style=\"text-align: right;\">" + x.cas + "&nbsp;s</td>"+
+                                  "</tr>"
+            }
+        }
+
+        LIST = JSON.parse('{{  list|tojson }}')
+        BODY = document.getElementById("tableBody")
+        SORTBY = document.getElementById("sortBy")
+        FILTERTRIDA = document.getElementById("filterTrida")
+
+        updateTable()
+    </script>
+
+    <!--
+        PASTED GARBAGE AHEAD
+    -->
+    <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+
+        var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("collapsible-active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+} 
+        </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

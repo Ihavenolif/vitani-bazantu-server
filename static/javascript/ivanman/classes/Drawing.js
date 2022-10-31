@@ -9,6 +9,10 @@ class Drawing {
         joystickCtx.fill()*/
     }
 
+    static drawBackground(){
+        ctx.drawImage(mapImageElement,0,0)
+    }
+
     static drawJoystick(){
         console.log(touchInfo.lastYPos)
         joystickCtx.fillStyle = "#ddd"
