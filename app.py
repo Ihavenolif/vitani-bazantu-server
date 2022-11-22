@@ -80,6 +80,10 @@ class IvanmanDatabase(db.Model):
     pocet_coinu = db.Column(db.Integer)
     cas = db.Column(db.Integer)
 
+@app.route("/clashofclans")
+def clashofclans():
+    return "CoC placeholder"
+
 @app.route("/timelapse", methods=["GET", "POST"])
 def timelapse():
     with open("parsed_drawing_data.json") as map_file:
