@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+    <title>GVN Qr Kód</title>
+</head>
+<body id="body">
+    <div class="topnav" id="myTopnav">
+        <a href="/">Hlavní stránka</a>
+        <a class="active" href="/clashofclans">Clash of Clans</a>
+        <div class="dropdown">
+          <button class="dropbtn">Archiv
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/archiv">Archiv</a>
+            <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+            <a href="/archiv/gymplace">GYMPlace</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">IvanMan
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/ivanman_welcome">IvanMan</a>
+            <a href="/ivanman/leaderboard">Tabulka vítězů</a>
+          </div>
+        </div>
+        <a href="/faq">FAQ</a>
+        <a href="/ucitel_zemepisu">Učitel zeměpisu</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+    </div>
+
+    <div class="row">
+        <div class="column left">
+        </div>
+        <div class="column middle">
+            <img src="/static/images/coc_logo.png" class="img-in-the-middle">
+            <p>Nějakej popis clanu, vymyslete</p>
+            
+            <ul>
+                <li>Máme 75% winrate v CW</li>
+                <li>Donatujeme hodně a všem (ne správně, někdy dostanete gobliny)</li>
+                <li>Ve škole se musíme bavit - škola hrou</li>
+                <li>Bruh</li>
+            </ul>
+
+            <h2>Jak se připojit?</h2>
+
+            <p>1. Najdi nás pod tagem <strong>#22C20VR02</strong> (klikni pro zkopírování) a zadej ho sem</p>
+            <img src="/static/images/clan_guide_1.png" class="img-in-the-middle">
+            <p>2. Klikni vpravo dole na Join</p>
+            <img src="/static/images/clan_guide_2.png" class="img-in-the-middle">
+            <p>3. Napiš nám něco hezkého a vezmeme tě</p>
+            <img src="/static/images/clan_guide_3.png" class="img-in-the-middle">
+
+            <p>Odkazy na stažení hry:</p>
+
+            <br>
+
+            <div class="vertical-menu">
+              <a href="https://play.google.com/store/apps/details?id=com.supercell.clashofclans">Google Play</a>
+              <a href="https://apps.apple.com/us/app/clash-of-clans/id529479190">App Store</a>
+            </div>
+        <div class="column right">
+          
+        </div>
+    </div>
+
+    <!--
+        PASTED GARBAGE AHEAD
+    -->
+    <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+        </script>
+</body>
+</html>
