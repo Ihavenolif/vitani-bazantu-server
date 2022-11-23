@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="/static/styles/column-layout.css">
     <link rel="stylesheet" href="/static/styles/vertical-menu.css">
     <title>GVN Qr Kód</title>
+    <style>
+      #kod{
+        cursor: pointer;
+      }
+    </style>
 </head>
 <body id="body">
     <div class="topnav" id="myTopnav">
@@ -44,10 +49,10 @@
         </div>
         <div class="column middle">
             <img src="/static/images/coc_logo.png" class="img-in-the-middle">
-            <p>Nějakej popis clanu, vymyslete</p>
+            <p>Klan gymplu. Pro studenty z gymplu... ať máme v té škole co dělat...</p>
             
             <ul>
-                <li>Máme 75% winrate v CW</li>
+                <li>Máme 75%+ winrate v CW</li>
                 <li>Donatujeme hodně a všem (ne správně, někdy dostanete gobliny)</li>
                 <li>Ve škole se musíme bavit - škola hrou</li>
                 <li>Bruh</li>
@@ -55,7 +60,7 @@
 
             <h2>Jak se připojit?</h2>
 
-            <p>1. Najdi nás pod tagem <strong>#22C20VR02</strong> (klikni pro zkopírování) a zadej ho sem</p>
+            <p>1. Najdi nás pod tagem <strong id="kod">#22C20VR02</strong> (klikni pro zkopírování) a zadej ho sem</p>
             <img src="/static/images/clan_guide_1.png" class="img-in-the-middle">
             <p>2. Klikni vpravo dole na Join</p>
             <img src="/static/images/clan_guide_2.png" class="img-in-the-middle">
@@ -74,6 +79,12 @@
           
         </div>
     </div>
+
+    <script>
+      document.querySelector("#kod").addEventListener("click", () => {
+        navigator.clipboard.writeText("#22C20VR02")
+      })
+    </script>
 
     <!--
         PASTED GARBAGE AHEAD
