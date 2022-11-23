@@ -82,7 +82,7 @@ class IvanmanDatabase(db.Model):
 
 @app.route("/clashofclans")
 def clashofclans():
-    return "CoC placeholder"
+    return render_template("clashofclans.html")
 
 @app.route("/timelapse", methods=["GET", "POST"])
 def timelapse():

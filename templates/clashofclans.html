@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+    <title>GVN Qr Kód</title>
+</head>
+<body id="body">
+    <div class="topnav" id="myTopnav">
+        <a href="/">Hlavní stránka</a>
+        <a class="active" href="/clashofclans">Clash of Clans</a>
+        <div class="dropdown">
+          <button class="dropbtn">Archiv
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/archiv">Archiv</a>
+            <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+            <a href="/archiv/gymplace">GYMPlace</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">IvanMan
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/ivanman_welcome">IvanMan</a>
+            <a href="/ivanman/leaderboard">Tabulka vítězů</a>
+          </div>
+        </div>
+        <a href="/faq">FAQ</a>
+        <a href="/ucitel_zemepisu">Učitel zeměpisu</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+    </div>
+
+    <div class="row">
+        <div class="column left">
+        </div>
+        <div class="column middle">
+            <h2>Dudes</h2>
+            <p>Nějakej popis clanu, vymyslete</p>
+            <!--<img src="/static/images/ivanman/ivan_full.jpg" class="img-in-the-middle">-->
+            <h1>NEJAKEJ OBRAZEK</h1>
+            <ul>
+                <li>Nějakej</li>
+                <li>bodovej</li>
+                <li>popis</li>
+                <li>clanu</li>
+            </ul>
+
+            <h2>Jak se připojit?</h2>
+
+            <ul>
+                <li>postup</li>
+                <li>jak</li>
+                <li>se</li>
+                <li>připojit</li>
+            </ul>
+
+            <br>
+
+            <div class="vertical-menu">
+              <a href="/ivanman_welcome">Link na google play</a>
+              <a href="/ivanman_welcome">Link na appstore</a>
+            </div>
+        <div class="column right">
+          
+        </div>
+    </div>
+
+    <!--
+        PASTED GARBAGE AHEAD
+    -->
+    <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+        </script>
+</body>
+</html>
