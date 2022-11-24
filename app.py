@@ -366,6 +366,15 @@ def navrhy_pro_ladku():
     
     return "ok"
 
+@app.route("/otazky_z_coc", methods=["POST"])
+def otazky_z_coc():
+    print("kokot")
+    with open("otazky_z_coc.txt", "a") as question_file:
+        question_file.write(request.json["otazka"] + "\n")
+        question_file.close()
+    
+    return "ok"
+
 @app.route("/ucitel_zemepisu", methods=["GET", "POST"])
 def ladka():
     if(request.method == "GET"):
