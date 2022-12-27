@@ -14,6 +14,7 @@
 <body id="body">
     <div class="topnav" id="myTopnav">
         <a class="active" href="/">Hlavní stránka</a>
+        <a href="/clashofclans">Clash of Clans</a>
         <div class="dropdown">
           <button class="dropbtn">Archiv
             <i class="fa fa-caret-down"></i>
@@ -21,10 +22,20 @@
           <div class="dropdown-content">
             <a href="/archiv">Archiv</a>
             <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+            <a href="/archiv/gymplace">GYMPlace</a>
           </div>
         </div>
-        <a href="/gymplace_welcome">GYMPlace</a>
+        <div class="dropdown">
+          <button class="dropbtn">IvanMan
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/ivanman_welcome">IvanMan</a>
+            <a href="/ivanman/leaderboard">Tabulka vítězů</a>
+          </div>
+        </div>
         <a href="/faq">FAQ</a>
+        <a href="/ucitel_zemepisu">Učitel zeměpisu</a>
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
     </div>
 
@@ -32,26 +43,44 @@
         <div class="column left">
         </div>
         <div class="column middle">
-            <span id="gymplace-message-container">
-              <h2>GYMPlace je skoro u konce!</h2>
-              <p>Plátno pro všechny končí v <strong>pátek, 14. 10.</strong> Pokud na něj chceš ještě něco nakreslit, teď je poslední možnost. Po ukončení plátna bude v archivu finální obrázek, co na plátně zůstane po ukončení, spolu s timelapsem celé historie plátna.</p>
+          <h2>Clash of Clans</h2>
+            <img src="/static/images/goblini.jpg" class="img-in-the-middle">
+            <p>"Co tady zase vymejšlíte, vy volové?"</p>
+            <p>Ano. Hrajeme Clash of Clans. Už dlouho. Máme klan. Nastala doba, kdy hledáme nové posily. Ať jsi zkušený hráč či zatím ještě nehraješ, neváhej se zapojit. Další info na odkazu níže.</p>
 
-              <br>
+            <div class="vertical-menu">
+              <a href="/clashofclans">Info o CoC klanu</a>
+            </div>
 
-              <p>Odkaz na plátno je níže. Čas do konce plátna: <strong><span id="cas-konec-platna"></span></strong></p>
-            </span>
+          <br><hr><br>
+
+          <h2>IvanMan</h2>
+            <p>Co má společného tento fešák s celosvětově známou hrou PacMan?</p>
+            <img src="/static/images/ivanman/ivan_full.jpg" class="img-in-the-middle">
+            <p>Překvapivě hodně. Klikni na odkaz dole a zjistíš to na vlastní oči!</p>
+
+            <div class="vertical-menu">
+              <a href="/ivanman_welcome">Pokračovat k IvanManovi</a>
+            </div>
+
+          <br><hr><br>
+
+          <span id="gymplace-message-container">
+            <h2>GYMPlace je u konce!</h2>
+            <p>Děkujeme všem za účast! Výsledek plátna spolu <strong>s timelapsem celé historie</strong> můžeš najít v archivu, odkaz níže.</p>
+          </span>
             
-            <div class="vertical-menu">
-                <a href="/gymplace_welcome">Pokračovat na GYMPlace</a>
-            </div>
+          <div class="vertical-menu">
+            <a href="/archiv/gymplace">Pokračovat do archivu o GYMPlace</a>
+          </div>
 
-            <br><br><hr><br>
+          <br><br><hr><br>
 
-            <h2>Archiv</h2>
-            <p>Nově na naší stránce najdeš archiv. Jedná se o stránku, kde jsou popsány všechny minulé aktivity tohoto projektu a uchovávány výsledky her. Více informací na odkazu níže.</p>
-            <div class="vertical-menu">
-                <a href="/archiv">Pokračovat do archivu</a>
-            </div>
+          <h2>Učitel zeměpisu</h2>
+          <p>Měl/a jsi někdy pocit, že máš problém s učením zeměpisu? Pokud byla tvoje odpověď "Ano", náše nová aplikace je přímo pro tebe! Pokud nebyla, pořád se na ní jdi podívat a vyzkoušet, zajisté tě ve spoustě ohledů obohatí.</p>
+          <div class="vertical-menu">
+            <a href="/ucitel_zemepisu">Pokračovat k učiteli zeměpisu</a>
+          </div>
         </div>
         <div class="column right">
           
@@ -106,10 +135,6 @@
         }
         textField.innerHTML = hours + ":" + minutesString + ":" + secondsString
       }
-
-      updateCas()
-
-      setInterval(updateCas, 1000);
     </script>
 
     <!--

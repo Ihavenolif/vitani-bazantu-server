@@ -16,6 +16,10 @@
     width: 60%;
   }
   
+  .img-holder{
+    width: 50%;
+    margin-left: 25%;
+  }
   /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -39,5 +43,10 @@
 
     .left, .right {
         display: none;
+      }
+    
+      .img-holder{
+        width: 100%;
+        margin-left: 0;
       }
   }

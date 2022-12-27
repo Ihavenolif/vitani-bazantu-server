@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .policko{
+            padding: 0%;
+            margin: 0%;
+            height: 10px;
+            width: 10px;
+            background-color: #FEFEFE;
+            border: 1px solid #ccc;
+        }
+
+        table{
+            border-spacing: 0;
+        }
+
+        td{
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="table-container"><table id="table"></table></div>
+
+    <script>
+        const TABLE = document.getElementById("table")
+const IP = "gvnqrkod.cz"
+let pole = []
+const height = 250
+const width = 400
+
+function generateTable(){
+    document.body.style.zoom="50%"
+    for(y = 0; y < height; y++){ //ITERACE NA DVOUROZMĚRNÉM POLI
+        pole[y] = []
+        row = table.insertRow(y) 
+        for(x = 0; x < width; x++){ 
+            pole[y][x] = row.insertCell(x)
+            //PŘIDÁNÍ KLIKATELNÉHO DIV ELEMENTU, KTERÝ PŘI KLIKNUTÍ ZAVOLÁ FUNKCI tah() SÁM NA SEBE
+            pole[y][x].innerHTML = "<div class=\"policko\" id=\"" + y + "," + x + "\" onclick=\"tah(pole[" + y + "][" + x + "], " + y + ", " + x + ")\"></div>"
+            pole[y][x].red = 254
+            pole[y][x].green = 254
+            pole[y][x].blue = 254
+        }
+    }
+    requestInitialData()
+}
+
+var count = 0
+
+function requestInitialData(){
+    xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = () =>{
+        if(xhttp.readyState == 4 && xhttp.status == 200){
+            /**
+             * @type {number}
+             * */
+            
+            const parsedResponse = JSON.parse(xhttp.responseText)
+
+            /*setInterval(() => {
+                drawSquare(parsedResponse[count])
+                drawSquare(parsedResponse[count+1])
+                drawSquare(parsedResponse[count+2])
+                drawSquare(parsedResponse[count+3])
+                drawSquare(parsedResponse[count+4])
+                drawSquare(parsedResponse[count+5])
+                drawSquare(parsedResponse[count+6])
+                drawSquare(parsedResponse[count+7])
+                drawSquare(parsedResponse[count+8])
+                drawSquare(parsedResponse[count+9])
+                count += 10
+            }, 1);*/
+
+            for(x of parsedResponse){
+                drawSquare(x)
+            }
+        }
+    }
+    xhttp.open("POST", "http://localhost:5000/timelapse", true)
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+    xhttp.send(JSON.stringify({kokot: 12}))
+}
+
+function drawSquare(pixelInfo){
+    square = document.getElementById(pixelInfo.y + "," + pixelInfo.x)
+
+    square.style.backgroundColor = pixelInfo.color
+    square.style.border = "1px solid " + pixelInfo.border
+}
+
+generateTable()
+    </script>
+</body>
+</html>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/styles/column-layout.css">
     <link rel="stylesheet" href="/static/styles/btn-group.css">
     <link rel="stylesheet" href="/static/styles/custom-select.css">
+    <link rel="stylesheet" href="/static/styles/form.css">
     <title>Učitel zeměpisu</title>
     <style>
         .image-inline{
@@ -29,13 +30,20 @@
           <div class="dropdown-content">
             <a href="/archiv">Archiv</a>
             <a href="/archiv/vitani_novacku">Vítání nováčků</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <a href="/archiv/gymplace">GYMPlace</a>
           </div>
         </div> 
-        <a href="/gymplace_welcome">GYMPlace</a>
+        <div class="dropdown">
+          <button class="dropbtn">IvanMan
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/ivanman_welcome">IvanMan</a>
+            <a href="/ivanman/leaderboard">Tabulka vítězů</a>
+          </div>
+        </div>
         <a href="/faq">FAQ</a>
-        <a href="/ladka" class="active">Učitel zeměpisu</a>
+        <a href="/ucitel_zemepisu" class="active">Učitel zeměpisu</a>
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
     </div>
 
@@ -44,20 +52,40 @@
         </div>
         <div class="column middle">
             <h2>Učitel zeměpisu</h2>
-            <p>Pokud ti nejde zeměpis, tahle aplikace je přímo pro tebe! Vymysleli jsme totiž způsob, jak studenty gymnázia lépe vzdělávat pomocí umělé inteligence. Stačí si vybrat téma a náš učitel ti k tomuto tématu něco řekne. Vyzkoušej a uvidíš!</p>
+            <p>Pokud ti nejde zeměpis, tahle aplikace je přímo pro tebe! Vymysleli jsme totiž způsob, jak studenty gymnázia lépe vzdělávat pomocí umělé inteligence. Stačí si vybrat téma a náš učitel ti k tomuto tématu něco řekne. Vyzkoušej a uvidíš! Všechny věty jsou vlastní tvorbou autorky, LZ. Pokud máš návrh na nějaké téma, napiš nám ho dolů.</p>
 
             <div class="custom-select" style="width:200px;">
                 <select id="select-value">
                   <option value="0">Vyber téma</option>
-                  <option value="1">Těžba hnědého uhlí</option>
-                  <option value="2">Těžba černého uhlí</option>
-                  <option value="3">Jaderné elektrárny v České Republice</option>
+                  <option value="1">Asie</option>
+                  <option value="2">Česká republika</option>
+                  <option value="3">Evropa</option>
+                  <option value="4">Evropská Unie</option>
+                  <option value="5">Globalizace</option>
+                  <option value="6">HDP x DPH</option>
+                  <option value="7">Kontinent</option>
+                  <option value="8">Latinská amerika</option>
+                  <option value="9">Jaderné elektrárny v České republice</option>
+                  <option value="10">Obilnice světa</option>
+                  <option value="11">Podnebná pásma</option>
+                  <option value="12">Půda</option>
+                  <option value="13">Roční období</option>
+                  <option value="14">Těžba černého uhlí</option>
+                  <option value="15">Těžba hnědého uhlí</option>
+                  <option value="16">Udržitelný rozvoj</option>
+                  <option value="17">Vesmír</option>
+                  
                 </select>
               </div>            
 
             <p id="result-text"></p>
             <img src="/static/images/qr_loading_gif.gif" id="loading-image" style="display: none;" class="image-inline">
             <div class="btn-group"><button onclick="generate()">Vygenerovat</button></div>
+
+            <p style="font-size: 70%;"><i>Text byl vygenerován s pomocí umělé inteligence od <a href="https://openai.com/">OpenAI</a>.</i></p>
+
+            <input type="text" id="otazka" placeholder="Napiš nám návrh na téma">
+            <button class="form-button" onclick="odeslat()">Odeslat</button>
         </div>
         <div class="column right">
           
@@ -85,6 +113,37 @@
             xhttp.send(JSON.stringify({
                 option: document.getElementById("select-value").value
             }))
+        }
+
+        function odeslat(){
+          /**
+           * @type {HTMLInputElement}
+           */
+           let otazka = document.getElementById("otazka")
+
+          IP = "gvnqrkod.cz"
+
+           if(!otazka.value){
+                return
+            }
+            sendableData = {
+                otazka: otazka.value
+            }
+
+            otazka.value = ""
+            
+            /**
+             * @type {XMLHttpRequest}
+             * */
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  console.log("ok")
+                }
+            }
+            xhttp.open("POST", "http://" + IP + "/navrhy_pro_ladku", true)
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+            xhttp.send(JSON.stringify(sendableData))
         }
     </script>
 

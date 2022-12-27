@@ -2,12 +2,16 @@ import json
 import os
 import math
 import logging
+import html
 import re
 import openai
 import random
 from copypasta import copypasta
+from copypasta_2 import copypasta_2
 from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy, Model
+from sqlalchemy import func, Column, Integer, String, Float
 from datetime import datetime
 
 logging.basicConfig(
@@ -21,13 +25,29 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
+CORS(app)
 
 db = SQLAlchemy(app)
 
 LADKA_VALUES = {
-    "1": "Těžba hnědého uhlí",
-    "2": "Těžba černého uhlí",
-    "3": "Jaderné elektrárny v České Republice"
+    "1": "Asie",
+    "2": "Česká republika",
+    "3": "Evropa",
+    "4": "Evropská Unie",
+    "5": "globalizace",
+    "6": "HDP x DPH",
+    "7": "kontinent",
+    "8": "Latinská amerika",
+    "9": "Jaderné elektrárny v České republice",
+    "10": "obilnice světa",
+    "11": "podnebná pásma",
+    "12": "půda",
+    "13": "roční období",
+    "14": "Těžba černého uhlí",
+    "15": "Těžba hnědého uhlí",
+    "16": "udržitelný rozvoj",
+    "17": "vesmír",
+    
 }
 
 class Entry(db.Model):
@@ -53,9 +73,164 @@ class Odpovedi(db.Model):
     body_zapsany = db.Column(db.Integer)
     spravne = db.Column(db.Integer)
 
-@app.route("/ivanman")
+class IvanmanDatabase(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    jmeno = db.Column(db.String(256))
+    pocet_bodu = db.Column(db.Float())
+    pocet_coinu = db.Column(db.Integer)
+    cas = db.Column(db.Integer)
+
+@app.route("/clashofclans")
+def clashofclans():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/clashofclans" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
+    return render_template("clashofclans.html")
+
+@app.route("/timelapse", methods=["GET", "POST"])
+def timelapse():
+    with open("parsed_drawing_data.json") as map_file:
+        map_text = map_file.read()
+        map_file.close()
+    
+    if(request.method == "GET"):
+        return render_template("timelapse.html")
+
+    return map_text
+
+@app.route("/ivanman", methods=["GET", "POST"])
 def ivanman():
-    return render_template("ivanman/ivanman.html")
+    if(request.method == "GET"):
+        try:
+            map = request.args["map"]
+        except:
+            map = "autoselect"
+
+        imgs_to_send = []
+
+        imgs_to_send.append(random.randint(1,22))
+
+        while len(imgs_to_send) < 6:
+            roll = random.randint(1,22)
+            if not (roll in imgs_to_send):
+                imgs_to_send.append(roll)
+
+        last_id = db.session.query(func.max(IvanmanDatabase.id)).first()[0]
+
+        f = open("navstevnost_log.txt", "a")
+        f.write("/ivanman" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+        f.close()
+
+        return render_template("ivanman/ivanman.html", id=last_id+1, imglist=imgs_to_send, ucitel0=imgs_to_send[0], ucitel1=imgs_to_send[1], ucitel2=imgs_to_send[2], ucitel3=imgs_to_send[3], ucitel4=imgs_to_send[4], ucitel5=imgs_to_send[5], map=map)
+
+    try:
+        if request.json["request"] == "start_game":
+            entry = IvanmanDatabase(id=request.json["id"])
+            db.session.add(entry)
+            db.session.commit()
+            return ""
+    except:
+        () #does nothing
+
+    if request.form["request"] == "post_game":
+        entries = IvanmanDatabase.query.all()
+
+        list = []
+
+        for entry in entries:
+            temp = {}
+            if not entry.pocet_bodu: continue
+            temp["pocetBodu"] = entry.pocet_bodu
+            temp["pocetCoinu"] = entry.pocet_coinu
+            temp["cas"] = entry.cas
+            temp["jmeno"] = entry.jmeno
+            list.append(temp)
+    
+        with open("./ivanman_results.txt", "a") as result_file:
+            #WIN,POCETBODU,POCETCOINU,CAS,MAPA
+            result_file.write(request.form["win"] + "," + request.form["pocetBodu"] + "," + request.form["pocetCoinu"] + "," + request.form["cas"] + "," + request.form["map"] + "\n")
+            result_file.close()
+
+        new_list = sorted(list, key=lambda d: d["pocetBodu"])
+        new_list.reverse()
+
+        sendable_list = new_list[0:10]
+
+        if request.form["win"] == "1":
+            return render_template(
+                "ivanman/post_game_win.html", 
+                id=request.form["id"], 
+                win=1,
+                pocetBodu=request.form["pocetBodu"],
+                pocetCoinu=request.form["pocetCoinu"],
+                cas=request.form["cas"],
+                list=sendable_list,
+                map=request.form["map"]
+            )
+        else:
+            return render_template(
+                "ivanman/post_game_loss.html", 
+                id=request.form["id"], 
+                win=0,
+                pocetBodu=request.form["pocetBodu"],
+                pocetCoinu=request.form["pocetCoinu"],
+                cas=request.form["cas"],
+                list=sendable_list,
+                ucitel=request.form["ucitel"],
+                map=request.form["map"]
+            )
+
+    if request.form["request"] == "point_submit":
+        entry = IvanmanDatabase.query.filter_by(id=request.form["id"]).first()
+        jmeno = request.form["jmeno"]
+        entry.jmeno = html.escape(jmeno)
+        entry.pocet_bodu = request.form["pocetBodu"]
+        entry.pocet_coinu = request.form["pocetCoinu"]
+        entry.cas = request.form["cas"]
+        db.session.commit()
+        return "<script>window.location=\"/ivanman/leaderboard\"</script>"
+
+@app.route("/ivanman_welcome")
+def ivanman_welcome():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/ivanman/welcome" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
+    return render_template("ivanman/welcome.html")
+
+@app.route("/ivanman/leaderboard")
+def ivanman_leaderboard():
+    entries = IvanmanDatabase.query.all()
+
+    list = []
+
+    for entry in entries:
+        temp = {}
+        if not entry.pocet_bodu: continue
+        temp["pocetBodu"] = entry.pocet_bodu
+        temp["pocetCoinu"] = entry.pocet_coinu
+        temp["cas"] = entry.cas
+        temp["jmeno"] = entry.jmeno
+        list.append(temp)
+    
+    new_list = sorted(list, key=lambda d: d["pocetBodu"])
+    new_list.reverse()
+
+    sendable_list = new_list[0:10]
+
+    print(sendable_list)
+
+    return render_template("/ivanman/leaderboard.html", list=sendable_list)
+
+@app.route("/map_gen", methods=["GET", "POST"])
+def map_gen():
+    with open("result_json.json") as map_file:
+        map_text = map_file.read()
+        map_file.close()
+    
+    if(request.method == "GET"):
+        return render_template("map_image_generator.html", map=map_text)
+    
+    return map_text
 
 @app.route("/archiv")
 def archiv():
@@ -77,6 +252,13 @@ def vitani():
     f.write("/archiv/vitani_novacku" + "," + str(datetime.timestamp(datetime.now())) + "\n")
     f.close()
     return render_template("archiv/vitani_novacku.html")
+
+@app.route("/archiv/gymplace")
+def gymplace_archiv():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/archiv/gymplace" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
+    return render_template("archiv/gymplace.html")
 
 @app.route("/gymplace_welcome")
 def rplace_welcome():
@@ -178,6 +360,24 @@ def send_question():
     
     return "ok"
 
+@app.route("/navrhy_pro_ladku", methods=["POST"])
+def navrhy_pro_ladku():
+    print("kokot")
+    with open("navrhy_pro_ladku.txt", "a") as question_file:
+        question_file.write(request.json["otazka"] + "\n")
+        question_file.close()
+    
+    return "ok"
+
+@app.route("/otazky_z_coc", methods=["POST"])
+def otazky_z_coc():
+    print("kokot")
+    with open("otazky_z_coc.txt", "a") as question_file:
+        question_file.write(request.json["otazka"] + "\n")
+        question_file.close()
+    
+    return "ok"
+
 @app.route("/ucitel_zemepisu", methods=["GET", "POST"])
 def ladka():
     if(request.method == "GET"):
@@ -188,7 +388,7 @@ def ladka():
 
     response = openai.Completion.create(
         model = "text-davinci-002",
-        prompt = "Write a presentation in czech on the topic of " + LADKA_VALUES[request.json["option"]] + ".",
+        prompt = "Napiš prezentaci v češtině na téma " + LADKA_VALUES[request.json["option"]] + ".",
         temperature=0.7,
         max_tokens=500
     )
@@ -205,21 +405,27 @@ def ladka():
 
     for x in response_text:
         slovo = ""
-        roll = random.randint(0, 50)
+        roll = random.randint(0, 100)
 
-        if roll < 10:
-            slovo = "samozřejmě"
-        elif roll < 30:
+        if roll < 13:
             slovo = "tedy"
-        elif roll < 40:
-            slovo = "tak"
-        else:
+        elif roll < 13+37:
+            slovo = "vlastně"
+        elif roll < 13+37+15:
+            slovo = "samozřejmě"
+        elif roll < 13+37+15+10:
             slovo = "prosimvás"
+        else:
+            slovo = "tak"
     
         if x == " " and random.random() < 0.15:
             final_text += " " + slovo + " "
         else:
             final_text += x
+
+    with open("ladka_vyplody.txt", "a") as question_file:
+        question_file.write(final_text + "\n\n\n")
+        question_file.close()
 
     return final_text
 
@@ -358,6 +564,13 @@ def copypasta_route():
     f.write("/copypasta" + "," + str(datetime.timestamp(datetime.now())) + "\n")
     f.close()
     return render_template("copypasta.html", pasta=copypasta())
+
+@app.route("/copypasta_2")
+def copypasta_2_route():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/copypasta_2" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
+    return render_template("copypasta.html", pasta=copypasta_2())
 
 @app.route("/kviz", methods=["GET", "POST"])
 def kviz():

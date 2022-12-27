@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+    <title>IvanMan</title>
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="/">Hlavní stránka</a>
+        <div class="dropdown">
+          <button class="dropbtn">Archiv
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/archiv">Archiv</a>
+            <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+          </div>
+        </div>
+        <a href="/ivanman_welcome" class="active" >IvanMan</a>
+        <a href="/faq">FAQ</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+    </div>
+
+    <div class="row">
+        <div class="column left">
+        </div>
+        <div class="column middle">
+            <h2>Výsledek zapsán!</h2>
+            <p>Odkazy dole se můžeš vrátit na hlavní stránku, nebo hrát znovu.</p>
+            
+
+            <div class="vertical-menu">
+                <a style="display: inline-block; margin-bottom: 4px;" href="/ivanman">Hrát znovu</a>
+                <a style="display: inline-block; margin-bottom: 4px;" href="/ivanman/leaderboard">Zobrazit tabulku vítězů</a>
+                <a style="display: inline-block; margin-bottom: 4px;" href="/">Hlavní stránka</a>
+            </div>
+        </div>
+        <div class="column right">
+          
+        </div>
+    </div>
+
+    <!--
+        PASTED GARBAGE AHEAD
+    -->
+    <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+    </script>
+</body>
+</html>
