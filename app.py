@@ -140,6 +140,7 @@ def ivanman():
         for entry in entries:
             temp = {}
             if not entry.pocet_bodu: continue
+            if entry.pocet_coinu > 769: continue
             temp["pocetBodu"] = entry.pocet_bodu
             temp["pocetCoinu"] = entry.pocet_coinu
             temp["cas"] = entry.cas
@@ -155,6 +156,22 @@ def ivanman():
         new_list.reverse()
 
         sendable_list = new_list[0:10]
+
+        if int(request.form["pocetCoinu"]) > 769:
+            with open("./ivanman_cheaters.txt", "a") as result_file:
+                #WIN,POCETBODU,POCETCOINU,CAS,MAPA,TIMESTAMP
+                result_file.write(request.form["win"] + "," + request.form["pocetBodu"] + "," + request.form["pocetCoinu"] + "," + request.form["cas"] + "," + request.form["map"] + "," + str(datetime.timestamp(datetime.now())) + "\n")
+                result_file.close()
+            return render_template(
+                "ivanman/post_game_exploited.html", 
+                id=request.form["id"], 
+                win=1,
+                pocetBodu=request.form["pocetBodu"],
+                pocetCoinu=request.form["pocetCoinu"],
+                cas=request.form["cas"],
+                list=sendable_list,
+                map=request.form["map"]
+            )
 
         if request.form["win"] == "1":
             return render_template(
@@ -206,6 +223,7 @@ def ivanman_leaderboard():
     for entry in entries:
         temp = {}
         if not entry.pocet_bodu: continue
+        if entry.pocet_coinu > 769: continue
         temp["pocetBodu"] = entry.pocet_bodu
         temp["pocetCoinu"] = entry.pocet_coinu
         temp["cas"] = entry.cas
