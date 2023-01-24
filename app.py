@@ -155,6 +155,10 @@ def ivanman():
         sendable_list = new_list[0:10]
 
         if int(request.form["pocetCoinu"]) > 769:
+            with open("./ivanman_cheaters.txt", "a") as result_file:
+                #WIN,POCETBODU,POCETCOINU,CAS,MAPA,TIMESTAMP
+                result_file.write(request.form["win"] + "," + request.form["pocetBodu"] + "," + request.form["pocetCoinu"] + "," + request.form["cas"] + "," + request.form["map"] + "," + str(datetime.timestamp(datetime.now())) + "\n")
+                result_file.close()
             return render_template(
                 "ivanman/post_game_exploited.html", 
                 id=request.form["id"], 
