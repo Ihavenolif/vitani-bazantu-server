@@ -203,6 +203,7 @@ def ivanman_leaderboard():
     for entry in entries:
         temp = {}
         if not entry.pocet_bodu: continue
+        if entry.pocet_coinu > 769: continue
         temp["pocetBodu"] = entry.pocet_bodu
         temp["pocetCoinu"] = entry.pocet_coinu
         temp["cas"] = entry.cas
