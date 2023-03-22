@@ -8,6 +8,7 @@ import openai
 import random
 from copypasta import copypasta
 from copypasta_2 import copypasta_2
+from copypasta_3 import copypasta_3
 from flask import Flask, render_template, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy, Model
@@ -589,6 +590,13 @@ def copypasta_2_route():
     f.write("/copypasta_2" + "," + str(datetime.timestamp(datetime.now())) + "\n")
     f.close()
     return render_template("copypasta.html", pasta=copypasta_2())
+
+@app.route("/copypasta_3")
+def copypasta_3_route():
+    f = open("navstevnost_log.txt", "a")
+    f.write("/copypasta_3" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+    f.close()
+    return render_template("copypasta.html", pasta=copypasta_3())
 
 @app.route("/kviz", methods=["GET", "POST"])
 def kviz():
