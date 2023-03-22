@@ -16,5 +16,5 @@ def random_potřebujeme():
 def random_kdyby():
     return kdyby[random. randint(0,len(kdyby)-1)]
 
-
-print("Dobré ráno, chtěla bych vás všechny poprosit, jestli byste " + random_kdy() + " nemohli chvíli " + random_mohli() + " " + random_kde() + ", potřebujeme ještě " + random_potřebujeme() + " a bylo by dobře, kdyby " + random_kdyby() + ", děkuju :)")
+def copypasta_3():
+    return "Dobré ráno, chtěla bych vás všechny poprosit, jestli byste " + random_kdy() + " nemohli chvíli " + random_mohli() + " " + random_kde() + ", potřebujeme ještě " + random_potřebujeme() + " a bylo by dobře, kdyby " + random_kdyby() + ", děkuju :)"
