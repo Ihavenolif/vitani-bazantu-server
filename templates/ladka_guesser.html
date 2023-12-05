@@ -24,7 +24,6 @@
           margin-right: 0;
           margin-left: 0;
           display: inline-block;
-          border: 2px solid #007bff;
           height: 450px;
           text-align: center;
           line-height: 450px;
@@ -41,7 +40,6 @@
             margin-right: 0;
             margin-left: 0;
             display: block;
-            border: 2px solid #007bff;
             height: 150px;
             text-align: center;
             line-height: 150px;
@@ -61,7 +59,7 @@
         #text-container{
           margin-bottom: 10px;
           text-align: center;
-          font-size: 120%;
+          font-size: 110%;
         }
     </style>
 </head>
@@ -102,8 +100,8 @@
             <h3 style="text-align: center;">Počet bodů: <span id="pointCount">0</span></h3>
             <img src="/static/images/qr_loading_gif.gif" id="loading-image" style="display: none;" class="image-inline">
             <div id="text-container">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Mauris elementum mauris vitae tortor. In rutrum.</div>
-            <div class="half-block" onclick="submitLadka()">Laďka</div>
-            <div class="half-block" onclick="submitAI()">AI</div>
+            <div class="half-block" style="background-color: #007bff;" onclick="submitLadka()">Laďka</div>
+            <div class="half-block" style="background-color: #FF7474;" onclick="submitAI()">AI</div>
         </div>
         <div class="column right">
           
