@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/btn-group.css">
+    <link rel="stylesheet" href="/static/styles/custom-select.css">
+    <link rel="stylesheet" href="/static/styles/form.css">
+    <title>Učitel zeměpisu</title>
+    <style>
+        .image-inline{
+            width: 20%;
+            margin-left: 40%;
+            margin-right: 40%;
+        }
+
+        .half-block{
+          width: 49%;
+          margin-right: 0;
+          margin-left: 0;
+          display: inline-block;
+          border: 2px solid #007bff;
+          height: 500px;
+          text-align: center;
+          line-height: 500px;
+          font-size: 400%;
+        }
+
+        .column-middle{
+          padding: 0;
+        }
+
+        @media screen and (max-width: 600px) {
+          .half-block{
+            width: 100%;
+            margin-right: 0;
+            margin-left: 0;
+            display: block;
+            border: 2px solid #007bff;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+          font-size: 300%;
+          }
+
+          .column{
+            padding-top: 0 !important;
+            margin: 0;
+          }
+        }
+
+        #text-container{
+          margin-bottom: 10px;
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="/">Hlavní stránka</a>
+        <div class="dropdown">
+          <button class="dropbtn">Archiv
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/archiv">Archiv</a>
+            <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+            <a href="/archiv/gymplace">GYMPlace</a>
+          </div>
+        </div> 
+        <div class="dropdown">
+          <button class="dropbtn">IvanMan
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/ivanman_welcome">IvanMan</a>
+            <a href="/ivanman/leaderboard">Tabulka vítězů</a>
+          </div>
+        </div>
+        <a href="/faq">FAQ</a>
+        <a href="/ucitel_zemepisu" class="active">Učitel zeměpisu</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+    </div>
+
+    <div class="row">
+        <div class="column left">
+        </div>
+        <div class="column middle">
+            <h2 style="text-align: center;">
+              Laďka nebo AI?
+            </h2>
+            <h3 style="text-align: center;">Počet bodů: <span id="pointCount">0</span></h3>
+            <img src="/static/images/qr_loading_gif.gif" id="loading-image" style="display: none;" class="image-inline">
+            <div id="text-container">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Mauris elementum mauris vitae tortor. In rutrum.</div>
+            <div class="half-block" onclick="submitLadka()">Laďka</div>
+            <div class="half-block" onclick="submitAI()">AI</div>
+        </div>
+        <div class="column right">
+          
+        </div>
+    </div>
+
+    <script>
+        class Data{
+          /**
+           * @param {boolean} isFromAI 
+           * @param {string} value
+           */ 
+          constructor(isFromAI, value){
+            this.isFromAI = isFromAI;
+            this.value = value;
+          }
+        }
+        const RESULT_TEXT = document.getElementById("text-container")
+        const LOADING_IMAGE = document.getElementById("loading-image")
+        let data = new Data(false, "");
+        let pointCount = 0;
+        //const LOADING_IMAGE = document.getElementById("loading-image")
+
+        function getRandomInt(min, max) {
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+        }
+
+        function generate(){
+            RESULT_TEXT.style.display = "none"
+            LOADING_IMAGE.style.display = "block"
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Typical action to be performed when the document is ready:
+                    data = JSON.parse(xhttp.responseText);
+                    if(!data.isFromAI){
+                      setTimeout(() => {
+                        RESULT_TEXT.innerHTML = data.value;
+                        RESULT_TEXT.style.display = "block"
+                        LOADING_IMAGE.style.display = "none"
+                      }, getRandomInt(2000, 3500));
+                    }
+                    else{
+                      RESULT_TEXT.innerHTML = data.value;
+                      RESULT_TEXT.style.display = "block"
+                      LOADING_IMAGE.style.display = "none"
+                    }
+                    
+                }
+            }
+            xhttp.open("POST", " /ladkaguesser", true)
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+            xhttp.send("")
+        }
+
+        function updatePointCount(){
+          document.getElementById("pointCount").innerHTML = pointCount;
+        }
+
+        function submitData(data){
+            let xhttp = new XMLHttpRequest();
+            xhttp.open("POST", " /ladkaguesser_data", true)
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+            xhttp.send(JSON.stringify(data));
+        }
+
+        function submitLadka(){
+          if(!data.isFromAI){
+            pointCount++;
+            updatePointCount();
+            generate();
+          }
+          else{
+            submitData({
+              pointCount: pointCount,
+              wasAI: data.isFromAI,
+              value: data.value
+            })
+            alert("Špatně! Počet bodů: " + pointCount);
+            pointCount = 0;
+            updatePointCount();
+            generate();
+          }
+        }
+
+        function submitAI(){
+          if(data.isFromAI){
+            pointCount++;
+            updatePointCount();
+            generate();
+          }
+          else{
+            submitData({
+              pointCount: pointCount,
+              wasAI: data.isFromAI,
+              value: data.value
+            })
+            alert("Špatně! Počet bodů: " + pointCount);
+            pointCount = 0;
+            updatePointCount();
+            generate();
+          }
+        }
+
+        generate();
+
+        function odeslat(){
+          /**
+           * @type {HTMLInputElement}
+           */
+           let otazka = document.getElementById("otazka")
+
+          IP = "gvnqrkod.ihavenolif.win"
+
+           if(!otazka.value){
+                return
+            }
+            sendableData = {
+                otazka: otazka.value
+            }
+
+            otazka.value = ""
+            
+            /**
+             * @type {XMLHttpRequest}
+             * */
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  console.log("ok")
+                }
+            }
+            xhttp.open("POST", "http://" + IP + "/navrhy_pro_ladku", true)
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+            xhttp.send(JSON.stringify(sendableData))
+        }
+    </script>
+
+    <!--
+        PASTED GARBAGE AHEAD
+    -->
+
+    <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+
+        //what the actual fuck...
+        var x, i, j, l, ll, selElmnt, a, b, c;
+/* Look for any elements with the class "custom-select": */
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /* For each element, create a new DIV that will act as the selected item: */
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /* For each element, create a new DIV that will contain the option list: */
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /* For each option in the original select element,
+    create a new DIV that will act as an option item: */
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /* When an item is clicked, update the original select box,
+        and the selected item: */
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+    /* When the select box is clicked, close any other select boxes,
+    and open/close the current select box: */
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+
+function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect); 
+    </script>
+</body>
+</html>

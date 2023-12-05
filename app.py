@@ -51,6 +51,15 @@ LADKA_VALUES = {
     
 }
 
+LADKA_QUOTES = [
+    "Pokud by praskla Lipenská přehrada, Český Krumlov by to nepřežil tak, jak to přežil",
+    "Bakterie se rozmnoží v teplé pitné vodě v boileru, jo?",
+    "Před 8000 lety ušel vlastně velbloud 640 km za 2 dny. tedy Parní lokomotiva jede 160 km/h.",
+    "Evropa patří k stabilním státům. Já státy neporovnávám, jenom je rozděluju.",
+    "Krajina je trojrozměrná část krajinné sféry obsahující části jednotlivých geosfér. Tvoří ji prvky přírodní a antropogenní.",
+    "Těžba hnědého uhlí je proces, kterým se získává hnědé uhlí z půdy. Hnědé uhlí je jedním z samozřejmě nejdůležitějších surovin tedy pro průmysl a tedy energetiku."
+]
+
 class Entry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.Integer)
@@ -447,6 +456,75 @@ def ladka():
         question_file.close()
 
     return final_text
+
+@app.route("/ladkaguesser", methods=["GET", "POST"])
+def ladkaguesser():
+    if(request.method == "GET"):
+        f = open("navstevnost_log.txt", "a")
+        f.write("/ladkaguesser" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+        f.close()
+        return render_template("ladka_guesser.html")
+    
+    retval = {
+        "isFromAI": False,
+        "value": ""
+    }
+
+    retval["isFromAI"] = random.choice((True, False))
+
+    if not retval["isFromAI"]:
+        retval["value"] = random.choice(LADKA_QUOTES)
+        return json.dumps(retval)
+
+    response = openai.Completion.create(
+        model = "text-davinci-002",
+        prompt = "Napiš dvě nebo tři věty v češtině na téma " + LADKA_VALUES[f"{random.randint(1, len(LADKA_VALUES))}"] + ". ",
+        temperature=0.7,
+        max_tokens=500
+    )
+    response_text = response.get("choices")[0].get("text")
+
+    regex_list = re.findall("(\. [A-Z]\w+)", response_text)
+
+    for x in regex_list:
+        if random.random() < 0.2:
+            word_after_whitespace = x.split(" ")[1]
+            response_text = response_text.replace(x, " jo? " + word_after_whitespace)
+
+    final_text = ""
+
+    for x in response_text:
+        slovo = ""
+        roll = random.randint(0, 100)
+
+        if roll < 13:
+            slovo = "tedy"
+        elif roll < 13+37:
+            slovo = "vlastně"
+        elif roll < 13+37+15:
+            slovo = "samozřejmě"
+        elif roll < 13+37+15+10:
+            slovo = "prosimvás"
+        else:
+            slovo = "tak"
+    
+        if x == " " and random.random() < 0.15:
+            final_text += " " + slovo + " "
+        else:
+            final_text += x
+
+    retval["value"] = final_text
+    return json.dumps(retval)
+
+@app.route("/ladkaguesser_data", methods=["POST"])
+def ladkaguesser_data():
+    print("kokot")
+    with open("ladkaguesser_data.csv", "a") as question_file:
+        question_value = request.json['value'].replace('\n', ' ')
+        question_file.write(f"{request.json['pointCount']};{request.json['wasAI']};{question_value}\n")
+        question_file.close()
+    
+    return "ok"
 
 @app.route("/body")
 def body():

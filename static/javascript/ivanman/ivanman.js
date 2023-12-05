@@ -69,14 +69,14 @@ xhttp.onreadystatechange = function() {
         
     }
 }
-xhttp.open("POST", "http://gvnqrkod.cz:6969/getMap", true)
+xhttp.open("POST", "https://ivanman-map.gvnqrkod.cz/getMap", true)
 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
 /**
  * @type {XMLHttpRequest}
  */
 const xhttpStart = new XMLHttpRequest();
-xhttpStart.open("POST", "http://gvnqrkod.cz/ivanman", true)
+xhttpStart.open("POST", "https://gvnqrkod.cz/ivanman", true)
 xhttpStart.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
 
 /**
