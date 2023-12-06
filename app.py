@@ -57,7 +57,14 @@ LADKA_QUOTES = [
     "Před 8000 lety ušel vlastně velbloud 640 km za 2 dny. tedy Parní lokomotiva jede 160 km/h.",
     "Evropa patří k stabilním státům. Já státy neporovnávám, jenom je rozděluju.",
     "Krajina je trojrozměrná část krajinné sféry obsahující části jednotlivých geosfér. Tvoří ji prvky přírodní a antropogenní.",
-    "Těžba hnědého uhlí je proces, kterým se získává hnědé uhlí z půdy. Hnědé uhlí je jedním z samozřejmě nejdůležitějších surovin tedy pro průmysl a tedy energetiku."
+    "Těžba hnědého uhlí je proces, kterým se získává hnědé uhlí z půdy. Hnědé uhlí je jedním z samozřejmě nejdůležitějších surovin tedy pro průmysl a tedy energetiku.",
+    "V Americe nebyla žádná světová válka.",
+    "Chceš se globalizovat? jsi ráda globalizována?",
+    "Měli ve viktoriánské Anglii těstoviny? Samozřejmě když se našly tedy zkamenělé v prosím vás Číně jo? tak to asi mít budou.",
+    "Přírodní krajina má charakter tedy přírodní krajiny.",
+    "Italové se stěhovali do Ameriky a jiných částí Evropy.",
+    "Delfíni žijí v Dunaji, v deltě."
+
 ]
 
 class Entry(db.Model):
@@ -478,7 +485,7 @@ def ladkaguesser():
 
     response = openai.Completion.create(
         model = "text-davinci-002",
-        prompt = "Napiš dvě nebo tři věty v češtině na téma " + LADKA_VALUES[f"{random.randint(1, len(LADKA_VALUES))}"] + ". ",
+        prompt = "Napiš jednu nebo dvě věty v češtině na téma " + LADKA_VALUES[f"{random.randint(1, len(LADKA_VALUES))}"] + ". ",
         temperature=0.7,
         max_tokens=500
     )
