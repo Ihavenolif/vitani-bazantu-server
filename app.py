@@ -63,8 +63,44 @@ LADKA_QUOTES = [
     "Měli ve viktoriánské Anglii těstoviny? Samozřejmě když se našly tedy zkamenělé v prosím vás Číně jo? tak to asi mít budou.",
     "Přírodní krajina má charakter tedy přírodní krajiny.",
     "Italové se stěhovali do Ameriky a jiných částí Evropy.",
-    "Delfíni žijí v Dunaji, v deltě."
-
+    "Delfíni žijí v Dunaji, v deltě.",
+    "Sám si rozhoduje o vnitřních záležitostech a žádný jiný stát nemá, nebo nesmí, nemůže zasahovat do tady toho dalšího. Takže to je tedy ta suverenita?",
+    "No Ukrajina ukrajinská vláda nemá svrchovanou moc nad krymem. Nemá svrchovanou moc nad tou doněckou a luhanskou oblastí",
+    "Vlastně v té v té východní části Ukrajiny jo? Tam prostě to nefunguje podle těch vlastně těch zákonů té úpravy",
+    "Kosovo má err nějakou vládu, nebo ne? Má armádu. Jo a ty mají teda jako nad sebou?",
+    "Takže podle tohoto hlediska si ty státy rozředíme jo podle svrchované a nezávislé",
+    "Judaismus pozor není světovým náboženstvím. Judaismus je tím národním. Národní náboženství vlastně je.",
+    "Demokratický nebo? To tady přesně tak. Takže nebo jestli jsou monarchie nebo. Prezident republiky, takže podle státní zřízení monarchie republika podle ekonomické vyspělosti, vyspělé či rozvojové státy nějak pojmenovat",
+    "Takže rusko 17 milionů kilometrů čtverečních a dále je přes 10 milionů kilometrů čtverečních Kanada. Jo další státy jako Čína a Spojené Státy jo ty mají přibližně rozlohu jako Evropa.",
+    "Vlastně ty státy, když se porovnávají mezi sebou podle té ekonomické vyspělosti? Čili to porovnávám tahleta HDP přesně tak HDP, ale HDP má 2 rozměry.",
+    "To znamená jako nominální to absolutní to maximum, co prostě co je ta hodnota toho, co ty státy vyrobí nebo poskytnou služeb",
+    "Takže stupeň ekonomické vyspělosti směsi. A takže nejdříve se budeme zabývat tím vlastně dělením státu podle toho mezinárodně. Z právního postavení.",
+    "Mluvili jsme o tom, že tedy je ten stát nezávislý, nezávislý stát, je stát svrchovaný. Suverénním příkladem může být první mezi nejvyspělejšími státy světa Kanada a vymezit ten.",
+    "Tedy ten nezávislý stát i základní politickou biografická jednotka má vlastní území, má vlastní vládu a ale má také obecně mezinárodně právní uznání",
+    "V současné době 194 států asi na té politické mapě světa, ale každý zdroj vám řekne trošičku něco jiného, protože ty státy jako služba mají trošičku jiný stav.",
+    "Nebudeme dělit, ale řekneme si něco o nejstarší státech, které fungují těch obětí. Díky těm hranicím fungují až do současnosti. Tak nejstarší stát na světě mezi nejstarší státy světa na světě patří.",
+    "V jiných samozřejmě hranicích, než než v současnosti v Evropě je nejstarší státem je Dánsko, Švédsko, Francie. ", 
+    "V Africe nejnovější stát. Vznik. Tady ani nemám ještě ani na tý mapě. Rok 2011 vznikl. Jižní Súdán. Jo jižní Súdán 2011. ", 
+    "Dále v Evropě máme nějaké vlastně území, které jsou potenciálně mohou vzniknout jako samostatné státy. ", 
+    "Máme areál nějaký stát, který se nejspíš vlastně bude, bude rozpadat, na část státu, na nějaké územní jednotky menší. ", 
+    "No ve Španělsku samozřejmě. Referendum, kdy tedy Katalánci, Katalánsko, Katalánci se vyslovili pro to, že chtějí být samostatným státem, když se chtějí prostě odtrhnout od Španělska ", 
+    "Tak, takže ta závislá území ty závislé oblasti mohou mít název různý jo, ale jsou to politicky nesamostatná území s omezenou suverenitu. ", 
+    "Vlastníkem je nezávislý stát, který vlastně je zastupován na tom území. ",
+    "Guvernér samozřejmě zastupuje, ale královnu jo a takže to je zase něco něco jiného. ", 
+    "Jsou to zámořské departmenty Francie. V ve francouzské guyaně mají euro jo, když jsou to vlastně součástí součástí Francie. ", 
+    "V současné době už mají samozřejmě určitou samostatnost. Určitou autonomii mají i vlastní vládu, která komunikuje samozřejmě s tou vládou. ", 
+    "Tam kdybychom se podívali na mapu, tak tam máme ty menší ostrůvky, které jsou britské či francouzské a většinou nevelké. ", 
+    "Jak jsem řekla malý počet obyvatel. Nepatrný hospodářský potenciál. Vyjádřil jsem vždycky, že chtějí být v rámci Dánska, protože mají nižší ten hospodářský potenciál jo a daří se jim samozřejmě v rámci toho demokratického státu. ", 
+    "Odsouhlasili, že chtějí být ale kongres spojených států amerických to nikdy neodsouhlasil jo, aby byly, aby měli stejný status jako třeba Aljaška nebo jako havajské ostrovy. ",
+    "Kdo jel lanovkou na Sněžku, ostuda.",
+    "Vemte si pevnou obuv, ať tam nejste za kašpárky.",
+    "Někdy se změní počasí a musí v těch pantoflíčkách jít zase dolů.",
+    "Né králíci, ale Králíky.",
+    "Na Sněžníku bývá… Sníh výborně.",
+    "Já vím, že se zdá, že vás to nezajímá. To se nezdá…",
+    "Chlapi neumí ani rozlišovat barvy.",
+    "Ledovcové údolí bylo samozřejmě vymodelováno ledovcem.",
+    "Broumovská vrchovina je v Broumovském výběžku.",
 ]
 
 class Entry(db.Model):
@@ -484,8 +520,8 @@ def ladkaguesser():
         return json.dumps(retval)
 
     response = openai.Completion.create(
-        model = "text-davinci-002",
-        prompt = "Napiš jednu nebo dvě věty v češtině na téma " + LADKA_VALUES[f"{random.randint(1, len(LADKA_VALUES))}"] + ". ",
+        model = "gpt-3.5-turbo-instruct",
+        prompt = "Napiš jednu nebo dvě krátké věty v češtině na téma " + LADKA_VALUES[f"{random.randint(1, len(LADKA_VALUES))}"] + ". ",
         temperature=0.7,
         max_tokens=500
     )
