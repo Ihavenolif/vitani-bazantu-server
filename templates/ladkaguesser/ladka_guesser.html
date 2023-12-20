@@ -11,8 +11,22 @@
     <link rel="stylesheet" href="/static/styles/btn-group.css">
     <link rel="stylesheet" href="/static/styles/custom-select.css">
     <link rel="stylesheet" href="/static/styles/form.css">
-    <title>Učitel zeměpisu</title>
+    <title>LZ Guesser</title>
     <style>
+        .popup{
+            position: fixed;
+            margin: auto;
+            width: 75%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center;
+            max-height: fit-content;
+            height: -moz-max-content;
+            background-color: white;
+        }
+
         .image-inline{
             width: 20%;
             margin-left: 40%;
@@ -44,6 +58,10 @@
             text-align: center;
             line-height: 150px;
           font-size: 300%;
+          }
+
+          .popup{
+            width: 90vw !important;
           }
 
           .column{
@@ -90,6 +108,17 @@
         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
     </div>
 
+    <div class="popup" style="width: 40%; margin-top: 10%; border: 5px solid #007bff; z-index: 1; display: none;" id="endOfGamePopup">
+      <h1>Konec hry!</h1>
+      <p>Takovou kravinu by přece <span id="ladka/ai"></span> nikdy nevyplodila...</p>
+      <p>Podařilo se ti dosáhnout <span id="pocet-bodu"></span> bodů! Napiš svoje jméno a zapiš so do tabulky:</p>
+      <div style="padding: 10%;">
+        <input type="text" id="jmeno-container" placeholder="Napiš jméno sem">
+            <button class="form-button" onclick="submitData({pointCount: pointCount,wasAI: data.isFromAI,value: data.value})">Odeslat</button>
+      </div>
+      
+   </div>
+
     <div class="row">
         <div class="column left">
         </div>
@@ -107,6 +136,10 @@
           
         </div>
     </div>
+
+    <form action="/ivanman_postgame" method="post" style="display: none;" id="redirect-form">
+      <input type="number" name="pocetBodu" id="pocetBodu" value="0">
+    </form>
 
     <script>
         class Data{
@@ -154,7 +187,7 @@
                     
                 }
             }
-            xhttp.open("POST", " /ladkaguesser", true)
+            xhttp.open("POST", " /lzguesser", true)
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
             xhttp.send("")
         }
@@ -164,10 +197,20 @@
         }
 
         function submitData(data){
+          data.jmeno = document.getElementById("jmeno-container").value;
+            console.log(data);
+          
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", " /ladkaguesser_data", true)
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
             xhttp.send(JSON.stringify(data));
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Typical action to be performed when the document is ready:
+                    window.location = "/lzguesser/leaderboard"
+                    
+                }
+            }
         }
 
         function submitLadka(){
@@ -177,16 +220,23 @@
             generate();
           }
           else{
-            submitData({
+            showEndGameFlash();
+            /*submitData({
               pointCount: pointCount,
               wasAI: data.isFromAI,
               value: data.value
-            })
-            alert("Špatně! Počet bodů: " + pointCount);
+            })*/
+            //alert("Špatně! Počet bodů: " + pointCount);
             pointCount = 0;
             updatePointCount();
             generate();
           }
+        }
+
+        function showEndGameFlash(){
+          document.getElementById("endOfGamePopup").style.display = "block";
+          document.getElementById("ladka/ai").innerHTML = data.isFromAI ? "LZ" : "AI";
+          document.getElementById("pocet-bodu").innerHTML = pointCount;
         }
 
         function submitAI(){
@@ -196,12 +246,13 @@
             generate();
           }
           else{
-            submitData({
+            showEndGameFlash();
+            /*submitData({
               pointCount: pointCount,
               wasAI: data.isFromAI,
               value: data.value
-            })
-            alert("Špatně! Počet bodů: " + pointCount);
+            })*/
+            //alert("Špatně! Počet bodů: " + pointCount);
             pointCount = 0;
             updatePointCount();
             generate();
@@ -210,7 +261,7 @@
 
         generate();
 
-        function odeslat(){
+        function odeslatPostGame(){
           /**
            * @type {HTMLInputElement}
            */

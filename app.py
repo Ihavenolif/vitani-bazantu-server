@@ -95,7 +95,6 @@ LADKA_QUOTES = [
     "Kdo jel lanovkou na Sněžku, ostuda.",
     "Vemte si pevnou obuv, ať tam nejste za kašpárky.",
     "Někdy se změní počasí a musí v těch pantoflíčkách jít zase dolů.",
-    "Né králíci, ale Králíky.",
     "Na Sněžníku bývá… Sníh výborně.",
     "Já vím, že se zdá, že vás to nezajímá. To se nezdá…",
     "Chlapi neumí ani rozlišovat barvy.",
@@ -132,6 +131,11 @@ class IvanmanDatabase(db.Model):
     pocet_bodu = db.Column(db.Float())
     pocet_coinu = db.Column(db.Integer)
     cas = db.Column(db.Integer)
+
+class LadkaguesserDatabase(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    jmeno = db.Column(db.String(256))
+    pocet_bodu = db.Column(db.Integer)
 
 @app.route("/clashofclans")
 def clashofclans():
@@ -500,13 +504,35 @@ def ladka():
 
     return final_text
 
-@app.route("/ladkaguesser", methods=["GET", "POST"])
+@app.route("/lzguesser/leaderboard")
+def ladkaguesser_leaderboard():
+    entries = LadkaguesserDatabase.query.all()
+
+    list = []
+
+    for entry in entries:
+        temp = {}
+        temp["pocetBodu"] = entry.pocet_bodu
+        temp["jmeno"] = entry.jmeno
+        list.append(temp)
+    
+    new_list = sorted(list, key=lambda d: d["pocetBodu"])
+    new_list.reverse()
+
+    sendable_list = new_list[0:10]
+
+    print(sendable_list)
+
+    return render_template("/ladkaguesser/leaderboard.html", list=sendable_list)
+
+@app.route("/lzguesser", methods=["GET", "POST"])
 def ladkaguesser():
     if(request.method == "GET"):
+
         f = open("navstevnost_log.txt", "a")
-        f.write("/ladkaguesser" + "," + str(datetime.timestamp(datetime.now())) + "\n")
+        f.write("/lzguesser/" + "," + str(datetime.timestamp(datetime.now())) + "\n")
         f.close()
-        return render_template("ladka_guesser.html")
+        return render_template("ladkaguesser/ladka_guesser.html")
     
     retval = {
         "isFromAI": False,
@@ -522,7 +548,7 @@ def ladkaguesser():
     response = openai.Completion.create(
         model = "gpt-3.5-turbo-instruct",
         prompt = "Napiš jednu nebo dvě krátké věty v češtině na téma " + LADKA_VALUES[f"{random.randint(1, len(LADKA_VALUES))}"] + ". ",
-        temperature=0.7,
+        temperature=0.75,
         max_tokens=500
     )
     response_text = response.get("choices")[0].get("text")
@@ -562,6 +588,11 @@ def ladkaguesser():
 @app.route("/ladkaguesser_data", methods=["POST"])
 def ladkaguesser_data():
     print("kokot")
+    entry = LadkaguesserDatabase()
+    entry.jmeno = html.escape(request.json["jmeno"])
+    entry.pocet_bodu = request.json["pointCount"]
+    db.session.add(entry)
+    db.session.commit()
     with open("ladkaguesser_data.csv", "a") as question_file:
         question_value = request.json['value'].replace('\n', ' ')
         question_file.write(f"{request.json['pointCount']};{request.json['wasAI']};{question_value}\n")

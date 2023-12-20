@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/styles/responsive-nav-bar.css">
+    <link rel="stylesheet" href="/static/styles/column-layout.css">
+    <link rel="stylesheet" href="/static/styles/vertical-menu.css">
+    <link rel="stylesheet" href="/static/styles/form.css">
+    <link rel="stylesheet" href="/static/styles/collapsible.css">
+    <style>
+      .centered{
+            position: fixed;
+            margin: auto;
+            width: 400px;
+            height: 150px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            text-align: center !important;
+            max-height: fit-content;
+            background-color: white;
+            border: 3px solid #333;
+        }
+
+        .vertical-menu{
+          margin-left: auto;
+          margin-right: auto;
+        }
+    </style>
+    <title>IvanMan</title>
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="/">Hlavní stránka</a>
+        <div class="dropdown">
+          <button class="dropbtn">Archiv
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/archiv">Archiv</a>
+            <a href="/archiv/vitani_novacku">Vítání nováčků</a>
+          </div>
+        </div>
+        <a href="/ivanman_welcome" class="active" >IvanMan</a>
+        <a href="/faq">FAQ</a>
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+    </div>
+
+    <div class="row">
+        <div class="column left">
+        </div>
+        <div class="column middle">
+            <h2>Dobrá práce!</h2>
+            <p>Povedlo se ti utéct z bludiště!</p>
+
+            <p>Počet sesbíraných mincí: {{pocetCoinu}}</p>
+            <p>Celkový čas: {{cas}}</p>
+            <p>Počet dosažených bodů: {{pocetBodu}}</p>
+
+            <button type="button" class="collapsible"><strong>Jak počítáme body?</strong></button>
+            <div class="collapsible-content">
+              <p>Body se počítají následujícím způsobem:</p>
+              <p>
+                <math>
+                    <mrow>
+                     <mi>pocetBodu</mi>
+                     <mo>=</mo>
+                     <mfrac>
+                       <mrow>
+                         <msup>
+                            <mi>pocetMinci</mi>
+                            <mn>2.5</mn>
+                         </msup>
+                       </mrow>
+                       <mrow>
+                         <mn>cas</mn>
+                         <!--<mo>&InvisibleTimes;</mo>
+                         <mi>a</mi>-->
+                       </mrow>
+                     </mfrac>
+                    </mrow>
+                   </math>
+                </p>
+            </div> 
+
+            <p id="vysledek-container"></p>
+
+            <div id="form-container">
+              <form action="/ivanman" method="post" id="submit-form">
+                <input type="text" id="jmeno" name="jmeno" placeholder="Jméno">
+
+                <div style="display: none;">
+                    <input type="text" name="request" id="request" value="point_submit">
+                    <input type="number" name="win" id="win" value="1">
+                    <input type="number" name="pocetBodu" id="pocetBodu" value="{{pocetBodu}}">
+                    <input type="number" name="pocetCoinu" id="pocetCoinu" value="{{pocetCoinu}}">
+                    <input type="number" name="cas" id="cas" value="{{cas}}">
+                    <input type="number" name="id" id="id" value="{{id}}">
+                </div>
+              </form>
+
+              <button onclick="submitCustom()" class="form-button">Odeslat</button>
+            </div>
+            <div class="vertical-menu" id="vertical-menu">
+              <a style="display: inline-block; margin-bottom: 4px;" href="/ivanman?map={{map}}" id="hrat-znovu-button">Hrát znovu</a>
+          </div>
+            
+        </div>
+        <div class="column right">
+          
+        </div>
+
+        <div class="centered" id="name-too-long-popup" style="display: none;">
+        
+          <h3>Příliš dlouhé jméno</h3>
+
+          <p>Jméno musí být kratší, než 30 znaků.</p>
+  
+          <div class="vertical-menu">
+            <a style="display: inline;" href="javascript:hidePopup()">OK</a>
+        </div>
+    </div>
+
+    <script>
+      //FUCK OFF NEBUDU TO ODZAZOVAT
+      //FUNGUJE TO STEJNĚ JAKO V post_game_loss.html
+      /**
+       * @type {Array}
+       */
+       const list = JSON.parse('{{  list|tojson }}')
+
+const tempObject = {
+  pocetBodu: Number(document.getElementById("pocetBodu").value),
+  pocetCoinu: Number(document.getElementById("pocetCoinu").value),
+  cas: Number(document.getElementById("cas").value)
+}
+
+list.push(tempObject)
+
+function sortList(a,b){
+  if(a.pocetBodu > b.pocetBodu){
+    return -1
+  }
+  if(a.pocetBodu < b.pocetBodu){
+    return 1
+  }
+  return 0
+}
+
+list.sort(sortList)
+
+if(list.indexOf(tempObject) < 10){
+  document.getElementById("form-container").style.display = "block"
+  document.getElementById("hrat-znovu-button").innerHTML += " (bez zapsání)"
+  document.getElementById("vysledek-container").innerHTML = "Podařilo se ti umístit na " + (list.indexOf(tempObject) + 1) + ". místě! Pokud chceš svůj výsledek zapsat, napiš nám sem jméno, pod kterým bude možné výsledek dohledat:"
+}else{
+  document.getElementById("vysledek-container").innerHTML = "Bohužel, nepodařilo se ti umístit mezi prvními deseti. Pro dosažení 10. místa musíš nasbírat " + list[9].pocetBodu +" bodů. Můžeš to zkusit znovu, prostě git gut, nehraj jako motyka a je to jednoduchý, ne?"
+  document.getElementById("vertical-menu").innerHTML += "<a style=\"display: inline-block; margin-bottom: 4px;\" href=\"/ivanman/leaderboard\">Tabulka vítězů</a>"
+}
+
+      function submitCustom(){
+        /**
+         * @type {HTMLInputElement}
+         */ 
+        const jmenoField = document.getElementById("jmeno")
+
+        if(jmeno.value.length > 30){
+          const popupDiv = document.getElementById("name-too-long-popup")
+          popupDiv.style.display = "block"
+          return "kokot"
+        }
+
+        if(jmenoField.value == ""){
+          jmenoField.value = "Anonymní"
+        }
+
+        /**
+         * @type {HTMLFormElement}
+         */
+        const submitForm = document.getElementById("submit-form")
+        submitForm.submit()
+      }
+
+      function hidePopup(){
+        document.getElementById("name-too-long-popup").style.display = "none"
+      }
+    </script>
+
+    <!--
+        PASTED GARBAGE AHEAD
+    -->
+    <script>
+        function responsiveNavbar() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+
+        var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("collapsible-active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+} 
+        </script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
