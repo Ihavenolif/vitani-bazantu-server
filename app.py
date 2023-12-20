@@ -590,7 +590,8 @@ def ladkaguesser_data():
     print("kokot")
     entry = LadkaguesserDatabase()
     entry.jmeno = html.escape(request.json["jmeno"])
-    entry.pocet_bodu = request.json["pointCount"]
+    print(request.json["pointCount"])
+    entry.pocet_bodu = int(request.json["pointCount"])
     db.session.add(entry)
     db.session.commit()
     with open("ladkaguesser_data.csv", "a") as question_file:
