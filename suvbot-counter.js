@@ -10,6 +10,10 @@ app.get("/", function (req, res) {
     res.send(String(gamesRemaining--))
 })
 
+app.get("/checkCount", function (req, res) {
+    res.send(String(gamesRemaining))
+})
+
 app.get("/setCount", function (req, res) {
     if(!req.query.count) res.send("Invalid data");
     count = Number(req.query.count)
