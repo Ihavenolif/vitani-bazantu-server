@@ -15,7 +15,11 @@ app.get("/checkCount", function (req, res) {
 })
 
 app.get("/setCount", function (req, res) {
-    if(!req.query.count) res.send("Invalid data");
+    if(!req.query.count)
+    {
+        res.send("Invalid data");
+        return;
+    }
     count = Number(req.query.count)
     gamesRemaining = count;
     res.send(String(count))
