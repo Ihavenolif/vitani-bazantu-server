@@ -25,7 +25,7 @@ app.use(bodyParser.json())
 app.get("/", function (req, res) {
     console.log(req.socket.remoteAddress)
 
-    res.send(gamesRemaining--)
+    res.send(String(gamesRemaining--))
 })
 
 app.post("/getMap", function (req, res) {
