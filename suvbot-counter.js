@@ -6,11 +6,11 @@ let gamesRemaining = 12;
 
 app.use(cors())
 
-app.get("/", function (req, res) {
+app.get("/nejakejkokotnamscanujeserver", function (req, res) {
     res.send(String(gamesRemaining--))
 })
 
-app.get("/checkCount", function (req, res) {
+app.get("/", function (req, res) {
     res.send(String(gamesRemaining))
 })
 
